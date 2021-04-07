@@ -142,7 +142,6 @@ public class SdkPayme extends CordovaPlugin {
         Log.d(TAG,String.valueOf(environment.getClass().getName()));
         Log.d(TAG+"PROD",EnvDomain.PRODUCTION.getUrl());
         Log.d(TAG+"DEV",EnvDomain.DEVELOPMENT.getUrl());
-        //Log.d(TAG+"SAND",EnvDomain.SANDBOX.getUrl());
         
         switch (environment){
             case "1":
@@ -159,7 +158,6 @@ public class SdkPayme extends CordovaPlugin {
         Bundle bundle = new Bundle();
         bundle.putString(Constants.EXTRA_MERCHANT_ENVDOMAIN, URL);
         bundle.putParcelable(Constants.EXTRA_MERCHANT_OPERATION, merchantOperation);
-        bundle.putBoolean(Constants.EXTRA_ENABLED_MPOS, false);
         Log.d(TAG,"Set SetBundle");
         Log.d(TAG,"Set All values");
         context=cordova.getActivity().getApplicationContext();
