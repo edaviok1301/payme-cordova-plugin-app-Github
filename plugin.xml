@@ -17,7 +17,6 @@
 		</config-file>
 
 		<source-file src="src/android/SdkPayme.java" target-dir="src/sdkpayme/SdkPayme" />
-		<source-file src="src/android/GateWay.java" target-dir="src/sdkpayme/GateWay" />
 		<resource-file src="aar/payme-debug.aar"  target="libs/payme-debug.aar"/>
 		<framework  src="src/android/file.gradle" custom="true" type="gradleReference"/>
 	</platform>
