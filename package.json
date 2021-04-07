@@ -1,0 +1,20 @@
+{
+  "name": "sdkpayme",
+  "version": "0.0.1",
+  "description": "",
+  "cordova": {
+    "id": "sdkpayme",
+    "platforms": [
+      "android"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "xcode": "^3.0.1"
+  }
+}

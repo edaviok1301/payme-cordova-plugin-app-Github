@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="sdkpayme" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+	<name>SdkPayme</name>
+	<js-module name="SdkPayme" src="www/SdkPayme.js">
+		<clobbers target="cordova.plugins.SdkPayme" />
+	</js-module>
+	<platform name="android">
+		<config-file parent="/*" target="res/xml/config.xml">
+			<feature name="SdkPayme">
+				<param name="android-package" value="sdkpayme.SdkPayme" />
+			</feature>
+		</config-file>
+
+		<config-file parent="/manifest/application" target="AndroidManifest.xml">
+			<activity android:label="GateWay" android:name="sdkpayme.GateWay" >
+			</activity>
+		</config-file>
+
+		<source-file src="src/android/SdkPayme.java" target-dir="src/sdkpayme/SdkPayme" />
+		<source-file src="src/android/GateWay.java" target-dir="src/sdkpayme/GateWay" />
+		<resource-file src="aar/payme-debug.aar"  target="libs/payme-debug.aar"/>
+		<framework  src="src/android/file.gradle" custom="true" type="gradleReference"/>
+	</platform>
+
+	<platform name="ios">
+		<config-file target="config.xml" parent="/*">
+			<feature name="SdkPayme">
+				<param name="ios-package" value="SdkPayme" onload="true" />
+			</feature>
+			<preference name="deployment-target" value="9.0" />
+			<preference name="pods_ios_min_version" value="9.0"/>
+			<preference name="pods_use_frameworks" value="true"/>
+		</config-file>
+
+		<header-file src="src/ios/RSA.h" />
+		<source-file src="src/ios/RSA.m" />
+		<header-file src="src/ios/PayViewController.h" />
+		<source-file src="src/ios/PayViewController.m" />
+		<header-file src="src/ios/SdkPayme.h" />
+		<source-file src="src/ios/SdkPayme.m" />
+		
+		<!-- <framework src="Payme" type="podspec" spec="~> 0.0.9" /> -->
+		<framework src="src/ios/framework/Payme.framework" custom="true" embed="true"/>
+		<hook type="before_plugin_add" src="hooks/edit_build_json.js" />
+	    <hook type="after_plugin_install" src="hooks/embed_framework_hook.js" />
+		<!-- <hook type="after_plugin_install" src="hooks/valid_architecture_hook.js" /> -->
+	</platform> 
+
+
+</plugin>

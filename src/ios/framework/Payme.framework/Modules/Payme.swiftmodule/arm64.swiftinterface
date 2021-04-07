@@ -1,0 +1,1192 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.2.4 effective-4.2 (swiftlang-1103.0.32.9 clang-1103.0.32.53)
+// swift-module-flags: -target arm64-apple-ios9.0 -enable-objc-interop -enable-library-evolution -swift-version 4.2 -enforce-exclusivity=checked -Onone -module-name Payme
+import CommonCrypto
+import Foundation
+@_exported import Payme
+import Security
+import Swift
+import SystemConfiguration
+import UIKit
+public class CreditCardPrefix {
+  final public let rangeStart: Swift.Int
+  final public let rangeEnd: Swift.Int
+  final public let prefixLength: Swift.Int
+  public init(rangeStart: Swift.Int, rangeEnd: Swift.Int, length: Swift.Int)
+  @objc deinit
+}
+public enum CreditCardType : Swift.String {
+  case JCB
+  case Discover
+  case DinersClub
+  case AmericanExpress
+  case Cmr
+  case Maestro
+  case Visa
+  case VisaElectron
+  case BancoRipley
+  case TarjetaRipley
+  case MasterCard
+  case NotRecognized
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@objc public class ValidateCard : ObjectiveC.NSObject {
+  final public let prefixes: [Payme.CreditCardPrefix]
+  final public let lengths: [Swift.Int]
+  public init(prefixes: [Payme.CreditCardPrefix], lengths: [Swift.Int])
+  public convenience init(type: Payme.CreditCardType)
+  @objc deinit
+  @objc override dynamic public init()
+}
+extension ValidateCard {
+  public class func typeCheckingPrefixOnly(creditCardNumber number: Swift.String) -> Payme.CreditCardType
+  public class func typeCheckingPrefixOnly(creditCardNumber number: Swift.String, checkOnlyFromTypes types: [Payme.CreditCardType]) -> Payme.CreditCardType
+  public class func validate(creditCardNumber number: Swift.String) -> Swift.Bool
+  public class func validate(creditCardNumber number: Swift.String, validatePrefix: Swift.Bool, validateLength: Swift.Bool, useLuhnAlgorithm useLuhn: Swift.Bool, types: [Payme.CreditCardType]) -> Swift.Bool
+}
+extension String {
+  public func removingCharactersInSet(_ set: Foundation.CharacterSet) -> Swift.String
+  public func removingWhitespaceAndNewlines() -> Swift.String
+}
+public protocol Key : AnyObject {
+  var reference: Security.SecKey { get }
+  var originalData: Foundation.Data? { get }
+  init(data: Foundation.Data) throws
+  init(reference: Security.SecKey) throws
+  init(base64Encoded base64String: Swift.String) throws
+  init(pemEncoded pemString: Swift.String) throws
+  init(pemNamed pemName: Swift.String, in bundle: Foundation.Bundle) throws
+  init(derNamed derName: Swift.String, in bundle: Foundation.Bundle) throws
+  func pemString() throws -> Swift.String
+  func data() throws -> Foundation.Data
+  func base64String() throws -> Swift.String
+}
+extension Key {
+  public func base64String() throws -> Swift.String
+  public func data() throws -> Foundation.Data
+  public init(base64Encoded base64String: Swift.String) throws
+  public init(pemEncoded pemString: Swift.String) throws
+  public init(pemNamed pemName: Swift.String, in bundle: Foundation.Bundle = Bundle.main) throws
+  public init(derNamed derName: Swift.String, in bundle: Foundation.Bundle = Bundle.main) throws
+}
+public struct SegmentedPagerTabStripSettings {
+  public struct Style {
+    public var segmentedControlColor: UIKit.UIColor?
+  }
+  public var style: Payme.SegmentedPagerTabStripSettings.Style
+}
+@objc @_inheritsConvenienceInitializers open class SegmentedPagerTabStripViewController : Payme.PagerTabStripViewController, Payme.PagerTabStripDataSource, Payme.PagerTabStripDelegate {
+  @objc @IBOutlet weak public var segmentedControl: UIKit.UISegmentedControl!
+  open var settings: Payme.SegmentedPagerTabStripSettings
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc override dynamic open func viewDidLoad()
+  override open func reloadPagerTabStripView()
+  open func updateIndicator(for viewController: Payme.PagerTabStripViewController, fromIndex: Swift.Int, toIndex: Swift.Int)
+  @objc override open func scrollViewDidEndScrollingAnimation(_ scrollView: UIKit.UIScrollView)
+  @objc deinit
+}
+@objc public class ModelMerchantDataOperationCurrency : ObjectiveC.NSObject {
+  @objc public init(code: Swift.String, symbol: Swift.String)
+  @objc deinit
+  @objc override dynamic public init()
+}
+@objc public class ModelMerchantDataOperation : ObjectiveC.NSObject {
+  @objc public init(operationNumber: Swift.String, amount: Swift.String, currency: Payme.ModelMerchantDataOperationCurrency, productDescription: Swift.String)
+  @objc deinit
+  @objc override dynamic public init()
+}
+@objc public class ModelMerchantFeatures : ObjectiveC.NSObject {
+  @objc public init(wallet: Payme.ModelMerchantFeaturesWallet, reserved: [Payme.ModelMerchantFeaturesReserved], planQuota: Swift.Bool)
+  @objc deinit
+  @objc override dynamic public init()
+}
+@objc public class ModelMerchantFeaturesWallet : ObjectiveC.NSObject {
+  @objc public init(userCommerce: Swift.String)
+  @objc deinit
+  @objc override dynamic public init()
+}
+@objc public class ModelMerchantFeaturesReserved : ObjectiveC.NSObject {
+  @objc public init(name: Swift.String, value: Swift.String)
+  @objc deinit
+  @objc override dynamic public init()
+}
+@objc open class ButtonBarViewCell : UIKit.UICollectionViewCell {
+  @objc @IBOutlet open var imageView: UIKit.UIImageView!
+  @objc @IBOutlet open var label: UIKit.UILabel!
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc override dynamic open var isSelected: Swift.Bool {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc deinit
+  @objc override dynamic public init(frame: CoreGraphics.CGRect)
+}
+@objc public class ModelOrder : ObjectiveC.NSObject, Swift.Decodable {
+  @objc deinit
+  required public init(from decoder: Swift.Decoder) throws
+}
+@_inheritsConvenienceInitializers open class BaseButtonBarPagerTabStripViewController<ButtonBarCellType> : Payme.PagerTabStripViewController, Payme.PagerTabStripDataSource, Payme.PagerTabStripIsProgressiveDelegate, UIKit.UICollectionViewDelegate, UIKit.UICollectionViewDataSource where ButtonBarCellType : UIKit.UICollectionViewCell {
+  public var settings: Payme.ButtonBarPagerTabStripSettings
+  public var buttonBarItemSpec: Payme.ButtonBarItemSpec<ButtonBarCellType>!
+  public var changeCurrentIndex: ((ButtonBarCellType?, ButtonBarCellType?, Swift.Bool) -> Swift.Void)?
+  public var changeCurrentIndexProgressive: ((ButtonBarCellType?, ButtonBarCellType?, CoreGraphics.CGFloat, Swift.Bool, Swift.Bool) -> Swift.Void)?
+  @objc @IBOutlet weak public var buttonBarView: Payme.ButtonBarView!
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc override dynamic open func viewDidLoad()
+  @objc override dynamic open func viewWillAppear(_ animated: Swift.Bool)
+  @objc override dynamic open func viewDidAppear(_ animated: Swift.Bool)
+  @objc override dynamic open func viewDidLayoutSubviews()
+  @objc override dynamic open func viewWillTransition(to size: CoreGraphics.CGSize, with coordinator: UIKit.UIViewControllerTransitionCoordinator)
+  override open func reloadPagerTabStripView()
+  open func calculateStretchedCellWidths(_ minimumCellWidths: [CoreGraphics.CGFloat], suggestedStretchedCellWidth: CoreGraphics.CGFloat, previousNumberOfLargeCells: Swift.Int) -> CoreGraphics.CGFloat
+  open func updateIndicator(for viewController: Payme.PagerTabStripViewController, fromIndex: Swift.Int, toIndex: Swift.Int)
+  open func updateIndicator(for viewController: Payme.PagerTabStripViewController, fromIndex: Swift.Int, toIndex: Swift.Int, withProgressPercentage progressPercentage: CoreGraphics.CGFloat, indexWasChanged: Swift.Bool)
+  @objc open func collectionView(_ collectionView: UIKit.UICollectionView, layout collectionViewLayout: UIKit.UICollectionViewLayout, sizeForItemAtIndexPath indexPath: Foundation.IndexPath) -> CoreGraphics.CGSize
+  @objc open func collectionView(_ collectionView: UIKit.UICollectionView, didSelectItemAt indexPath: Foundation.IndexPath)
+  @objc open func collectionView(_ collectionView: UIKit.UICollectionView, numberOfItemsInSection section: Swift.Int) -> Swift.Int
+  @objc open func collectionView(_ collectionView: UIKit.UICollectionView, cellForItemAt indexPath: Foundation.IndexPath) -> UIKit.UICollectionViewCell
+  @objc override open func scrollViewDidEndScrollingAnimation(_ scrollView: UIKit.UIScrollView)
+  open func configure(cell: ButtonBarCellType, for indicatorInfo: Payme.IndicatorInfo)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers open class ExampleBaseButtonBarPagerTabStripViewController : Payme.BaseButtonBarPagerTabStripViewController<Payme.ButtonBarViewCell> {
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  open func initialize()
+  override open func configure(cell: Payme.ButtonBarViewCell, for indicatorInfo: Payme.IndicatorInfo)
+  @objc deinit
+}
+public enum SwiftyRSAError : Swift.Error {
+  case pemDoesNotContainKey
+  case keyRepresentationFailed(error: CoreFoundation.CFError?)
+  case keyGenerationFailed(error: CoreFoundation.CFError?)
+  case keyCreateFailed(error: CoreFoundation.CFError?)
+  case keyAddFailed(status: Darwin.OSStatus)
+  case keyCopyFailed(status: Darwin.OSStatus)
+  case tagEncodingFailed
+  case asn1ParsingFailed
+  case invalidAsn1RootNode
+  case invalidAsn1Structure
+  case invalidBase64String
+  case chunkDecryptFailed(index: Swift.Int)
+  case chunkEncryptFailed(index: Swift.Int)
+  case stringToDataConversionFailed
+  case dataToStringConversionFailed
+  case invalidDigestSize(digestSize: Swift.Int, maxChunkSize: Swift.Int)
+  case signatureCreateFailed(status: Darwin.OSStatus)
+  case signatureVerifyFailed(status: Darwin.OSStatus)
+  case pemFileNotFound(name: Swift.String)
+  case derFileNotFound(name: Swift.String)
+  case notAPublicKey
+  case notAPrivateKey
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers open class BarView : UIKit.UIView {
+  open var selectedBar: UIKit.UIView {
+    get
+    set(value)
+  }
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  open func moveTo(index: Swift.Int, animated: Swift.Bool)
+  open func move(fromIndex: Swift.Int, toIndex: Swift.Int, progressPercentage: CoreGraphics.CGFloat)
+  @objc override dynamic open func layoutSubviews()
+  @objc deinit
+}
+public struct TwitterPagerTabStripSettings {
+  public struct Style {
+    public var dotColor: UIKit.UIColor
+    public var selectedDotColor: UIKit.UIColor
+    public var portraitTitleFont: UIKit.UIFont
+    public var landscapeTitleFont: UIKit.UIFont
+    public var titleColor: UIKit.UIColor
+  }
+  public var style: Payme.TwitterPagerTabStripSettings.Style
+}
+@objc @_inheritsConvenienceInitializers open class TwitterPagerTabStripViewController : Payme.PagerTabStripViewController, Payme.PagerTabStripDataSource, Payme.PagerTabStripIsProgressiveDelegate {
+  open var settings: Payme.TwitterPagerTabStripSettings
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc override dynamic open func viewDidLoad()
+  override open func reloadPagerTabStripView()
+  open func updateIndicator(for viewController: Payme.PagerTabStripViewController, fromIndex: Swift.Int, toIndex: Swift.Int, withProgressPercentage progressPercentage: CoreGraphics.CGFloat, indexWasChanged: Swift.Bool)
+  open func updateIndicator(for viewController: Payme.PagerTabStripViewController, fromIndex: Swift.Int, toIndex: Swift.Int)
+  @objc override dynamic open func observeValue(forKeyPath keyPath: Swift.String?, of object: Any?, change: [Foundation.NSKeyValueChangeKey : Any]?, context: Swift.UnsafeMutableRawPointer?)
+  @objc deinit
+  @objc override dynamic open func viewDidLayoutSubviews()
+}
+extension PopTip {
+  public class func pathWith(rect: CoreGraphics.CGRect, frame: CoreGraphics.CGRect, direction: Payme.PopTipDirection, arrowSize: CoreGraphics.CGSize, arrowPosition: CoreGraphics.CGPoint, borderWidth: CoreGraphics.CGFloat = 0, radius: CoreGraphics.CGFloat = 0) -> UIKit.UIBezierPath
+}
+public enum PagerTabStripBehaviour {
+  case common(skipIntermediateViewControllers: Swift.Bool)
+  case progressive(skipIntermediateViewControllers: Swift.Bool, elasticIndicatorLimit: Swift.Bool)
+  public var skipIntermediateViewControllers: Swift.Bool {
+    get
+  }
+  public var isProgressiveIndicator: Swift.Bool {
+    get
+  }
+  public var isElasticIndicatorLimit: Swift.Bool {
+    get
+  }
+}
+public class EncryptedMessage : Payme.Message {
+  final public let data: Foundation.Data
+  required public init(data: Foundation.Data)
+  public func decrypted(with key: Payme.PrivateKey, padding: Payme.Padding) throws -> Payme.ClearMessage
+  @objc deinit
+}
+public class PrivateKey : Payme.Key {
+  final public let reference: Security.SecKey
+  final public let originalData: Foundation.Data?
+  public func pemString() throws -> Swift.String
+  required public init(reference: Security.SecKey) throws
+  required public init(data: Foundation.Data) throws
+  @objc deinit
+}
+public class Signature {
+  public enum DigestType {
+    case sha1
+    case sha224
+    case sha256
+    case sha384
+    case sha512
+    public static func == (a: Payme.Signature.DigestType, b: Payme.Signature.DigestType) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  final public let data: Foundation.Data
+  public init(data: Foundation.Data)
+  public convenience init(base64Encoded base64String: Swift.String) throws
+  public var base64String: Swift.String {
+    get
+  }
+  @objc deinit
+}
+@objc public protocol PaymeMobileDelegate : AnyObject {
+  @objc func setParamsMerchant() -> Payme.ModelMerchant
+  @objc func getResponsePay(response: Payme.ModelPayment?)
+  @objc var setEnviroment: Payme.Enviroment { get }
+  @objc func dismissed()
+}
+extension PopTip {
+  public func performEntranceAnimation(completion: @escaping () -> Swift.Void)
+  public func performExitAnimation(completion: @escaping () -> Swift.Void)
+}
+public protocol IndicatorInfoProvider {
+  func indicatorInfo(for pagerTabStripController: Payme.PagerTabStripViewController) -> Payme.IndicatorInfo
+}
+public protocol PagerTabStripDelegate : AnyObject {
+  func updateIndicator(for viewController: Payme.PagerTabStripViewController, fromIndex: Swift.Int, toIndex: Swift.Int)
+}
+public protocol PagerTabStripIsProgressiveDelegate : Payme.PagerTabStripDelegate {
+  func updateIndicator(for viewController: Payme.PagerTabStripViewController, fromIndex: Swift.Int, toIndex: Swift.Int, withProgressPercentage progressPercentage: CoreGraphics.CGFloat, indexWasChanged: Swift.Bool)
+}
+public protocol PagerTabStripDataSource : AnyObject {
+  func viewControllers(for pagerTabStripController: Payme.PagerTabStripViewController) -> [UIKit.UIViewController]
+}
+@objc @_inheritsConvenienceInitializers open class PagerTabStripViewController : UIKit.UIViewController, UIKit.UIScrollViewDelegate {
+  @objc @IBOutlet weak public var containerView: UIKit.UIScrollView!
+  weak open var delegate: Payme.PagerTabStripDelegate?
+  weak open var datasource: Payme.PagerTabStripDataSource?
+  open var pagerBehaviour: Payme.PagerTabStripBehaviour
+  open var viewControllers: [UIKit.UIViewController] {
+    get
+  }
+  open var currentIndex: Swift.Int {
+    get
+  }
+  open var preCurrentIndex: Swift.Int {
+    get
+  }
+  open var pageWidth: CoreGraphics.CGFloat {
+    get
+  }
+  open var scrollPercentage: CoreGraphics.CGFloat {
+    get
+  }
+  open var swipeDirection: Payme.SwipeDirection {
+    get
+  }
+  @objc override dynamic open func viewDidLoad()
+  @objc override dynamic open func viewWillAppear(_ animated: Swift.Bool)
+  @objc override dynamic open func viewDidAppear(_ animated: Swift.Bool)
+  @objc override dynamic open func viewWillDisappear(_ animated: Swift.Bool)
+  @objc override dynamic open func viewDidDisappear(_ animated: Swift.Bool)
+  @objc override dynamic open func viewDidLayoutSubviews()
+  @objc override dynamic open var shouldAutomaticallyForwardAppearanceMethods: Swift.Bool {
+    @objc get
+  }
+  open func moveToViewController(at index: Swift.Int, animated: Swift.Bool = true)
+  open func moveTo(viewController: UIKit.UIViewController, animated: Swift.Bool = true)
+  open func viewControllers(for pagerTabStripController: Payme.PagerTabStripViewController) -> [UIKit.UIViewController]
+  open func updateIfNeeded()
+  open func canMoveTo(index: Swift.Int) -> Swift.Bool
+  open func pageOffsetForChild(at index: Swift.Int) -> CoreGraphics.CGFloat
+  open func offsetForChild(at index: Swift.Int) -> CoreGraphics.CGFloat
+  open func offsetForChild(viewController: UIKit.UIViewController) throws -> CoreGraphics.CGFloat
+  open func pageFor(contentOffset: CoreGraphics.CGFloat) -> Swift.Int
+  open func virtualPageFor(contentOffset: CoreGraphics.CGFloat) -> Swift.Int
+  open func pageFor(virtualPage: Swift.Int) -> Swift.Int
+  open func updateContent()
+  open func reloadPagerTabStripView()
+  @objc open func scrollViewDidScroll(_ scrollView: UIKit.UIScrollView)
+  @objc open func scrollViewWillBeginDragging(_ scrollView: UIKit.UIScrollView)
+  @objc open func scrollViewDidEndScrollingAnimation(_ scrollView: UIKit.UIScrollView)
+  @objc override dynamic open func viewWillTransition(to size: CoreGraphics.CGSize, with coordinator: UIKit.UIViewControllerTransitionCoordinator)
+  @objc deinit
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+}
+@objc public class ModelMerchant : ObjectiveC.NSObject {
+  @objc public init(data: Payme.ModelMerchantData, settings: Payme.ModelMerchantSettings, features: Payme.ModelMerchantFeatures)
+  @objc deinit
+  @objc override dynamic public init()
+}
+@objc public class ModelPayment : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public let success: Swift.Bool
+  @objc final public let messageCode: Swift.String
+  @objc final public let message: Swift.String
+  @objc final public let payment: Payme.ModelPaymentResponse?
+  @objc final public let features: Payme.ModelFeaturesResponse?
+  @objc deinit
+  required public init(from decoder: Swift.Decoder) throws
+}
+@objc public class ModelPaymentResponse : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public let accepted: Swift.Bool
+  @objc final public let resultCode: Swift.String?
+  @objc final public let resultMessage: Swift.String?
+  @objc final public let authorizationResult: Swift.String?
+  @objc final public let referenceCode: Swift.String?
+  @objc final public let brand: Swift.String?
+  @objc final public let bin: Swift.String?
+  @objc final public let lastPan: Swift.String?
+  @objc final public let transactionIdentifier: Swift.String?
+  @objc final public let authorizationCode: Swift.String?
+  @objc final public let hour: Swift.String?
+  @objc final public let date: Swift.String?
+  @objc final public let errorCode: Swift.String?
+  @objc final public let errorMessage: Swift.String?
+  @objc final public let operationNumber: Swift.String?
+  @objc deinit
+  required public init(from decoder: Swift.Decoder) throws
+}
+@objc public class ModelFeaturesResponse : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public let planQuota: Payme.PlanQuotaData?
+  @objc final public let reserved: [Payme.FeaturedReservedData]?
+  @objc deinit
+  required public init(from decoder: Swift.Decoder) throws
+}
+@objc public class PlanQuotaData : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public let plan: Swift.String?
+  @objc final public let quota: Swift.String?
+  @objc final public let quotaProcessed: Swift.String?
+  @objc final public let amount: Swift.String?
+  @objc final public let dueDate: Swift.String?
+  @objc final public let currency: Swift.String?
+  @objc final public let interest: Swift.String?
+  @objc deinit
+  required public init(from decoder: Swift.Decoder) throws
+}
+@objc public class FeaturedReservedData : ObjectiveC.NSObject, Swift.Decodable {
+  @objc final public let name: Swift.String?
+  @objc final public let value: Swift.String?
+  @objc deinit
+  required public init(from decoder: Swift.Decoder) throws
+}
+public enum PagerScroll {
+  case no
+  case yes
+  case scrollOnlyIfOutOfScreen
+  public static func == (a: Payme.PagerScroll, b: Payme.PagerScroll) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public enum SelectedBarAlignment {
+  case left
+  case center
+  case right
+  case progressive
+  public static func == (a: Payme.SelectedBarAlignment, b: Payme.SelectedBarAlignment) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public enum SelectedBarVerticalAlignment {
+  case top
+  case middle
+  case bottom
+  public static func == (a: Payme.SelectedBarVerticalAlignment, b: Payme.SelectedBarVerticalAlignment) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+@objc @_inheritsConvenienceInitializers open class ButtonBarView : UIKit.UICollectionView {
+  open var selectedBar: UIKit.UIView {
+    get
+    set(value)
+  }
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc override dynamic public init(frame: CoreGraphics.CGRect, collectionViewLayout layout: UIKit.UICollectionViewLayout)
+  open func moveTo(index: Swift.Int, animated: Swift.Bool, swipeDirection: Payme.SwipeDirection, pagerScroll: Payme.PagerScroll)
+  open func move(fromIndex: Swift.Int, toIndex: Swift.Int, progressPercentage: CoreGraphics.CGFloat, pagerScroll: Payme.PagerScroll)
+  open func updateSelectedBarPosition(_ animated: Swift.Bool, swipeDirection: Payme.SwipeDirection, pagerScroll: Payme.PagerScroll)
+  @objc override dynamic open func layoutSubviews()
+  @objc deinit
+}
+public enum DocumentType {
+  case DNI
+  case CARNET_EXT
+  case PASAPORTE
+  case P_NAC
+  case RUC
+  case OTROS
+  public static func == (a: Payme.DocumentType, b: Payme.DocumentType) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public class PublicKey : Payme.Key {
+  final public let reference: Security.SecKey
+  final public let originalData: Foundation.Data?
+  public func pemString() throws -> Swift.String
+  required public init(reference: Security.SecKey) throws
+  required public init(data: Foundation.Data) throws
+  public static func publicKeys(pemEncoded pemString: Swift.String) -> [Payme.PublicKey]
+  @objc deinit
+}
+public protocol Message {
+  var data: Foundation.Data { get }
+  var base64String: Swift.String { get }
+  init(data: Foundation.Data)
+  init(base64Encoded base64String: Swift.String) throws
+}
+extension Message {
+  public var base64String: Swift.String {
+    get
+  }
+  public init(base64Encoded base64String: Swift.String) throws
+}
+@_inheritsConvenienceInitializers @objc public class PayController : Payme.ButtonBarPagerTabStripViewController {
+  @objc weak public var paymeProtocol: Payme.PaymeMobileDelegate?
+  public var modelOrder: Payme.ModelOrder!
+  public var modelMerchant: Payme.ModelMerchant!
+  public var modelEnviroment: Payme.Enviroment!
+  @objc override dynamic public var prefersStatusBarHidden: Swift.Bool {
+    @objc get
+  }
+  @objc override dynamic public var preferredStatusBarStyle: UIKit.UIStatusBarStyle {
+    @objc get
+  }
+  @objc override dynamic public func viewDidLoad()
+  @objc override dynamic public func didReceiveMemoryWarning()
+  override public func viewControllers(for pagerTabStripController: Payme.PagerTabStripViewController) -> [UIKit.UIViewController]
+  @objc deinit
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+}
+@objc public class ModelMerchantSettings : ObjectiveC.NSObject {
+  @objc public init(locale: Swift.String, identifier: Swift.String, brands: [Swift.String], signatureKey: Swift.String, responseType: Payme.ResponseType)
+  @objc deinit
+  @objc override dynamic public init()
+}
+extension String {
+  public var isAlphanumeric: Swift.Bool {
+    get
+  }
+  public var isNumeric: Swift.Bool {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers open class DropDownCell : UIKit.UITableViewCell {
+  @objc @IBOutlet weak open var optionLabel: UIKit.UILabel!
+  @objc deinit
+  @available(iOS 3.0, *)
+  @objc override dynamic public init(style: UIKit.UITableViewCell.CellStyle, reuseIdentifier: Swift.String?)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+}
+extension DropDownCell {
+  @objc override dynamic open func awakeFromNib()
+  @objc override dynamic open var isSelected: Swift.Bool {
+    @objc get
+    @objc set(value)
+  }
+  @objc override dynamic open var isHighlighted: Swift.Bool {
+    @objc get
+    @objc set(value)
+  }
+  @objc override dynamic open func setHighlighted(_ highlighted: Swift.Bool, animated: Swift.Bool)
+  @objc override dynamic open func setSelected(_ selected: Swift.Bool, animated: Swift.Bool)
+}
+public enum ButtonBarItemSpec<CellType> where CellType : UIKit.UICollectionViewCell {
+  case nibFile(nibName: Swift.String, bundle: Foundation.Bundle?, width: ((Payme.IndicatorInfo) -> CoreGraphics.CGFloat))
+  case cellClass(width: ((Payme.IndicatorInfo) -> CoreGraphics.CGFloat))
+  public var weight: ((Payme.IndicatorInfo) -> CoreGraphics.CGFloat) {
+    get
+  }
+}
+public struct ButtonBarPagerTabStripSettings {
+  public struct Style {
+    public var buttonBarBackgroundColor: UIKit.UIColor?
+    public var buttonBarMinimumInteritemSpacing: CoreGraphics.CGFloat?
+    public var buttonBarMinimumLineSpacing: CoreGraphics.CGFloat?
+    public var buttonBarLeftContentInset: CoreGraphics.CGFloat?
+    public var buttonBarRightContentInset: CoreGraphics.CGFloat?
+    public var selectedBarBackgroundColor: UIKit.UIColor
+    public var selectedBarHeight: CoreGraphics.CGFloat
+    public var selectedBarVerticalAlignment: Payme.SelectedBarVerticalAlignment
+    public var buttonBarItemBackgroundColor: UIKit.UIColor?
+    public var buttonBarItemFont: UIKit.UIFont
+    public var buttonBarItemLeftRightMargin: CoreGraphics.CGFloat
+    public var buttonBarItemTitleColor: UIKit.UIColor?
+    @available(*, deprecated)
+    public var buttonBarItemsShouldFillAvailiableWidth: Swift.Bool {
+      get
+      set(newValue)
+    }
+    public var buttonBarItemsShouldFillAvailableWidth: Swift.Bool
+    public var buttonBarHeight: CoreGraphics.CGFloat?
+  }
+  public var style: Payme.ButtonBarPagerTabStripSettings.Style
+}
+@objc @_inheritsConvenienceInitializers open class ButtonBarPagerTabStripViewController : Payme.PagerTabStripViewController, Payme.PagerTabStripDataSource, Payme.PagerTabStripIsProgressiveDelegate, UIKit.UICollectionViewDelegate, UIKit.UICollectionViewDataSource {
+  public var settings: Payme.ButtonBarPagerTabStripSettings
+  public var buttonBarItemSpec: Payme.ButtonBarItemSpec<Payme.ButtonBarViewCell>!
+  public var changeCurrentIndex: ((Payme.ButtonBarViewCell?, Payme.ButtonBarViewCell?, Swift.Bool) -> Swift.Void)?
+  public var changeCurrentIndexProgressive: ((Payme.ButtonBarViewCell?, Payme.ButtonBarViewCell?, CoreGraphics.CGFloat, Swift.Bool, Swift.Bool) -> Swift.Void)?
+  @objc @IBOutlet weak public var buttonBarView: Payme.ButtonBarView!
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc override dynamic open func viewDidLoad()
+  @objc override dynamic open func viewWillAppear(_ animated: Swift.Bool)
+  @objc override dynamic open func viewDidLayoutSubviews()
+  override open func reloadPagerTabStripView()
+  open func calculateStretchedCellWidths(_ minimumCellWidths: [CoreGraphics.CGFloat], suggestedStretchedCellWidth: CoreGraphics.CGFloat, previousNumberOfLargeCells: Swift.Int) -> CoreGraphics.CGFloat
+  open func updateIndicator(for viewController: Payme.PagerTabStripViewController, fromIndex: Swift.Int, toIndex: Swift.Int)
+  open func updateIndicator(for viewController: Payme.PagerTabStripViewController, fromIndex: Swift.Int, toIndex: Swift.Int, withProgressPercentage progressPercentage: CoreGraphics.CGFloat, indexWasChanged: Swift.Bool)
+  @objc open func collectionView(_ collectionView: UIKit.UICollectionView, layout collectionViewLayout: UIKit.UICollectionViewLayout, sizeForItemAtIndexPath indexPath: Foundation.IndexPath) -> CoreGraphics.CGSize
+  @objc open func collectionView(_ collectionView: UIKit.UICollectionView, didSelectItemAt indexPath: Foundation.IndexPath)
+  @objc open func collectionView(_ collectionView: UIKit.UICollectionView, numberOfItemsInSection section: Swift.Int) -> Swift.Int
+  @objc open func collectionView(_ collectionView: UIKit.UICollectionView, cellForItemAt indexPath: Foundation.IndexPath) -> UIKit.UICollectionViewCell
+  @objc override open func scrollViewDidEndScrollingAnimation(_ scrollView: UIKit.UIScrollView)
+  open func configureCell(_ cell: Payme.ButtonBarViewCell, indicatorInfo: Payme.IndicatorInfo)
+  @objc deinit
+}
+public enum SwipeDirection {
+  case left
+  case right
+  case none
+  public static func == (a: Payme.SwipeDirection, b: Payme.SwipeDirection) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public enum Model : Swift.String {
+  case simulator
+  case iPod1
+  case iPod2
+  case iPod3
+  case iPod4
+  case iPod5
+  case iPad2
+  case iPad3
+  case iPad4
+  case iPad5
+  case iPhone4
+  case iPhone4S
+  case iPhone5
+  case iPhone5S
+  case iPhone5C
+  case iPadMini1
+  case iPadMini2
+  case iPadMini3
+  case iPadAir1
+  case iPadAir2
+  case iPadPro9_7
+  case iPadPro9_7_cell
+  case iPadPro12_9
+  case iPadPro12_9_cell
+  case iPadPro2_12_9
+  case iPadPro2_12_9_cell
+  case iPhone6
+  case iPhone6plus
+  case iPhone6S
+  case iPhone6Splus
+  case iPhoneSE
+  case iPhone7
+  case iPhone7plus
+  case iPhone8
+  case iPhone8plus
+  case iPhoneX
+  case iPhoneXS
+  case iPhoneXSmax
+  case iPhoneXR
+  case unrecognized
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension UIDevice {
+  public var isIphoneX: Swift.Bool {
+    get
+  }
+  public var isLandscape: Swift.Bool {
+    get
+  }
+  public var isPortrait: Swift.Bool {
+    get
+  }
+  public var isIphone: Swift.Bool {
+    get
+  }
+  public var isIpad: Swift.Bool {
+    get
+  }
+  public var type: Payme.Model {
+    get
+  }
+}
+public struct BarPagerTabStripSettings {
+  public struct Style {
+    public var barBackgroundColor: UIKit.UIColor?
+    public var selectedBarBackgroundColor: UIKit.UIColor?
+    public var barHeight: CoreGraphics.CGFloat
+  }
+  public var style: Payme.BarPagerTabStripSettings.Style
+}
+@objc @_inheritsConvenienceInitializers open class BarPagerTabStripViewController : Payme.PagerTabStripViewController, Payme.PagerTabStripDataSource, Payme.PagerTabStripIsProgressiveDelegate {
+  public var settings: Payme.BarPagerTabStripSettings
+  @objc @IBOutlet weak public var barView: Payme.BarView!
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc override dynamic open func viewDidLoad()
+  @objc override dynamic open func viewWillAppear(_ animated: Swift.Bool)
+  override open func reloadPagerTabStripView()
+  open func updateIndicator(for viewController: Payme.PagerTabStripViewController, fromIndex: Swift.Int, toIndex: Swift.Int, withProgressPercentage progressPercentage: CoreGraphics.CGFloat, indexWasChanged: Swift.Bool)
+  open func updateIndicator(for viewController: Payme.PagerTabStripViewController, fromIndex: Swift.Int, toIndex: Swift.Int)
+  @objc deinit
+}
+public struct IndicatorInfo {
+  public var title: Swift.String?
+  public var image: UIKit.UIImage?
+  public var highlightedImage: UIKit.UIImage?
+  public var accessibilityLabel: Swift.String?
+  public var userInfo: Any?
+  public init(title: Swift.String?)
+  public init(image: UIKit.UIImage?, highlightedImage: UIKit.UIImage? = nil, userInfo: Any? = nil)
+  public init(title: Swift.String?, image: UIKit.UIImage?, highlightedImage: UIKit.UIImage? = nil, userInfo: Any? = nil)
+  public init(title: Swift.String?, accessibilityLabel: Swift.String?, image: UIKit.UIImage?, highlightedImage: UIKit.UIImage? = nil, userInfo: Any? = nil)
+}
+extension IndicatorInfo : Swift.ExpressibleByStringLiteral {
+  public init(stringLiteral value: Swift.String)
+  public init(extendedGraphemeClusterLiteral value: Swift.String)
+  public init(unicodeScalarLiteral value: Swift.String)
+  public typealias StringLiteralType = Swift.String
+  public typealias ExtendedGraphemeClusterLiteralType = Swift.String
+  public typealias UnicodeScalarLiteralType = Swift.String
+}
+public typealias Padding = Security.SecPadding
+public enum SwiftyRSA {
+  @available(iOS 10.0, watchOS 3.0, tvOS 10.0, *)
+  public static func generateRSAKeyPair(sizeInBits size: Swift.Int) throws -> (privateKey: Payme.PrivateKey, publicKey: Payme.PublicKey)
+}
+@objc public class ModelMerchantDataPerson : ObjectiveC.NSObject {
+  @objc public init(firstName: Swift.String, lastName: Swift.String, email: Swift.String, address: Swift.String, zip: Swift.String, city: Swift.String, state: Swift.String, country: Swift.String, phone: Swift.String)
+  @objc deinit
+  @objc override dynamic public init()
+}
+public enum PopTipDirection {
+  case up
+  case down
+  case left
+  case right
+  case none
+  public static func == (a: Payme.PopTipDirection, b: Payme.PopTipDirection) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public enum PopTipEntranceAnimation {
+  case scale
+  case transition
+  case fadeIn
+  case custom
+  case none
+  public static func == (a: Payme.PopTipEntranceAnimation, b: Payme.PopTipEntranceAnimation) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public enum PopTipExitAnimation {
+  case scale
+  case fadeOut
+  case custom
+  case none
+  public static func == (a: Payme.PopTipExitAnimation, b: Payme.PopTipExitAnimation) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public enum PopTipActionAnimation {
+  case bounce(CoreGraphics.CGFloat?)
+  case float(CoreGraphics.CGFloat?)
+  case pulse(CoreGraphics.CGFloat?)
+  case none
+}
+@objc @_inheritsConvenienceInitializers open class PopTip : UIKit.UIView {
+  open var text: Swift.String? {
+    get
+    set(value)
+  }
+  open var font: UIKit.UIFont
+  @objc dynamic open var textColor: UIKit.UIColor
+  @objc dynamic open var textAlignment: UIKit.NSTextAlignment
+  @objc dynamic open var bubbleColor: UIKit.UIColor
+  @objc dynamic open var borderColor: UIKit.UIColor
+  @objc dynamic open var borderWidth: CoreGraphics.CGFloat
+  @objc dynamic open var cornerRadius: CoreGraphics.CGFloat
+  @objc dynamic open var isRounded: Swift.Bool
+  @objc dynamic open var offset: CoreGraphics.CGFloat
+  @objc dynamic open var padding: CoreGraphics.CGFloat
+  @objc dynamic open var edgeInsets: UIKit.UIEdgeInsets
+  @objc dynamic open var arrowSize: CoreGraphics.CGSize
+  @objc dynamic open var animationIn: Foundation.TimeInterval
+  @objc dynamic open var animationOut: Foundation.TimeInterval
+  @objc dynamic open var delayIn: Foundation.TimeInterval
+  @objc dynamic open var delayOut: Foundation.TimeInterval
+  open var entranceAnimation: Payme.PopTipEntranceAnimation
+  open var exitAnimation: Payme.PopTipExitAnimation
+  open var actionAnimation: Payme.PopTipActionAnimation
+  @objc dynamic open var actionAnimationIn: Foundation.TimeInterval
+  @objc dynamic open var actionAnimationOut: Foundation.TimeInterval
+  @objc dynamic open var actionDelayIn: Foundation.TimeInterval
+  @objc dynamic open var actionDelayOut: Foundation.TimeInterval
+  @objc dynamic open var edgeMargin: CoreGraphics.CGFloat
+  @objc dynamic open var bubbleOffset: CoreGraphics.CGFloat
+  @objc dynamic open var maskColor: UIKit.UIColor
+  @objc dynamic open var shouldShowMask: Swift.Bool
+  open var from: CoreGraphics.CGRect {
+    get
+    set(value)
+  }
+  open var isVisible: Swift.Bool {
+    get
+  }
+  @objc dynamic open var shouldDismissOnTap: Swift.Bool
+  @objc dynamic open var shouldDismissOnTapOutside: Swift.Bool
+  @objc dynamic open var shouldDismissOnSwipeOutside: Swift.Bool
+  @objc dynamic open var startActionAnimationOnShow: Swift.Bool
+  open var swipeRemoveGestureDirection: UIKit.UISwipeGestureRecognizer.Direction {
+    get
+    set(value)
+  }
+  open var tapHandler: ((Payme.PopTip) -> Swift.Void)?
+  open var tapOutsideHandler: ((Payme.PopTip) -> Swift.Void)?
+  open var swipeOutsideHandler: ((Payme.PopTip) -> Swift.Void)?
+  open var appearHandler: ((Payme.PopTip) -> Swift.Void)?
+  open var dismissHandler: ((Payme.PopTip) -> Swift.Void)?
+  open var entranceAnimationHandler: ((@escaping () -> Swift.Void) -> Swift.Void)?
+  open var exitAnimationHandler: ((@escaping () -> Swift.Void) -> Swift.Void)?
+  open var arrowPosition: CoreGraphics.CGPoint {
+    get
+  }
+  weak open var containerView: UIKit.UIView? {
+    get
+  }
+  open var direction: Payme.PopTipDirection {
+    get
+  }
+  open var isAnimating: Swift.Bool {
+    get
+  }
+  open var backgroundMask: UIKit.UIView? {
+    get
+  }
+  open var tapGestureRecognizer: UIKit.UITapGestureRecognizer? {
+    get
+  }
+  @objc override dynamic open func draw(_ rect: CoreGraphics.CGRect)
+  open func show(text: Swift.String, direction: Payme.PopTipDirection, maxWidth: CoreGraphics.CGFloat, in view: UIKit.UIView, from frame: CoreGraphics.CGRect, duration: Foundation.TimeInterval? = nil)
+  open func show(attributedText: Foundation.NSAttributedString, direction: Payme.PopTipDirection, maxWidth: CoreGraphics.CGFloat, in view: UIKit.UIView, from frame: CoreGraphics.CGRect, duration: Foundation.TimeInterval? = nil)
+  open func show(customView: UIKit.UIView, direction: Payme.PopTipDirection, in view: UIKit.UIView, from frame: CoreGraphics.CGRect, duration: Foundation.TimeInterval? = nil)
+  open func update(text: Swift.String)
+  open func update(attributedText: Foundation.NSAttributedString)
+  open func update(customView: UIKit.UIView)
+  @objc open func hide(forced: Swift.Bool = false)
+  open func startActionAnimation()
+  open func stopActionAnimation(_ completion: (() -> Swift.Void)? = nil)
+  @objc deinit
+  @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+}
+extension DropDown {
+  final public class func setupDefaultAppearance()
+}
+public typealias Index = Swift.Int
+public typealias Closure = () -> Swift.Void
+public typealias SelectionClosure = (Payme.Index, Swift.String) -> Swift.Void
+public typealias MultiSelectionClosure = ([Payme.Index], [Swift.String]) -> Swift.Void
+public typealias ConfigurationClosure = (Payme.Index, Swift.String) -> Swift.String
+public typealias CellConfigurationClosure = (Payme.Index, Swift.String, Payme.DropDownCell) -> Swift.Void
+@objc public protocol AnchorView : AnyObject {
+  @objc var plainView: UIKit.UIView { get }
+}
+extension UIView : Payme.AnchorView {
+  @objc dynamic public var plainView: UIKit.UIView {
+    @objc get
+  }
+}
+extension UIBarButtonItem : Payme.AnchorView {
+  @objc dynamic public var plainView: UIKit.UIView {
+    @objc get
+  }
+}
+@objc @_inheritsConvenienceInitializers final public class DropDown : UIKit.UIView {
+  public enum DismissMode {
+    case onTap
+    case automatic
+    case manual
+    public static func == (a: Payme.DropDown.DismissMode, b: Payme.DropDown.DismissMode) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  public enum Direction {
+    case any
+    case top
+    case bottom
+    public static func == (a: Payme.DropDown.Direction, b: Payme.DropDown.Direction) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  weak public static var VisibleDropDown: Payme.DropDown?
+  weak final public var anchorView: Payme.AnchorView? {
+    get
+    set(value)
+  }
+  final public var direction: Payme.DropDown.Direction
+  final public var topOffset: CoreGraphics.CGPoint {
+    get
+    set(value)
+  }
+  final public var bottomOffset: CoreGraphics.CGPoint {
+    get
+    set(value)
+  }
+  final public var offsetFromWindowBottom: CoreGraphics.CGFloat {
+    get
+    set(value)
+  }
+  final public var width: CoreGraphics.CGFloat? {
+    get
+    set(value)
+  }
+  final public var arrowIndicationX: CoreGraphics.CGFloat? {
+    get
+    set(value)
+  }
+  @objc dynamic final public var cellHeight: CoreGraphics.CGFloat {
+    @objc get
+    @objc set(value)
+  }
+  @objc override final public var backgroundColor: UIKit.UIColor? {
+    @objc get
+    @objc set(newValue)
+  }
+  final public var dimmedBackgroundColor: UIKit.UIColor {
+    get
+    set(value)
+  }
+  @objc dynamic final public var selectionBackgroundColor: UIKit.UIColor
+  @objc dynamic final public var separatorColor: UIKit.UIColor {
+    @objc get
+    @objc set(value)
+  }
+  @objc dynamic final public var cornerRadius: CoreGraphics.CGFloat {
+    @objc get
+    @objc set(value)
+  }
+  @objc dynamic final public var shadowColor: UIKit.UIColor {
+    @objc get
+    @objc set(value)
+  }
+  @objc dynamic final public var shadowOffset: CoreGraphics.CGSize {
+    @objc get
+    @objc set(value)
+  }
+  @objc dynamic final public var shadowOpacity: Swift.Float {
+    @objc get
+    @objc set(value)
+  }
+  @objc dynamic final public var shadowRadius: CoreGraphics.CGFloat {
+    @objc get
+    @objc set(value)
+  }
+  @objc dynamic final public var animationduration: Swift.Double
+  public static var animationEntranceOptions: UIKit.UIView.AnimationOptions
+  public static var animationExitOptions: UIKit.UIView.AnimationOptions
+  final public var animationEntranceOptions: UIKit.UIView.AnimationOptions
+  final public var animationExitOptions: UIKit.UIView.AnimationOptions
+  final public var downScaleTransform: CoreGraphics.CGAffineTransform {
+    get
+    set(value)
+  }
+  @objc dynamic final public var textColor: UIKit.UIColor {
+    @objc get
+    @objc set(value)
+  }
+  @objc dynamic final public var textFont: UIKit.UIFont {
+    @objc get
+    @objc set(value)
+  }
+  final public var cellNib: UIKit.UINib {
+    get
+    set(value)
+  }
+  final public var dataSource: [Swift.String] {
+    get
+    set(value)
+  }
+  final public var localizationKeysDataSource: [Swift.String] {
+    get
+    set(value)
+  }
+  final public var cellConfiguration: Payme.ConfigurationClosure? {
+    get
+    set(value)
+  }
+  final public var customCellConfiguration: Payme.CellConfigurationClosure? {
+    get
+    set(value)
+  }
+  final public var selectionAction: Payme.SelectionClosure?
+  final public var multiSelectionAction: Payme.MultiSelectionClosure?
+  final public var willShowAction: Payme.Closure?
+  final public var cancelAction: Payme.Closure?
+  final public var dismissMode: Payme.DropDown.DismissMode {
+    get
+    set(value)
+  }
+  @objc deinit
+  @objc dynamic public convenience init()
+  public convenience init(anchorView: Payme.AnchorView, selectionAction: Payme.SelectionClosure? = nil, dataSource: [Swift.String] = [], topOffset: CoreGraphics.CGPoint? = nil, bottomOffset: CoreGraphics.CGPoint? = nil, cellConfiguration: Payme.ConfigurationClosure? = nil, cancelAction: Payme.Closure? = nil)
+  @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+}
+extension DropDown {
+  @objc override final public func updateConstraints()
+  @objc override final public func layoutSubviews()
+}
+extension DropDown {
+  @objc(show) final public func objc_show() -> Foundation.NSDictionary
+  @discardableResult
+  final public func show(beforeTransform transform: CoreGraphics.CGAffineTransform? = nil, anchorPoint: CoreGraphics.CGPoint? = nil) -> (canBeDisplayed: Swift.Bool, offscreenHeight: CoreGraphics.CGFloat?)
+  final public func hide()
+}
+extension DropDown {
+  final public func reloadAllComponents()
+  final public func selectRow(at index: Payme.Index?)
+  final public func selectRows(at indices: Swift.Set<Payme.Index>?)
+  final public func deselectRow(at index: Payme.Index?)
+  final public func deselectRows(at indices: Swift.Set<Payme.Index>?)
+  final public var indexForSelectedRow: Payme.Index? {
+    get
+  }
+  final public var selectedItem: Swift.String? {
+    get
+  }
+  @objc final public func selectRow(_ index: Swift.Int)
+  @objc final public func clearSelection()
+  @objc final public func deselectRow(_ index: Swift.Int)
+  @objc final public var indexPathForSelectedRow: Foundation.NSIndexPath? {
+    @objc get
+  }
+}
+extension DropDown : UIKit.UITableViewDataSource, UIKit.UITableViewDelegate {
+  @objc final public func tableView(_ tableView: UIKit.UITableView, numberOfRowsInSection section: Swift.Int) -> Swift.Int
+  @objc final public func tableView(_ tableView: UIKit.UITableView, cellForRowAt indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
+  @objc final public func tableView(_ tableView: UIKit.UITableView, willDisplay cell: UIKit.UITableViewCell, forRowAt indexPath: Foundation.IndexPath)
+  @objc final public func tableView(_ tableView: UIKit.UITableView, didSelectRowAt indexPath: Foundation.IndexPath)
+}
+extension DropDown {
+  @objc override final public func hitTest(_ point: CoreGraphics.CGPoint, with event: UIKit.UIEvent?) -> UIKit.UIView?
+}
+extension DropDown {
+  public static func startListeningToKeyboard()
+}
+public enum PagerTabStripError : Swift.Error {
+  case viewControllerOutOfBounds
+  public static func == (a: Payme.PagerTabStripError, b: Payme.PagerTabStripError) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+extension SecondController : Payme.IndicatorInfoProvider {
+  public func indicatorInfo(for pagerTabStripController: Payme.PagerTabStripViewController) -> Payme.IndicatorInfo
+}
+@objc @_inheritsConvenienceInitializers public class SecondController : UIKit.UIViewController {
+  @objc override dynamic public func viewDidLoad()
+  @objc override dynamic public func didReceiveMemoryWarning()
+  @objc deinit
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+}
+@objc(PublicKey) public class _objc_PublicKey : ObjectiveC.NSObject, Payme.Key {
+  @objc public var reference: Security.SecKey {
+    @objc get
+  }
+  @objc public var originalData: Foundation.Data? {
+    @objc get
+  }
+  @objc public func pemString() throws -> Swift.String
+  @objc public func data() throws -> Foundation.Data
+  @objc public func base64String() throws -> Swift.String
+  required public init(swiftValue: Payme.PublicKey)
+  @objc required public init(data: Foundation.Data) throws
+  @objc required public init(reference: Security.SecKey) throws
+  @objc required public init(base64Encoded base64String: Swift.String) throws
+  @objc required public init(pemEncoded pemString: Swift.String) throws
+  @objc required public init(pemNamed pemName: Swift.String, in bundle: Foundation.Bundle) throws
+  @objc required public init(derNamed derName: Swift.String, in bundle: Foundation.Bundle) throws
+  @objc public static func publicKeys(pemEncoded pemString: Swift.String) -> [Payme._objc_PublicKey]
+  @objc deinit
+  @objc override dynamic public init()
+}
+@objc(PrivateKey) public class _objc_PrivateKey : ObjectiveC.NSObject, Payme.Key {
+  @objc public var reference: Security.SecKey {
+    @objc get
+  }
+  @objc public var originalData: Foundation.Data? {
+    @objc get
+  }
+  @objc public func pemString() throws -> Swift.String
+  @objc public func data() throws -> Foundation.Data
+  @objc public func base64String() throws -> Swift.String
+  required public init(swiftValue: Payme.PrivateKey)
+  @objc required public init(data: Foundation.Data) throws
+  @objc required public init(reference: Security.SecKey) throws
+  @objc required public init(base64Encoded base64String: Swift.String) throws
+  @objc required public init(pemEncoded pemString: Swift.String) throws
+  @objc required public init(pemNamed pemName: Swift.String, in bundle: Foundation.Bundle) throws
+  @objc required public init(derNamed derName: Swift.String, in bundle: Foundation.Bundle) throws
+  @objc deinit
+  @objc override dynamic public init()
+}
+@_hasMissingDesignatedInitializers @objc(VerificationResult) public class _objc_VerificationResult : ObjectiveC.NSObject {
+  @objc final public let isSuccessful: Swift.Bool
+  @objc deinit
+  @objc override dynamic public init()
+}
+@objc(ClearMessage) public class _objc_ClearMessage : ObjectiveC.NSObject, Payme.Message {
+  @objc public var base64String: Swift.String {
+    @objc get
+  }
+  @objc public var data: Foundation.Data {
+    @objc get
+  }
+  required public init(swiftValue: Payme.ClearMessage)
+  @objc required public init(data: Foundation.Data)
+  @objc required public init(string: Swift.String, using rawEncoding: Swift.UInt) throws
+  @objc required public init(base64Encoded base64String: Swift.String) throws
+  @objc public func string(encoding rawEncoding: Swift.UInt) throws -> Swift.String
+  @objc public func encrypted(with key: Payme._objc_PublicKey, padding: Payme.Padding) throws -> Payme._objc_EncryptedMessage
+  @objc public func signed(with key: Payme._objc_PrivateKey, digestType: Payme._objc_Signature.DigestType) throws -> Payme._objc_Signature
+  @objc public func verify(with key: Payme._objc_PublicKey, signature: Payme._objc_Signature, digestType: Payme._objc_Signature.DigestType) throws -> Payme._objc_VerificationResult
+  @objc deinit
+  @objc override dynamic public init()
+}
+@objc(EncryptedMessage) public class _objc_EncryptedMessage : ObjectiveC.NSObject, Payme.Message {
+  @objc public var base64String: Swift.String {
+    @objc get
+  }
+  @objc public var data: Foundation.Data {
+    @objc get
+  }
+  required public init(swiftValue: Payme.EncryptedMessage)
+  @objc required public init(data: Foundation.Data)
+  @objc required public init(base64Encoded base64String: Swift.String) throws
+  @objc public func decrypted(with key: Payme._objc_PrivateKey, padding: Payme.Padding) throws -> Payme._objc_ClearMessage
+  @objc deinit
+  @objc override dynamic public init()
+}
+@objc(Signature) public class _objc_Signature : ObjectiveC.NSObject {
+  @objc public enum DigestType : Swift.Int {
+    case sha1
+    case sha224
+    case sha256
+    case sha384
+    case sha512
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc public var base64String: Swift.String {
+    @objc get
+  }
+  @objc public var data: Foundation.Data {
+    @objc get
+  }
+  required public init(swiftValue: Payme.Signature)
+  @objc public init(data: Foundation.Data)
+  @objc required public init(base64Encoded base64String: Swift.String) throws
+  @objc deinit
+  @objc override dynamic public init()
+}
+@objc public enum Enviroment : Swift.Int {
+  case production
+  case development
+  case sandbox
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum ResponseType : Swift.Int {
+  case detail
+  case extended
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public class ModelMerchantData : ObjectiveC.NSObject {
+  @objc public init(operation: Payme.ModelMerchantDataOperation, shipping: Payme.ModelMerchantDataPerson?, billing: Payme.ModelMerchantDataPerson?, customer: Payme.ModelMerchantDataPerson?, signature: Swift.String)
+  @objc deinit
+  @objc override dynamic public init()
+}
+public class ClearMessage : Payme.Message {
+  final public let data: Foundation.Data
+  required public init(data: Foundation.Data)
+  public convenience init(string: Swift.String, using encoding: Swift.String.Encoding) throws
+  public func string(encoding: Swift.String.Encoding) throws -> Swift.String
+  public func encrypted(with key: Payme.PublicKey, padding: Payme.Padding) throws -> Payme.EncryptedMessage
+  public func signed(with key: Payme.PrivateKey, digestType: Payme.Signature.DigestType) throws -> Payme.Signature
+  public func verify(with key: Payme.PublicKey, signature: Payme.Signature, digestType: Payme.Signature.DigestType) throws -> Swift.Bool
+  @objc deinit
+}
