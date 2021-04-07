@@ -16,8 +16,6 @@ FOUNDATION_EXPORT const unsigned char PaymeVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <Payme/PublicHeader.h>
 
-#import "CardIO.h"
 #import "DLRadioButton.h"
-#import "FXPageControl.h"
 #import "SwiftyRSA.h"
 #import "NSData+SHA.h"
