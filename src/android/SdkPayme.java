@@ -142,7 +142,7 @@ public class SdkPayme extends CordovaPlugin {
         Log.d(TAG,String.valueOf(environment.getClass().getName()));
         Log.d(TAG+"PROD",EnvDomain.PRODUCTION.getUrl());
         Log.d(TAG+"DEV",EnvDomain.DEVELOPMENT.getUrl());
-        Log.d(TAG+"SAND",EnvDomain.SANDBOX.getUrl());
+        //Log.d(TAG+"SAND",EnvDomain.SANDBOX.getUrl());
         
         switch (environment){
             case "1":
