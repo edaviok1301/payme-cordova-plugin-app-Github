@@ -351,9 +351,9 @@
     
     ModelMerchantDataOperation *modelMerchantDataOperation = [[ModelMerchantDataOperation alloc] initWithOperationNumber:operationNumber amount:amount currency:currency productDescription:operationProduct];
     
-    ModelMerchantData *modelMerchantData = [[ModelMerchantData alloc] initWithOperation: modelMerchantDataOperation shipping: modelMerchantDataPerson billing: modelMerchantDataPerson customer: modelMerchantDataPerson signature: @""];
+    ModelMerchantData *modelMerchantData = [[ModelMerchantData alloc] initWithOperation: modelMerchantDataOperation shipping: modelMerchantDataPerson billing: modelMerchantDataPerson customer: modelMerchantDataPerson];
     
-    ModelMerchantSettings *modelMerchantSettings = [[ModelMerchantSettings alloc] initWithLocale:settingLocale identifier:settingIdentifier brands:array_brands signatureKey:signatureKey responseType:ResponseTypeExtended];
+    ModelMerchantSettings *modelMerchantSettings = [[ModelMerchantSettings alloc] initWithLocale:settingLocale identifier:settingIdentifier brands:array_brands signatureKey:signatureKey];
     
     ModelMerchantFeaturesWallet *modelMerchantFeaturesWallet = [[ModelMerchantFeaturesWallet alloc] initWithUserCommerce:featuresWalletUserCode];
     
