@@ -42,7 +42,7 @@
 		<!-- <framework src="Payme" type="podspec" spec="~> 0.0.9" /> -->
 		<framework src="src/ios/framework/Payme.framework" custom="true" />
 		<hook type="before_plugin_add" src="hooks/edit_build_json.js" />
-	   	<!--<hook type="after_plugin_add" src="hooks/addEmbedded.js" />-->
+	   	<hook type="after_plugin_add" src="hooks/addEmbedded.js" />
 		<!-- <hook type="after_plugin_install" src="hooks/valid_architecture_hook.js" /> -->
 	</platform> 
 
