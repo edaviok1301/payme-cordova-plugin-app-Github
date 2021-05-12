@@ -100,6 +100,7 @@ module.exports = function (context) {
     process.chdir('../../');
 
     if (!frameworkFilesToEmbed.length) return;
+    console.log("frameworkFilesToEmbed:"+frameworkFilesToEmbed.length)
 
     myProj.addBuildPhase(frameworkFilesToEmbed, 'PBXCopyFilesBuildPhase', groupName, myProj.getFirstTarget().uuid, 'frameworks');
 
@@ -120,7 +121,7 @@ module.exports = function (context) {
             group: groupName
         };
         myProj.addToPbxBuildFileSection(file);
-
+        console.log(file);
 
         // Adding to Frameworks as well (separate PBXBuildFile)
         var newFrameworkFileEntry = {
@@ -130,6 +131,7 @@ module.exports = function (context) {
             fileRef: fileRef,
             group: "Frameworks"
         };
+        console.log(newFrameworkFileEntry);
         myProj.addToPbxBuildFileSection(newFrameworkFileEntry);
         myProj.addToPbxFrameworksBuildPhase(newFrameworkFileEntry);
     }
