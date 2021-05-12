@@ -5,6 +5,7 @@ const xcode = require('xcode'),
     path = require('path');
 
 module.exports = function (context) {
+    console.log("Init AddEmbedded For payme");
     if (process.length >= 5 && process.argv[1].indexOf('cordova') == -1) {
         if (process.argv[4] != 'ios') {
             return; // plugin only meant to work for ios platform.
