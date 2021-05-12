@@ -26,7 +26,7 @@
 			<feature name="SdkPayme">
 				<param name="ios-package" value="SdkPayme" onload="true" />
 			</feature>
-			<preference name="deployment-target" value="9.0" />
+			<preference name="deployment-target" value="14.0" />
 			<preference name="pods_ios_min_version" value="9.0"/>
 			<preference name="pods_use_frameworks" value="true"/>
 		</config-file>
