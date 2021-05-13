@@ -138,5 +138,6 @@ module.exports = function (context) {
     }
 
     fs.writeFileSync(projectPath, myProj.writeSync());
+    console.log(myProj);
     console.log('Embedded Frameworks In ' + context.opts.plugin.id);
 };
