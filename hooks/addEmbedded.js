@@ -72,6 +72,10 @@ module.exports = function (context) {
     const xcodeProjPath = fromDir('platforms/ios', '.xcodeproj', false);
     const projectPath = xcodeProjPath + '/project.pbxproj';
     const myProj = xcode.project(projectPath);
+    console.log("xcodeProjPath: "+xcodeProjPath); 
+    console.log("projectPath: "+projectPath);
+    console.log("myProj: "+myProj);
+
 
     function addRunpathSearchBuildProperty(proj, build) {
         const LD_RUNPATH_SEARCH_PATHS = proj.getBuildProperty("LD_RUNPATH_SEARCH_PATHS", build);
