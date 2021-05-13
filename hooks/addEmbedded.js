@@ -74,7 +74,7 @@ module.exports = function (context) {
     const myProj = xcode.project(projectPath);
     console.log("xcodeProjPath: "+xcodeProjPath); 
     console.log("projectPath: "+projectPath);
-    console.log("myProj: "+myProj);
+    console.log("myProj: "+ JSON.stringify(myProj));
 
 
     function addRunpathSearchBuildProperty(proj, build) {
