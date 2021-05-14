@@ -107,7 +107,7 @@ module.exports = function (context) {
     if (!frameworkFilesToEmbed.length) return;
     console.log("frameworkFilesToEmbed:"+frameworkFilesToEmbed.length)
 
-    //myProj.addBuildPhase(frameworkFilesToEmbed, 'PBXCopyFilesBuildPhase', groupName, myProj.getFirstTarget().uuid, 'frameworks');
+    myProj.addBuildPhase(frameworkFilesToEmbed, 'PBXCopyFilesBuildPhase', groupName, myProj.getFirstTarget().uuid, 'frameworks');
 
     for (var frmFileFullPath of frameworkFilesToEmbed) {
         var justFrameworkFile = path.basename(frmFileFullPath);
