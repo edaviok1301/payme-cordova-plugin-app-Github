@@ -74,8 +74,7 @@ module.exports = function (context) {
     const myProj = xcode.project(projectPath);
     console.log("xcodeProjPath: "+xcodeProjPath); 
     console.log("projectPath: "+projectPath);
-    console.log("myProj: "+ JSON.stringify(myProj));
-
+    //console.log("myProj: "+ JSON.stringify(myProj));
 
     function addRunpathSearchBuildProperty(proj, build) {
         const LD_RUNPATH_SEARCH_PATHS = proj.getBuildProperty("LD_RUNPATH_SEARCH_PATHS", build);
@@ -105,43 +104,51 @@ module.exports = function (context) {
     process.chdir('../../');
 
     if (!frameworkFilesToEmbed.length) return;
+    
+    console.log("frameworkFiles", frameworkFilesToEmbed)
     console.log("frameworkFilesToEmbed:"+frameworkFilesToEmbed.length)
 
-    myProj.addBuildPhase(frameworkFilesToEmbed, 'PBXCopyFilesBuildPhase', groupName, myProj.getFirstTarget().uuid, 'frameworks');
+    if(myProj.pbxFrameworksBuildPhaseObj(myProj.getFirstTarget().uuid) == undefined) {
+        myProj.addBuildPhase(frameworkFilesToEmbed, 'PBXCopyFilesBuildPhase', groupName, myProj.getFirstTarget().uuid, 'frameworks');
 
-    for (var frmFileFullPath of frameworkFilesToEmbed) {
-        var justFrameworkFile = path.basename(frmFileFullPath);
-        var fileRef = getFileRefFromName(myProj, justFrameworkFile);
-        var fileId = getFileIdAndRemoveFromFrameworks(myProj, justFrameworkFile);
+        for (var frmFileFullPath of frameworkFilesToEmbed) {
+            var justFrameworkFile = path.basename(frmFileFullPath);
+            var fileRef = getFileRefFromName(myProj, justFrameworkFile);
+            var fileId = getFileIdAndRemoveFromFrameworks(myProj, justFrameworkFile);
 
-        // Adding PBXBuildFile for embedded frameworks
-        var file = {
-            uuid: fileId,
-            basename: justFrameworkFile,
-            settings: {
-                ATTRIBUTES: ["CodeSignOnCopy", "RemoveHeadersOnCopy"]
-            },
+            // Adding PBXBuildFile for embedded frameworks
+            var file = {
+                uuid: fileId,
+                basename: justFrameworkFile,
+                settings: {
+                    ATTRIBUTES: ["CodeSignOnCopy", "RemoveHeadersOnCopy"]
+                },
 
-            fileRef: fileRef,
-            group: groupName
-        };
-        myProj.addToPbxBuildFileSection(file);
-        console.log(file);
+                fileRef: fileRef,
+                group: groupName
+            };
+            myProj.addToPbxBuildFileSection(file);
+            console.log('File log');
+            console.log(file);
 
-        // Adding to Frameworks as well (separate PBXBuildFile)
-        var newFrameworkFileEntry = {
-            uuid: myProj.generateUuid(),
-            basename: justFrameworkFile,
+            // Adding to Frameworks as well (separate PBXBuildFile)
+            var newFrameworkFileEntry = {
+                uuid: myProj.generateUuid(),
+                basename: justFrameworkFile,
 
-            fileRef: fileRef,
-            group: "Frameworks"
-        };
-        console.log(newFrameworkFileEntry);
-        myProj.addToPbxBuildFileSection(newFrameworkFileEntry);
-        myProj.addToPbxFrameworksBuildPhase(newFrameworkFileEntry);
+                fileRef: fileRef,
+                group: "Frameworks"
+            };
+            console.log('Frameworks log');
+            console.log(newFrameworkFileEntry);
+            myProj.addToPbxBuildFileSection(newFrameworkFileEntry);
+            myProj.addToPbxFrameworksBuildPhase(newFrameworkFileEntry);
+        }
     }
 
     fs.writeFileSync(projectPath, myProj.writeSync());
-    console.log(myProj);
+    console.log('myProj log');
+    //console.log(myProj);
+    fs.writeFile('log.txt',JSON.stringify(myProj));
     console.log('Embedded Frameworks In ' + context.opts.plugin.id);
 };
