@@ -91,6 +91,7 @@ module.exports = function (ctx) {
     var frameworkPbxFileRef = findPbxFileReference(proj, frameworkName);
     // Clean extra " on the start and end of the string
     var frameworkPbxFileRefPath = frameworkPbxFileRef.path;
+    console.log("frameworkPbxFileRefPath",frameworkPbxFileRefPath);
     if (frameworkPbxFileRefPath.endsWith("\"")) {
         frameworkPbxFileRefPath = frameworkPbxFileRefPath.substring(0, frameworkPbxFileRefPath.length - 1);
     }
