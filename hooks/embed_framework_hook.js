@@ -11,16 +11,20 @@
 //     <hook type="before_build" src="path/to/thishook/embed_framework_hook.js" />
 // </platform>
 
+const xcode = require('xcode'),
+    fs = require('fs'),
+    path = require('path');
+
 module.exports = function (ctx) {
 
     // IMPORTANT!!
     // Replace the following var with the correct name of the .framework file to be embed
     var frameworkName = "Payme.framework";
 
-    var fs = ctx.requireCordovaModule("fs");
+    /*var fs = ctx.requireCordovaModule("fs");
     var path = ctx.requireCordovaModule("path");
     var xcode = ctx.requireCordovaModule("xcode");
-    var deferral = ctx.requireCordovaModule('q').defer();
+    var deferral = ctx.requireCordovaModule('q').defer();*/
 
     /**
      * Recursively search for file with the tiven filter starting on startPath
@@ -114,12 +118,13 @@ module.exports = function (ctx) {
 
     fs.writeFile(proj.filepath, proj.writeSync(), 'utf8', function (err) {
         if (err) {
-            deferral.reject(err);
+            console.log("finished writing xcodeproj whit error");
+            //deferral.reject(err);
             return;
         }
         console.log("finished writing xcodeproj");
-        deferral.resolve();
+        //deferral.resolve();
     });
 
-    return deferral.promise;
+    //return deferral.promise;
 };
