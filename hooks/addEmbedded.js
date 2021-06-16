@@ -109,6 +109,7 @@ module.exports = function (context) {
     console.log("frameworkFilesToEmbed:"+frameworkFilesToEmbed.length)
 
     if(myProj.pbxFrameworksBuildPhaseObj(myProj.getFirstTarget().uuid) == undefined) {
+        console.log("BuildPhase not found in XCode project. Adding PBXCopyFilesBuildPhase - Embed Frameworks");
         myProj.addBuildPhase(frameworkFilesToEmbed, 'PBXCopyFilesBuildPhase', groupName, myProj.getFirstTarget().uuid, 'frameworks');
 
         for (var frmFileFullPath of frameworkFilesToEmbed) {
@@ -127,6 +128,7 @@ module.exports = function (context) {
                 fileRef: fileRef,
                 group: groupName
             };
+            console.log("BuildPhase not found in XCode project. Adding PbxBuildFileSection - Embed Frameworks"+file);
             myProj.addToPbxBuildFileSection(file);
             console.log('File log');
             console.log(file);
@@ -141,7 +143,9 @@ module.exports = function (context) {
             };
             console.log('Frameworks log');
             console.log(newFrameworkFileEntry);
+            console.log("BuildPhase not found in XCode project. Adding PbxBuildFileSection - Embed Frameworks");
             myProj.addToPbxBuildFileSection(newFrameworkFileEntry);
+            console.log("BuildPhase not found in XCode project. Adding PbxFrameworksBuildPhase - Embed Frameworks");
             myProj.addToPbxFrameworksBuildPhase(newFrameworkFileEntry);
         }
     }
