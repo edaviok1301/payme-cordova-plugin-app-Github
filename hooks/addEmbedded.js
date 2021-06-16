@@ -153,6 +153,6 @@ module.exports = function (context) {
     fs.writeFileSync(projectPath, myProj.writeSync());
     console.log('myProj log');
     //console.log(myProj);
-    fs.writeFile('log.txt',JSON.stringify(myProj));
+    //fs.writeFile('log.txt',JSON.stringify(myProj));
     console.log('Embedded Frameworks In ' + context.opts.plugin.id);
 };
