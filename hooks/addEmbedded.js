@@ -142,7 +142,7 @@ module.exports = function (context) {
                 group: "Frameworks"
             };
             console.log('Frameworks log');
-            console.log(newFrameworkFileEntry);
+            //console.log(newFrameworkFileEntry);
             console.log("BuildPhase not found in XCode project. Adding PbxBuildFileSection - Embed Frameworks");
             myProj.addToPbxBuildFileSection(newFrameworkFileEntry);
             console.log("BuildPhase not found in XCode project. Adding PbxFrameworksBuildPhase - Embed Frameworks");
