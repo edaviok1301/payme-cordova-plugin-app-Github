@@ -11,10 +11,10 @@
 			</feature>
 		</config-file>
 
-		<config-file parent="/manifest/application" target="AndroidManifest.xml">
+		<!--<config-file parent="/manifest/application" target="AndroidManifest.xml">
 			<activity android:label="GateWay" android:name="sdkpayme.GateWay" >
 			</activity>
-		</config-file>
+		</config-file>-->
 
 		<source-file src="src/android/SdkPayme.java" target-dir="src/sdkpayme/SdkPayme" />
 		<resource-file src="aar/payme-debug.aar"  target="libs/payme-debug.aar"/>
