@@ -126,7 +126,14 @@ public class SdkPayme extends CordovaPlugin {
         FeaturedReservedData reservedData[] = {
                 new FeaturedReservedData(params.getString("name"),params.getString("value")),
                 new FeaturedReservedData("reserved2","2"),
-                new FeaturedReservedData("reserved3","3")};
+                new FeaturedReservedData("reserved3","3"),
+                new FeaturedReservedData("reserved4","4"),
+                new FeaturedReservedData("reserved5","5"),
+                new FeaturedReservedData("reserved6","6"),
+                new FeaturedReservedData("reserved7","7"),
+                new FeaturedReservedData("reserved8","8"),
+                new FeaturedReservedData("reserved9","9"),
+                new FeaturedReservedData("reserved10","10")};
         Log.d(TAG,"Set FeaturedReservedData");
         Boolean planQuota = text_plan_quota.equals("1");
 
