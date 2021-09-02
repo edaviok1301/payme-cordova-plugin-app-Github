@@ -50,7 +50,8 @@ public class SdkPayme extends CordovaPlugin {
     private static final String TAG = "SdkPayme";
     private Context context=null;
     private CallbackContext callbackContext = null;
-    String text_amount =  "";
+    String text_amount = "";
+    String text_number = "";
 
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
@@ -92,7 +93,7 @@ public class SdkPayme extends CordovaPlugin {
         final String text_currency_code = params.getString("code");
         final String text_currency_symbol = params.getString("symbol");
 
-        final String text_number = decrypt(params.getString("operationNumber"));
+        text_number = decrypt(params.getString("operationNumber"));
         
         text_amount=params.getString("amount");
         final String text_product_description = params.getString("productDescription");
@@ -229,7 +230,7 @@ public class SdkPayme extends CordovaPlugin {
     }
 
 
-public String decrypt(String textencrypt) {
+    public String decrypt(String textencrypt) {
         String[] list = new String[0];
         try {
 
@@ -303,7 +304,7 @@ public String decrypt(String textencrypt) {
             payment.put("date", " ");
             payment.put("hour", " ");
             payment.put("authorizationCode"," ");
-            payment.put("operationNumber", " ");
+            payment.put("operationNumber", text_number);
         }else{
             payment.put("accepted", p.getAccepted());
             payment.put("resultCode", validateEmptyOrNull(p.getResultCode()));
@@ -319,7 +320,7 @@ public String decrypt(String textencrypt) {
             payment.put("date", validateEmptyOrNull(p.getDate()));
             payment.put("hour", validateEmptyOrNull(p.getHour()));
             payment.put("authorizationCode", validateEmptyOrNull(p.getAuthorizationCode()));
-            payment.put("operationNumber", validateEmptyOrNull(p.getOperationNumber()));
+            payment.put("operationNumber", validateEmptyOrNull(text_number));
         }
         main.put("payment",payment);
 
@@ -398,7 +399,7 @@ public String decrypt(String textencrypt) {
         payment.put("date", " ");
         payment.put("hour", " ");
         payment.put("authorizationCode"," ");
-        payment.put("operationNumber", " ");
+        payment.put("operationNumber", payment.put("operationNumber"));
     main.put("payment",payment);
     JSONObject features=new JSONObject();
     JSONArray contentarray=new JSONArray();
