@@ -399,7 +399,7 @@ public class SdkPayme extends CordovaPlugin {
         payment.put("date", " ");
         payment.put("hour", " ");
         payment.put("authorizationCode"," ");
-        payment.put("operationNumber", payment.put("operationNumber"));
+        payment.put("operationNumber", text_number);
     main.put("payment",payment);
     JSONObject features=new JSONObject();
     JSONArray contentarray=new JSONArray();
