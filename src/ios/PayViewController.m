@@ -6,6 +6,7 @@
 @synthesize request = _request;
 @synthesize resultResponse = _resultResponse;
 @synthesize callbackId = _callbackId;
+NSString  *operationNumberG = nil;
 
 + (instancetype)sharedHelper:(NSDictionary *)inputRequest callback:(NSString *)callbackid;
 {
@@ -100,7 +101,7 @@
         [payment setValue:@" " forKey:@"date"];
         [payment setValue:@" " forKey:@"hour"];
         [payment setValue:@" " forKey:@"authorizationCode"];
-        [payment setValue:@" " forKey:@"operationNumber"];
+        [payment setValue:operationNumberG forKey:@"operationNumber"];
         
         
         [main setValue:payment forKey:@"payment"];
@@ -167,7 +168,7 @@
             [payment setValue:@" " forKey:@"date"];
             [payment setValue:@" " forKey:@"hour"];
             [payment setValue:@" " forKey:@"authorizationCode"];
-            [payment setValue:@" " forKey:@"operationNumber"];
+            [payment setValue:operationNumberG forKey:@"operationNumber"];
         }else{
             [payment setValue:response.payment.accepted ? [NSNumber numberWithBool:YES]:[NSNumber numberWithBool:NO] forKey:@"accepted"];
             [payment setValue:[self validateEmptyOrNull:response.payment.resultCode] forKey:@"resultCode"];
@@ -267,7 +268,7 @@
         [payment setValue:@" " forKey:@"date"];
         [payment setValue:@" " forKey:@"hour"];
         [payment setValue:@" " forKey:@"authorizationCode"];
-        [payment setValue:@" " forKey:@"operationNumber"];
+        [payment setValue:operationNumberG forKey:@"operationNumber"];
         
         
         [main setValue:payment forKey:@"payment"];
@@ -316,6 +317,7 @@
     NSString *settingBrands = [self.request objectForKey:@"brands" ];
     NSArray<NSString *> *array_brands = [settingBrands componentsSeparatedByString:@","];
     NSString *operationNumber = [self decryptString:[self.request objectForKey:@"operationNumber"]];
+    operationNumberG = operationNumber;
     NSString *operationCurrencyCode = [self.request objectForKey:@"code"];
     NSString *operationCurrencySymbol = [self.request objectForKey:@"symbol"];
     NSString *operationProduct = [self.request objectForKey:@"productDescription"];
