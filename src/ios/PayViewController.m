@@ -183,7 +183,7 @@ NSString  *operationNumberG = nil;
             [payment setValue:[self validateEmptyOrNull:response.payment.date] forKey:@"date"];
             [payment setValue:[self validateEmptyOrNull:response.payment.hour] forKey:@"hour"];
             [payment setValue:[self validateEmptyOrNull:response.payment.errorMessage] forKey:@"authorizationCode"];
-            [payment setValue:[self validateEmptyOrNull:response.payment.errorMessage] forKey:@"operationNumber"];
+            [payment setValue:operationNumberG forKey:@"operationNumber"];
         }
         
         [main setValue:payment forKey:@"payment"];
