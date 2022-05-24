@@ -43,11 +43,11 @@ dependencies {
 }
 
 android {
-	compileSdkVersion 31
+	compileSdkVersion 28
   defaultConfig {
 
       minSdkVersion 21
-      targetSdkVersion 31
+      targetSdkVersion 28
       multiDexEnabled true
   }
 }
