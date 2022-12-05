@@ -143,6 +143,7 @@ public class SdkPayme extends CordovaPlugin {
         MerchantOperationData merchantOperation = new MerchantOperationData(
                 merchantData, settingsData, featuresData);
         Log.d(TAG,"Set MerchantOperationData");
+        Log.d(TAG,merchantOperation.toString());
         
         String environment=params.getString("environment");
         String URL = "2";
