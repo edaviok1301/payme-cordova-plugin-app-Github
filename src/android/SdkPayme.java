@@ -1,15 +1,10 @@
 package sdkpayme;
 
-// The native Toast API
-import android.os.Bundle;
-import android.app.Activity;
-import android.widget.Toast;
 import android.util.Log;
 import android.content.Context;
-import android.content.Intent;
-import android.support.annotation.Nullable;
-
 import android.util.Base64;
+
+import androidx.annotation.NonNull;
 
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
@@ -18,11 +13,15 @@ import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
+
 // Cordova-required packages
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
@@ -34,18 +33,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.alignet.api.payme.bean.*;
-import com.alignet.api.payme.util.Constants;
-import com.alignet.api.payme.wallet.models.EnvDomain;
-import com.alignet.api.payme.wallet.pay.activities.PayActivity;
-
+import com.alignet.payme.PaymeClient;
+import com.alignet.payme.PaymeClientDelegate;
+import com.alignet.payme.util.PaymeEnvironment;
+import com.alignet.payme.model.*;
 import com.google.gson.Gson;
-
-//import java.util.Random;
 /**
  * This class echoes a string called from JavaScript.
  */
-public class SdkPayme extends CordovaPlugin {
+public class SdkPayme extends CordovaPlugin implements PaymeClientDelegate {
 
     private static final String TAG = "SdkPayme";
     private Context context=null;
@@ -83,11 +79,7 @@ public class SdkPayme extends CordovaPlugin {
     }
 
     private final void coolMethod(final JSONObject params) throws JSONException{
-        //Context c=cordova.getActivity().getApplicationContext();
-        //Toast.makeText(c,params.toString(),Toast.LENGTH_LONG).show();
         Log.d(TAG,"Into coolMethod method");
-        //Random random = new Random();
-        //String generatedPassword = String.format("%04d", random.nextInt(10000));
 
         final String text_currency_code = params.getString("code");
         final String text_currency_symbol = params.getString("symbol");
@@ -105,123 +97,45 @@ public class SdkPayme extends CordovaPlugin {
         final String signatureKey = decrypt(params.getString("signatureKey"));
         final String text_merchant = decrypt(params.getString("identifier"));
 
-        PersonaData person = new PersonaData(params.getString("firstName"),
-                params.getString("lastName"), params.getString("email"),
-                params.getString("address"), params.getString("zip"), params.getString("city"), 
-                params.getString("state"),params.getString("country"), params.getString("phone")
-        );
-        Log.d(TAG,"Set PersonaData");
-        CurrencyData currency = new CurrencyData(text_currency_code, text_currency_symbol);
-        Log.d(TAG,"Set CurrencyData");
-        OperationData operationData = new OperationData(
-                text_number, text_amount,
-                text_product_description, currency);
-        Log.d(TAG,"Set OperationData");
-        MerchantData merchantData = new MerchantData(operationData, person, person, person, signatureKey);
-        Log.d(TAG,"Set MerchantData");
-        SettingsData settingsData = new SettingsData(text_locale, text_merchant, brandsArray);
-        Log.d(TAG,"Set SettingsData");
-        FeatureWalletData featureWallet = new FeatureWalletData(text_user);
-        Log.d(TAG,"Set FeatureWalletData");
-        FeaturedReservedData reservedData[] = {
-                new FeaturedReservedData(params.getString("name"),params.getString("value")),
-                new FeaturedReservedData("reserved2","2"),
-                new FeaturedReservedData("reserved3","3")};
-        Log.d(TAG,"Set FeaturedReservedData");
-        Boolean planQuota = text_plan_quota.equals("1");
+        final List<String> brands = Arrays.asList(spinner_brands.split(","));
 
-        FeaturesData featuresData = new FeaturesData(featureWallet, reservedData, planQuota);
-        Log.d(TAG,"Set FeaturesData");
-        MerchantOperationData merchantOperation = new MerchantOperationData(
-                merchantData, settingsData, featuresData);
-        Log.d(TAG,"Set MerchantOperationData");
-      	Log.d(TAG,merchantOperation.toString());
-        
+        PaymePersonData paymePersonData = new PaymePersonData(params.getString("firstName"),
+                params.getString("lastName"), params.getString("email"),
+                params.getString("address"),params.getString("address"),
+                params.getString("country"),"",params.getString("zip"),
+                params.getString("city"),params.getString("state"),params.getString("phone"),"","");
+
+        HashMap<String,String> reservedData = new HashMap<String,String>();
+        reservedData.put(params.getString("name"),params.getString("value"));
+
+        PaymeAuthenticationData paymeAuthenticationData = new PaymeAuthenticationData("1");
+
+        PaymeMerchantData paymeMerchantData = new PaymeMerchantData(new PaymeOperationData(text_number,text_product_description,text_amount,new PaymeCurrencyData(text_currency_code,text_currency_symbol)),true,paymePersonData,paymePersonData);
+
+        PaymeFeatureData paymeFeatureData = new PaymeFeatureData(reservedData,new PaymeWalletData(true,text_user),new PaymeInstallmentsData(true),paymeAuthenticationData);
+
+        PaymeSettingData paymeSettingData = new PaymeSettingData(text_locale,brands);
+
+        PaymeRequest paymeRequest = new PaymeRequest(paymeMerchantData, paymeFeatureData, paymeSettingData);
+
         String environment=params.getString("environment");
-        String URL = "2";
-        Log.d(TAG,environment);
-        Log.d(TAG,String.valueOf(environment.getClass().getName()));
-        Log.d(TAG+"PROD",EnvDomain.PRODUCTION.getUrl());
-        Log.d(TAG+"DEV",EnvDomain.DEVELOPMENT.getUrl());
-        
+        PaymeEnvironment paymeEnvironment = PaymeEnvironment.DEVELOPMENT;
         switch (environment){
             case "1":
                 Log.d(TAG,"GET PROD");
-                URL = EnvDomain.PRODUCTION.getUrl();
+                paymeEnvironment = PaymeEnvironment.PRODUCTION;
                 break;
             case "2":
                 Log.d(TAG,"GET DEV");
-                URL = EnvDomain.DEVELOPMENT.getUrl();
+                paymeEnvironment = PaymeEnvironment.DEVELOPMENT;
                 break;
         }
-        Log.d(TAG,URL);
 
-        Bundle bundle = new Bundle();
-        bundle.putString(Constants.EXTRA_MERCHANT_ENVDOMAIN, URL);
-        bundle.putParcelable(Constants.EXTRA_MERCHANT_OPERATION, merchantOperation);
-        Log.d(TAG,"Set SetBundle");
-        Log.d(TAG,"Set All values");
-        context=cordova.getActivity().getApplicationContext();
-        Log.d(TAG,"Get Context");
-        Intent intent = new Intent(context, PayActivity.class);
-        intent.putExtra(Constants.PAYME_BUNDLE,bundle);        
-        Log.d(TAG,"startIntent");
+        PaymeClient paymeClient = new PaymeClient(this,text_merchant);
+        paymeClient.setEnvironment(paymeEnvironment);
+        paymeClient.authorizeTransaction(cordova.getActivity(), paymeRequest);
 
-        this.cordova.startActivityForResult((CordovaPlugin) this,intent, Constants.REQUEST_CODE_PAYME);
     }
-
-
-    @Override
-    public void onActivityResult(final int requestCode,final  int resultCode,final @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        Log.d(TAG,"onActivityResult");
-        if(data!=null){
-            Log.d(TAG,"Data Response not null");
-            Bundle responseBundle = data.getBundleExtra(Constants.PAYME_RESPONSE_BUNDLE);
-            PaymentData parcelableResponse = responseBundle.getParcelable(Constants.EXTRA_PAYMENT);    
-        
-            if(resultCode == cordova.getActivity().RESULT_OK) {
-                if (requestCode == Constants.REQUEST_CODE_PAYME) {        
-                    try{
-                        String rs=createJsonResponse(parcelableResponse);                    
-                        Log.d("Result log:",rs+" "+parcelableResponse);
-                        PluginResult pluginResult = new  PluginResult(PluginResult.Status.OK,rs);
-                        callbackContext.sendPluginResult(pluginResult);
-                    }
-                    catch(JSONException e){
-                        PluginResult pluginResult = new PluginResult(PluginResult.Status.JSON_EXCEPTION , e.getMessage());
-                        callbackContext.sendPluginResult(pluginResult);
-                    }catch(Exception e){
-                        PluginResult pluginResult = new  PluginResult(PluginResult.Status.ERROR,e.getMessage());
-                        callbackContext.sendPluginResult(pluginResult);
-                    }        
-                }
-            }
-        }else{
-            Log.d(TAG,"Data Response null");
-            Log.d(TAG,"resultCode:"+resultCode+"=cordova.getActivity().RESULT_OK"+cordova.getActivity().RESULT_OK);            
-            Log.d(TAG,"requestCode:"+requestCode+"=Constants.REQUEST_CODE_PAYME"+Constants.REQUEST_CODE_PAYME);            
-            if (requestCode == Constants.REQUEST_CODE_PAYME) {        
-                try{
-                    String rs=createJsonResponseEmpty();                        
-                    Log.d(TAG,"Response:"+rs);
-                    PluginResult pluginResult = new  PluginResult(PluginResult.Status.OK,rs);
-                    callbackContext.sendPluginResult(pluginResult);
-                }
-                catch(JSONException e){
-                    Log.d(TAG,"Catch Json:"+e.getMessage());
-                    PluginResult pluginResult = new PluginResult(PluginResult.Status.JSON_EXCEPTION , e.getMessage());
-                    callbackContext.sendPluginResult(pluginResult);
-                }catch(Exception e){
-                    Log.d(TAG,"Catch Exception:"+e.getMessage());
-                    PluginResult pluginResult = new  PluginResult(PluginResult.Status.ERROR,e.getMessage());
-                    callbackContext.sendPluginResult(pluginResult);
-                }        
-            }
-        }
-    }
-
 
 public String decrypt(String textencrypt) {
         String[] list = new String[0];
@@ -239,7 +153,6 @@ public String decrypt(String textencrypt) {
             Cipher cipher = Cipher.getInstance("RSA");
             cipher.init(Cipher.DECRYPT_MODE, privateKey);
             byte[] encryptedMessageBytes = Base64.decode(painText, Base64.DEFAULT);
-            //byte[] textout=Arrays.copyOfRange(encryptedMessageBytes,1,encryptedMessageBytes.length);
             byte[] textdDecrypt = cipher.doFinal(encryptedMessageBytes);
             String codeTrash = new String(textdDecrypt, "UTF-8");
             list = codeTrash.split("cryptoentel");
@@ -264,154 +177,44 @@ public String decrypt(String textencrypt) {
         return list[1];
     }
 
-
-    public String createJsonResponse(PaymentData paymentData) throws JSONException {
-        PaymentResponseData p=paymentData.getPayment();
-        FeaturesResponseData f=paymentData.getFeatures();
-        FeaturedReservedData r[]=null;
-        PlanQuotaData pq=null;
-
-        if(f!=null){
-        r=f.getReserved();
-        pq=f.getPlanQuota();}
-
-        JSONObject main=new JSONObject();
-        main.put("success",paymentData.getSuccess());
-        main.put("messageCode",validateEmptyOrNull(paymentData.getMessageCode()));
-        main.put("message",validateEmptyOrNull(paymentData.getMessage()));
-        main.put("amount",text_amount);
-
-        JSONObject payment=new JSONObject();
-        if(p==null) {
-            payment.put("accepted",false);
-            payment.put("resultCode", " ");
-            payment.put("resultMessage", " ");
-            payment.put("authorizationResult", " ");
-            payment.put("referenceCode", " ");
-            payment.put("brand", " ");
-            payment.put("bin", " ");
-            payment.put("lastPan", " ");
-            payment.put("transactionIdentifier"," ");
-            payment.put("errorCode", " ");
-            payment.put("errorMessage", " ");
-            payment.put("date", " ");
-            payment.put("hour", " ");
-            payment.put("authorizationCode"," ");
-            payment.put("operationNumber", " ");
-        }else{
-            payment.put("accepted", p.getAccepted());
-            payment.put("resultCode", validateEmptyOrNull(p.getResultCode()));
-            payment.put("resultMessage", validateEmptyOrNull(p.getResultCode()));
-            payment.put("authorizationResult", validateEmptyOrNull(p.getAuthorizationResult()));
-            payment.put("referenceCode", validateEmptyOrNull(p.getReferenceCode()));
-            payment.put("brand", validateEmptyOrNull(p.getBrand()));
-            payment.put("bin", validateEmptyOrNull(p.getBin()));
-            payment.put("lastPan", validateEmptyOrNull(p.getLastPan()));
-            payment.put("transactionIdentifier", validateEmptyOrNull(p.getTransactionIdentifier()));
-            payment.put("errorCode", validateEmptyOrNull(p.getErrorCode()));
-            payment.put("errorMessage", validateEmptyOrNull(p.getErrorMessage()));
-            payment.put("date", validateEmptyOrNull(p.getDate()));
-            payment.put("hour", validateEmptyOrNull(p.getHour()));
-            payment.put("authorizationCode", validateEmptyOrNull(p.getAuthorizationCode()));
-            payment.put("operationNumber", validateEmptyOrNull(p.getOperationNumber()));
-        }
-        main.put("payment",payment);
-
-        JSONObject features=new JSONObject();
-
-        JSONArray contentarray=new JSONArray();
-        if(r==null){
-            JSONObject content = new JSONObject();
-            content.put("name"," ");
-            content.put("value"," ");
-            contentarray.put(content);
-        }else {
-            for (int i = 0; i < r.length; i++) {
-                JSONObject content = new JSONObject();
-                content.put("name", validateEmptyOrNull(r[i].getName()));
-                content.put("value", validateEmptyOrNull(r[i].getValue()));
-                contentarray.put(content);
+    @Override
+    public void onNotificate(@NonNull PaymeInternalAction paymeInternalAction) {
+        String notificate="NOTIFICATE";
+        switch (paymeInternalAction) {
+            case PRESS_PAY_BUTTON : {
+                Log.d(notificate,"El usuario presionó el boton pagar exitosamente.");
+                break;
+            }
+             case START_SCORING : {
+                Log.d(notificate,"Inicia el proceso de evaluación de riesgo.");
+                break;
+            }
+            case END_SCORING : {
+                Log.d(notificate,"Termina el proceso de evaluación de riesgo.");
+                break;
+            }
+            case START_TDS : {
+                Log.d(notificate,"Inicia el proceso de autenticación.");
+                break;
+            }
+            case END_TDS : {
+                Log.d(notificate,"Termina el proceso de autenticación.");
+                break;
+            }
+            case START_AUTHORIZATION : {
+                Log.d(notificate, "Se inicia la autorización.");
+                break;
+            }
+            default: {
+                Log.d(notificate+"-default", paymeInternalAction.toString());
+                break;
             }
         }
-        features.put("reserved",contentarray);
-        if(pq==null){
-            JSONObject planquotadata=new JSONObject();
-            planquotadata.put("plan"," ");
-            planquotadata.put("quota"," ");
-            planquotadata.put("quotaProcessed"," ");
-            planquotadata.put("amount"," ");
-            planquotadata.put("dueDate"," ");
-            planquotadata.put("currency"," ");
-            planquotadata.put("interest"," ");
-            features.put("planQuotaData",planquotadata);
-        }else{
-            JSONObject planquotadata=new JSONObject();
-            planquotadata.put("plan",validateEmptyOrNull(pq.getPlan()));
-            planquotadata.put("quota",validateEmptyOrNull(pq.getQuota()));
-            planquotadata.put("quotaProcessed",validateEmptyOrNull(pq.getQuotaProcessed()));
-            planquotadata.put("amount",validateEmptyOrNull(pq.getAmount()));
-            planquotadata.put("dueDate",validateEmptyOrNull(pq.getDueDate()));
-            planquotadata.put("currency",validateEmptyOrNull(pq.getCurrency()));
-            planquotadata.put("interest",validateEmptyOrNull(pq.getInterest()));
-            features.put("planQuotaData",planquotadata);
-        }
-        main.put("features",features);
-        return main.toString();
     }
 
-    public String validateEmptyOrNull(String value){
-        String rs="";
-        if(value==null){
-            rs=" ";
-        }else {
-            rs=value;
-        }
-        return rs;
+    @Override
+    public void onRespondsPayme(@NonNull PaymeResponse paymeResponse) {
+        String gson = new Gson().toJson(paymeResponse);
+        Log.i("OnRespondsPayme",gson);
     }
-
-
-    public String createJsonResponseEmpty() throws JSONException {
-    JSONObject main=new JSONObject();
-    main.put("success",true);
-    main.put("messageCode","999");
-    main.put("message","Cancel Transaction");
-    main.put("amount",text_amount);
-
-    JSONObject payment=new JSONObject();
-        payment.put("accepted", false);
-        payment.put("resultCode", " ");
-        payment.put("resultMessage", " ");
-        payment.put("authorizationResult", " ");
-        payment.put("referenceCode", " ");
-        payment.put("brand", " ");
-        payment.put("bin", " ");
-        payment.put("lastPan", " ");
-        payment.put("transactionIdentifier"," ");
-        payment.put("errorCode", " ");
-        payment.put("errorMessage", " ");
-        payment.put("date", " ");
-        payment.put("hour", " ");
-        payment.put("authorizationCode"," ");
-        payment.put("operationNumber", " ");
-    main.put("payment",payment);
-    JSONObject features=new JSONObject();
-    JSONArray contentarray=new JSONArray();
-        JSONObject content = new JSONObject();
-        content.put("name"," ");
-        content.put("value"," ");
-        contentarray.put(content);
-    features.put("reserved",contentarray);
-        JSONObject planquotadata=new JSONObject();
-        planquotadata.put("plan"," ");
-        planquotadata.put("quota"," ");
-        planquotadata.put("quotaProcessed"," ");
-        planquotadata.put("amount"," ");
-        planquotadata.put("dueDate"," ");
-        planquotadata.put("currency"," ");
-        planquotadata.put("interest"," ");
-    features.put("planQuotaData",planquotadata);
-    main.put("features",features);
-    return main.toString();
-    }
-
 }

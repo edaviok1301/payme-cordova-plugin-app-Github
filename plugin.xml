@@ -11,13 +11,10 @@
 			</feature>
 		</config-file>
 
-		<!--<config-file parent="/manifest/application" target="AndroidManifest.xml">
-			<activity android:label="GateWay" android:name="sdkpayme.GateWay" >
-			</activity>
-		</config-file>-->
+		<source-file src="src/android/SdkPayme.java" target-dir="src/sdkpayme" />
+		<resource-file src="aar/payme-debug.aar"  target="libs/payme.aar"/>
+		<resource-file src="aar/payme-debug.aar"  target="libs/TDSecureFramework.aar"/>
 
-		<source-file src="src/android/SdkPayme.java" target-dir="src/sdkpayme/SdkPayme" />
-		<resource-file src="aar/payme-debug.aar"  target="libs/payme-debug.aar"/>
 		<framework  src="src/android/file.gradle" custom="true" type="gradleReference"/>
 	</platform>
 
