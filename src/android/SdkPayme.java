@@ -50,8 +50,7 @@ public class SdkPayme extends CordovaPlugin {
     private static final String TAG = "SdkPayme";
     private Context context=null;
     private CallbackContext callbackContext = null;
-    String text_amount = "";
-    String text_number = "";
+    String text_amount =  "";
 
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
@@ -93,7 +92,7 @@ public class SdkPayme extends CordovaPlugin {
         final String text_currency_code = params.getString("code");
         final String text_currency_symbol = params.getString("symbol");
 
-        text_number = decrypt(params.getString("operationNumber"));
+        final String text_number = decrypt(params.getString("operationNumber"));
         
         text_amount=params.getString("amount");
         final String text_product_description = params.getString("productDescription");
@@ -127,14 +126,7 @@ public class SdkPayme extends CordovaPlugin {
         FeaturedReservedData reservedData[] = {
                 new FeaturedReservedData(params.getString("name"),params.getString("value")),
                 new FeaturedReservedData("reserved2","2"),
-                new FeaturedReservedData("reserved3","3"),
-                new FeaturedReservedData("reserved4","4"),
-                new FeaturedReservedData("reserved5","5"),
-                new FeaturedReservedData("reserved6","6"),
-                new FeaturedReservedData("reserved7","7"),
-                new FeaturedReservedData("reserved8","8"),
-                new FeaturedReservedData("reserved9","9"),
-                new FeaturedReservedData("reserved10","10")};
+                new FeaturedReservedData("reserved3","3")};
         Log.d(TAG,"Set FeaturedReservedData");
         Boolean planQuota = text_plan_quota.equals("1");
 
@@ -143,7 +135,7 @@ public class SdkPayme extends CordovaPlugin {
         MerchantOperationData merchantOperation = new MerchantOperationData(
                 merchantData, settingsData, featuresData);
         Log.d(TAG,"Set MerchantOperationData");
-        Log.d(TAG,merchantOperation.toString());
+      	Log.d(TAG,merchantOperation.toString());
         
         String environment=params.getString("environment");
         String URL = "2";
@@ -231,7 +223,7 @@ public class SdkPayme extends CordovaPlugin {
     }
 
 
-    public String decrypt(String textencrypt) {
+public String decrypt(String textencrypt) {
         String[] list = new String[0];
         try {
 
@@ -305,7 +297,7 @@ public class SdkPayme extends CordovaPlugin {
             payment.put("date", " ");
             payment.put("hour", " ");
             payment.put("authorizationCode"," ");
-            payment.put("operationNumber", text_number);
+            payment.put("operationNumber", " ");
         }else{
             payment.put("accepted", p.getAccepted());
             payment.put("resultCode", validateEmptyOrNull(p.getResultCode()));
@@ -321,7 +313,7 @@ public class SdkPayme extends CordovaPlugin {
             payment.put("date", validateEmptyOrNull(p.getDate()));
             payment.put("hour", validateEmptyOrNull(p.getHour()));
             payment.put("authorizationCode", validateEmptyOrNull(p.getAuthorizationCode()));
-            payment.put("operationNumber", validateEmptyOrNull(text_number));
+            payment.put("operationNumber", validateEmptyOrNull(p.getOperationNumber()));
         }
         main.put("payment",payment);
 
@@ -400,7 +392,7 @@ public class SdkPayme extends CordovaPlugin {
         payment.put("date", " ");
         payment.put("hour", " ");
         payment.put("authorizationCode"," ");
-        payment.put("operationNumber", text_number);
+        payment.put("operationNumber", " ");
     main.put("payment",payment);
     JSONObject features=new JSONObject();
     JSONArray contentarray=new JSONArray();
