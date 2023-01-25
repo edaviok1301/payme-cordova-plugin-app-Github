@@ -12,8 +12,8 @@
 		</config-file>
 
 		<source-file src="src/android/SdkPayme.java" target-dir="src/sdkpayme" />
-		<resource-file src="aar/payme-debug.aar"  target="libs/payme.aar"/>
-		<resource-file src="aar/payme-debug.aar"  target="libs/TDSecureFramework.aar"/>
+		<resource-file src="aar/payme.aar"  target="libs/payme.aar"/>
+		<resource-file src="aar/TDSecureFramework.aar"  target="libs/TDSecureFramework.aar"/>
 
 		<framework  src="src/android/file.gradle" custom="true" type="gradleReference"/>
 	</platform>
