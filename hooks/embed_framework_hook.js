@@ -19,7 +19,8 @@ module.exports = function (ctx) {
     try{
         // IMPORTANT!!
         // Replace the following var with the correct name of the .framework file to be embed
-        var frameworkName = "Payme.framework";
+        var frameworkName = "Payme.xcframework";
+        var frameworkNameAux = "TDSecureFramework.xcframework";
 
         /*var fs = ctx.requireCordovaModule("fs");
         var path = ctx.requireCordovaModule("path");
@@ -89,15 +90,29 @@ module.exports = function (ctx) {
 
 
         var frameworkPbxFileRef = findPbxFileReference(proj, frameworkName);
+        var frameworkPbxFileRefAux = findPbxFileReference(proj,frameworkNameAux);
+
         // Clean extra " on the start and end of the string
         var frameworkPbxFileRefPath = frameworkPbxFileRef.path;
-        console.log("frameworkPbxFileRefPath",frameworkPbxFileRefPath);
+        var frameworkPbxFileRefPathAux = frameworkPbxFileRefAux.path;
+
+        console.log("frameworkPayme",frameworkPbxFileRefPath);
+        console.log("frameworkTDSecure",frameworkPbxFileRefPathAux);
+
         if (frameworkPbxFileRefPath.endsWith("\"")) {
             frameworkPbxFileRefPath = frameworkPbxFileRefPath.substring(0, frameworkPbxFileRefPath.length - 1);
         }
         if (frameworkPbxFileRefPath.startsWith("\"")) {
             frameworkPbxFileRefPath = frameworkPbxFileRefPath.substring(1, frameworkPbxFileRefPath.length);
         }
+
+        if(frameworkPbxFileRefPathAux.endsWith("\"")){
+            frameworkPbxFileRefPathAux = frameworkPbxFileRefPathAux.substring(0, frameworkPbxFileRefPathAux.length-1);
+        }
+        if(frameworkPbxFileRefPathAux.startsWith("\"")){
+            frameworkPbxFileRefPathAux = frameworkPbxFileRefPathAux.substring(1, frameworkPbxFileRefPathAux.length);
+        }
+
 
         // If the build phase doesn't exist, add it
         if (proj.pbxEmbedFrameworksBuildPhaseObj(proj.getFirstTarget().uuid) == undefined) {
@@ -113,6 +128,16 @@ module.exports = function (ctx) {
         var addedPbxFile = proj.addFramework(frameworkPbxFileRefPath, {
             customFramework: true,
             embed: true,
+            sign: true
+        });
+
+        var removedPbxFileAux = proj.removeFramework(frameworkPbxFileRefPathAux, {
+            customFramework: true
+        }); 
+
+        var addedPbxFileAux = proj.addFramework(frameworkPbxFileRefPathAux, {
+            customFramework: true,
+            embed:true,
             sign: true
         });
 

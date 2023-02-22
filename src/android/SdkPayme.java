@@ -81,25 +81,25 @@ public class SdkPayme extends CordovaPlugin implements PaymeClientDelegate {
     private final void coolMethod(final JSONObject params) throws JSONException{
         Log.d(TAG,"Into coolMethod method");
 
-        final String text_currency_code = params.getString("code");
-        final String text_currency_symbol = params.getString("symbol");
+        final String text_currency_code ="604"; //params.getString("code");
+        final String text_currency_symbol ="S/"; //params.getString("symbol");
 
-        final String text_number = decrypt(params.getString("operationNumber"));
+        final String text_number ="98765432"; //params.getString("operationNumber");//decrypt(params.getString("operationNumber"));
         
-        text_amount=params.getString("amount");
-        final String text_product_description = params.getString("productDescription");
-        final String text_locale = params.getString("locale");
-        final String text_user = params.getString("userCommerce");
+        text_amount="10.55"; //params.getString("amount");
+        final String text_product_description = "Recargas"; //params.getString("productDescription");
+        final String text_locale = "es_PE"; //params.getString("locale");
+        final String text_user ="1234"; //params.getString("userCommerce");
         final String text_plan_quota = params.getString("planQuota");
-        final String spinner_brands = params.getString("brands");
+        final String spinner_brands = "VISA,MSCD,AMEX,DINC"; //params.getString("brands");
         final String[] brandsArray = spinner_brands.split(",");
 
-        final String signatureKey = decrypt(params.getString("signatureKey"));
-        final String text_merchant = decrypt(params.getString("identifier"));
+        final String signatureKey = params.getString("signatureKey");//decrypt(params.getString("signatureKey"));
+        final String text_merchant ="10173"; params.getString("identifier");//decrypt(params.getString("identifier"));
 
         final List<String> brands = Arrays.asList(spinner_brands.split(","));
 
-        PaymePersonData paymePersonData = new PaymePersonData(params.getString("firstName"),
+        /*PaymePersonData paymePersonData = new PaymePersonData(params.getString("firstName"),
                 params.getString("lastName"), params.getString("email"),
                 params.getString("address"),params.getString("address"),
                 params.getString("country"),"",params.getString("zip"),
@@ -114,7 +114,24 @@ public class SdkPayme extends CordovaPlugin implements PaymeClientDelegate {
 
         PaymeFeatureData paymeFeatureData = new PaymeFeatureData(reservedData,new PaymeWalletData(true,text_user),new PaymeInstallmentsData(true),paymeAuthenticationData);
 
-        PaymeSettingData paymeSettingData = new PaymeSettingData(text_locale,brands);
+        PaymeSettingData paymeSettingData = new PaymeSettingData(text_locale,brands);*/
+
+        PaymePersonData paymePersonData = new PaymePersonData("Levis", "Silvestre", "levis.silvestre@alignet.com",
+                "Av casimiro Ulloa 333","Av casimiro Ulloa 333", "PE","840","18",
+                "Lima", "Lima","997047941","997047941","997047941");
+
+        HashMap<String,String> reservedData = new HashMap<String,String>();
+        reservedData.put("reserved1","1");
+
+        PaymeAuthenticationData paymeAuthenticationData = new PaymeAuthenticationData("1");
+
+        PaymeMerchantData paymeMerchantData = new PaymeMerchantData(new PaymeOperationData("000001","Recargas","10.55",new PaymeCurrencyData("604","S/")),true,paymePersonData,paymePersonData);
+
+        PaymeFeatureData paymeFeatureData = new PaymeFeatureData(reservedData,new PaymeWalletData(true,text_user),new PaymeInstallmentsData(true),paymeAuthenticationData);
+
+        PaymeSettingData paymeSettingData = new PaymeSettingData("es_PE",brands);
+
+
 
         PaymeRequest paymeRequest = new PaymeRequest(paymeMerchantData, paymeFeatureData, paymeSettingData);
 

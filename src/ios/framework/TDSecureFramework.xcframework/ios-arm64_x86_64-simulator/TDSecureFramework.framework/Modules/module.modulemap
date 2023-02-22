@@ -1,0 +1,11 @@
+framework module TDSecureFramework {
+  umbrella header "TDSecureFramework.h"
+
+  export *
+  module * { export * }
+}
+
+module TDSecureFramework.Swift {
+  header "TDSecureFramework-Swift.h"
+  requires objc
+}
