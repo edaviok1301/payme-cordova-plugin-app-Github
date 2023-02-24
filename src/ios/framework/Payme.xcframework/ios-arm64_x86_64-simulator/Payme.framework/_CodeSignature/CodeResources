@@ -6,43 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		xFhNbTNdEWScrY+FZgCaM/rIIH8=
-		</data>
-		<key>Base.lproj/MainPaymeApi.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC.nib/objects-11.0+.nib</key>
-		<data>
-		8uP2pvPSnsgFppPYqlbthjTCo80=
-		</data>
-		<key>Base.lproj/MainPaymeApi.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC.nib/runtime.nib</key>
-		<data>
-		VRfgnIrUD0S1vojycD8ZqHpcQ/M=
-		</data>
-		<key>Base.lproj/MainPaymeApi.storyboardc/CardsController.nib/objects-11.0+.nib</key>
-		<data>
-		lib7JnyOPGam4ueXQTBEw9DzPI8=
-		</data>
-		<key>Base.lproj/MainPaymeApi.storyboardc/CardsController.nib/runtime.nib</key>
-		<data>
-		lib7JnyOPGam4ueXQTBEw9DzPI8=
-		</data>
-		<key>Base.lproj/MainPaymeApi.storyboardc/Info.plist</key>
-		<data>
-		oSRskOvyOa751QrRpfapIWz2YlA=
-		</data>
-		<key>Base.lproj/MainPaymeApi.storyboardc/NA8-0y-lEu-view-lhY-pA-Cid.nib/objects-11.0+.nib</key>
-		<data>
-		OZ0fdW5pF1mpRq+VUQgVPlIJ1OA=
-		</data>
-		<key>Base.lproj/MainPaymeApi.storyboardc/NA8-0y-lEu-view-lhY-pA-Cid.nib/runtime.nib</key>
-		<data>
-		REMPn2Q18xlWwlSjlHSQIL4RQFs=
-		</data>
-		<key>Base.lproj/MainPaymeApi.storyboardc/PayController.nib/objects-11.0+.nib</key>
-		<data>
-		2VmnOjHBXIrceNuJfDoGXoRxUhY=
-		</data>
-		<key>Base.lproj/MainPaymeApi.storyboardc/PayController.nib/runtime.nib</key>
-		<data>
-		2VmnOjHBXIrceNuJfDoGXoRxUhY=
+		s2t9nCzG0V2o+IPNEb4RxWfS/1A=
 		</data>
 		<key>DropDownCell.nib</key>
 		<data>
@@ -88,9 +52,73 @@
 		<data>
 		h5yBbVQAxx8ikaPPx0qQKGkwEQc=
 		</data>
-		<key>Headers/DLRadioButton.h</key>
+		<key>Frameworks/VisaSensoryBranding.framework/Assets.car</key>
 		<data>
-		opCduLHc0hMG+jV3x2hZaDX2RTE=
+		MxpDrLY8aEYI+gxwufZvvSfj39w=
+		</data>
+		<key>Frameworks/VisaSensoryBranding.framework/Info.plist</key>
+		<data>
+		Fl3S4ZC4J2XXEb2kvfy7djMyE1Y=
+		</data>
+		<key>Frameworks/VisaSensoryBranding.framework/VisaSensoryBranding</key>
+		<data>
+		iRXE0AjbD1oKxoJuQJDgHMzllAc=
+		</data>
+		<key>Frameworks/VisaSensoryBranding.framework/VisaSensoryBranding.h</key>
+		<data>
+		pGPCJEczrMDY4l52obyCD/UqIF4=
+		</data>
+		<key>Frameworks/VisaSensoryBranding.framework/_CodeSignature/CodeResources</key>
+		<data>
+		GodpY3vGxCibPOyE2rHquLiRaow=
+		</data>
+		<key>Frameworks/VisaSensoryBranding.framework/languages.json</key>
+		<data>
+		i8SSD1QFrPvFzrpEgnsgqP84NmE=
+		</data>
+		<key>Frameworks/VisaSensoryBranding.framework/noto_sans_arabic.ttf</key>
+		<data>
+		bhWRdVMDtfSGeosYua0DRri1SOI=
+		</data>
+		<key>Frameworks/VisaSensoryBranding.framework/noto_sans_georgian.ttf</key>
+		<data>
+		Z/xq0iIk/1h0snXJRXkm/LsHcZ0=
+		</data>
+		<key>Frameworks/VisaSensoryBranding.framework/noto_sans_hebrew.ttf</key>
+		<data>
+		Hmz37IgKoOnvyrKhuZY2ZWpt+jA=
+		</data>
+		<key>Frameworks/VisaSensoryBranding.framework/noto_sans_japanese.ttf</key>
+		<data>
+		FLMcUy9D69Tx7hOV9QlqL0IyN10=
+		</data>
+		<key>Frameworks/VisaSensoryBranding.framework/noto_sans_khmer.ttf</key>
+		<data>
+		LTuup9zeOQw4TTUHZlxX2O92v1U=
+		</data>
+		<key>Frameworks/VisaSensoryBranding.framework/noto_sans_korean.ttf</key>
+		<data>
+		PHNPNFwp/XL1GHCDdhGXgq2cE5s=
+		</data>
+		<key>Frameworks/VisaSensoryBranding.framework/noto_sans_simplified_chinese.ttf</key>
+		<data>
+		lalBJHa/rJQyldj3Rnw2Uucp98E=
+		</data>
+		<key>Frameworks/VisaSensoryBranding.framework/noto_sans_thai.ttf</key>
+		<data>
+		gePBQzc5lfo75BVw0P4TupuU+x4=
+		</data>
+		<key>Frameworks/VisaSensoryBranding.framework/noto_sans_traditional_chinese.ttf</key>
+		<data>
+		yD2vja28Atunb8JJPdiemWC+inQ=
+		</data>
+		<key>Frameworks/VisaSensoryBranding.framework/visa_branding_sound.mp3</key>
+		<data>
+		nCvoNXwUeoyuZiR2hMmXT7DwX3Y=
+		</data>
+		<key>Frameworks/VisaSensoryBranding.framework/visa_font.ttf</key>
+		<data>
+		OrMZNO2+sUwsjg0TdM+e4UjbQwk=
 		</data>
 		<key>Headers/NSData+SHA.h</key>
 		<data>
@@ -98,15 +126,23 @@
 		</data>
 		<key>Headers/Payme-Swift.h</key>
 		<data>
-		QtTgzzAgg1B60EHgUNTPr77KgSc=
+		QvVo59DCPDbPuKGhUpxHuUdRdFU=
 		</data>
 		<key>Headers/Payme.h</key>
 		<data>
-		O4SdefujbdHNDDCLzYNBb9o+hgk=
+		FBK6leYKl9tBY0hfGY1oM3gdpa0=
 		</data>
 		<key>Headers/SwiftyRSA.h</key>
 		<data>
 		CQquSxLPzBgwNwWzFndUKesS8V0=
+		</data>
+		<key>HelpCvvAlertView.nib/objects-11.0+.nib</key>
+		<data>
+		jfII/rlWdVEn1/qK/tAj2bdV0DY=
+		</data>
+		<key>HelpCvvAlertView.nib/runtime.nib</key>
+		<data>
+		EpBwJtfYFAKyl/43RilOGObLZQU=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -114,59 +150,147 @@
 		</data>
 		<key>Modules/Payme.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		sdAzwzaHmoIuj8QtldtqMEg2008=
+		4tARfyna2S6kt2Kcguj60edIfxU=
 		</data>
 		<key>Modules/Payme.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		J2tMNNOb0LSXm2UN0xLILxZctDo=
+		2X1TNgzlH8oucnR5k2yWWPJlUko=
 		</data>
 		<key>Modules/Payme.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		yZPwR2xqDLxi2vIC53IIuNXWuxw=
+		IluYS4jb3vP+5cpKjSy+3FL3pP0=
 		</data>
 		<key>Modules/Payme.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		J2tMNNOb0LSXm2UN0xLILxZctDo=
+		2X1TNgzlH8oucnR5k2yWWPJlUko=
 		</data>
 		<key>Modules/Payme.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		N1Fnn3u9u7kdB5yhXntV+1tmaoo=
+		7LcypfAR4yIpmY6Lx1C3aiBkgAo=
 		</data>
 		<key>Modules/Payme.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		sdAzwzaHmoIuj8QtldtqMEg2008=
+		4tARfyna2S6kt2Kcguj60edIfxU=
 		</data>
 		<key>Modules/Payme.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		NxWLG87fiPiS9HYkBt1YWrGVQ88=
+		VbEO3CI2wb3JtuB/Ko0S+lWcp4o=
 		</data>
 		<key>Modules/Payme.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		G9YBDKfwb35DmGUKGOpsS2QGULI=
+		GVLu/w97uneXW9crvBgF/nVDygk=
 		</data>
 		<key>Modules/Payme.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		NxWLG87fiPiS9HYkBt1YWrGVQ88=
+		VbEO3CI2wb3JtuB/Ko0S+lWcp4o=
 		</data>
 		<key>Modules/Payme.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		mauYahKC1YZzVs/aMCVwmgxHPXk=
+		jaqYQeqLJtAxyi2W0zspwWHoDoU=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
 		WBJxYegDhqGJ9AEMyAyMswidFRk=
 		</data>
+		<key>Payme.storyboardc/Info.plist</key>
+		<data>
+		lHzkmvKU61O6Ia50BevRG023dP4=
+		</data>
+		<key>Payme.storyboardc/PaymeCaptureFormController.nib/objects-11.0+.nib</key>
+		<data>
+		sDnpkQUmFaMfeqPYai0gx/cZ+bs=
+		</data>
+		<key>Payme.storyboardc/PaymeCaptureFormController.nib/runtime.nib</key>
+		<data>
+		sDnpkQUmFaMfeqPYai0gx/cZ+bs=
+		</data>
+		<key>Payme.storyboardc/PaymeMainController.nib/objects-11.0+.nib</key>
+		<data>
+		xvHOhMDyeN2+QrJdE897CCFIcqY=
+		</data>
+		<key>Payme.storyboardc/PaymeMainController.nib/runtime.nib</key>
+		<data>
+		xvHOhMDyeN2+QrJdE897CCFIcqY=
+		</data>
+		<key>Payme.storyboardc/PaymeWalletController.nib/objects-11.0+.nib</key>
+		<data>
+		ThxryxL9n/HDH7i4r5JXFGkh6dQ=
+		</data>
+		<key>Payme.storyboardc/PaymeWalletController.nib/runtime.nib</key>
+		<data>
+		ThxryxL9n/HDH7i4r5JXFGkh6dQ=
+		</data>
+		<key>Payme.storyboardc/Xsb-fP-N5k-view-zv7-9h-XDS.nib/objects-11.0+.nib</key>
+		<data>
+		opAwsG/9RAhDKsIVusEmOzNXdxw=
+		</data>
+		<key>Payme.storyboardc/Xsb-fP-N5k-view-zv7-9h-XDS.nib/runtime.nib</key>
+		<data>
+		J4GNGWWXnvQgi4iE+uU37MVvonA=
+		</data>
+		<key>Payme.storyboardc/Y6W-OH-hqX-view-5EZ-qb-Rvc.nib/objects-11.0+.nib</key>
+		<data>
+		YLlytdCNhOSWmhntwy0o/HihcRs=
+		</data>
+		<key>Payme.storyboardc/Y6W-OH-hqX-view-5EZ-qb-Rvc.nib/runtime.nib</key>
+		<data>
+		yDzL669oRuzAkpUOyYU4pZ6AsAA=
+		</data>
+		<key>Payme.storyboardc/unZ-S3-UiD-view-8RG-yb-XUw.nib/objects-11.0+.nib</key>
+		<data>
+		nmDwGDZdpRaDD+486+j+0s3S9JQ=
+		</data>
+		<key>Payme.storyboardc/unZ-S3-UiD-view-8RG-yb-XUw.nib/runtime.nib</key>
+		<data>
+		Mz9k9hAGxeLWwtnGQOwp7OVEWtg=
+		</data>
 		<key>Payme.strings</key>
 		<data>
-		mDPbthdUM6IItgjypLEHv52CZko=
+		WeNyUqeES/+fXMSCmordsB23avw=
+		</data>
+		<key>PaymeCreditCardView.nib/objects-11.0+.nib</key>
+		<data>
+		rUqsXnTHCbXTtlwn78njtHzjPpk=
+		</data>
+		<key>PaymeCreditCardView.nib/runtime.nib</key>
+		<data>
+		HAmlsG4UZmAYhctz6YvdFBzVczI=
+		</data>
+		<key>PaymeFormCreditCardView.nib</key>
+		<data>
+		78h6WS01fYHKgQMQyprFSLP1Ng8=
+		</data>
+		<key>PaymeFormExtraFieldsView.nib</key>
+		<data>
+		PQv9dv2dY3mtiYAnSHPZuHJA+X0=
+		</data>
+		<key>PaymeFormInstallmentsView.nib</key>
+		<data>
+		CLkm/AyI0FaZOE5F59fYiPBIuUY=
+		</data>
+		<key>PaymeWalletCardCell.nib/objects-12.3+.nib</key>
+		<data>
+		kjOl4YEvKql0gUuYjyySPVBmdCo=
+		</data>
+		<key>PaymeWalletCardCell.nib/runtime.nib</key>
+		<data>
+		68oHq65vAPCCm+Fx8UId8dHrCqM=
+		</data>
+		<key>PaymeWalletNewCardCell.nib/objects-12.3+.nib</key>
+		<data>
+		/glp2JX8ONHm1NvDXclSRrCAl2c=
+		</data>
+		<key>PaymeWalletNewCardCell.nib/runtime.nib</key>
+		<data>
+		eOV7j/2je6Y+OdG2TIxHj7zitYI=
 		</data>
 		<key>ResultScreenView.nib/objects-11.0+.nib</key>
 		<data>
-		7fspT0TYQkIe8arwcaksfIrzeio=
+		n5ynMVMoCWxeiaJapuMLKurIaRo=
 		</data>
 		<key>ResultScreenView.nib/runtime.nib</key>
 		<data>
-		U8pbrKosGq0owl94OZxXavm/byo=
+		HnS9NRrdoPjtMKUsB+9dveFC2gE=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -175,110 +299,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			xFhNbTNdEWScrY+FZgCaM/rIIH8=
+			s2t9nCzG0V2o+IPNEb4RxWfS/1A=
 			</data>
 			<key>hash2</key>
 			<data>
-			QumbDKqnanZcsOPM7BVwvUzGeU+0Qej2zCDjfmjyJDk=
-			</data>
-		</dict>
-		<key>Base.lproj/MainPaymeApi.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC.nib/objects-11.0+.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			8uP2pvPSnsgFppPYqlbthjTCo80=
-			</data>
-			<key>hash2</key>
-			<data>
-			JK639FeyiLGJq5DG1A4IwPGyZIgDVI6tif/xD0lo9EE=
-			</data>
-		</dict>
-		<key>Base.lproj/MainPaymeApi.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC.nib/runtime.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			VRfgnIrUD0S1vojycD8ZqHpcQ/M=
-			</data>
-			<key>hash2</key>
-			<data>
-			VWeqtv7nU/2yU2r24PuPT+rVg3FL/mnONpclFXEEUrY=
-			</data>
-		</dict>
-		<key>Base.lproj/MainPaymeApi.storyboardc/CardsController.nib/objects-11.0+.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			lib7JnyOPGam4ueXQTBEw9DzPI8=
-			</data>
-			<key>hash2</key>
-			<data>
-			iTcQ8OF9HnDqAKduBfZSdJXmMHEQhVw7OiabkR6smJw=
-			</data>
-		</dict>
-		<key>Base.lproj/MainPaymeApi.storyboardc/CardsController.nib/runtime.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			lib7JnyOPGam4ueXQTBEw9DzPI8=
-			</data>
-			<key>hash2</key>
-			<data>
-			iTcQ8OF9HnDqAKduBfZSdJXmMHEQhVw7OiabkR6smJw=
-			</data>
-		</dict>
-		<key>Base.lproj/MainPaymeApi.storyboardc/Info.plist</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			oSRskOvyOa751QrRpfapIWz2YlA=
-			</data>
-			<key>hash2</key>
-			<data>
-			JEu8K4ybvQRyglM6bOaaXhE9efZBa8p7R+RVclyT+50=
-			</data>
-		</dict>
-		<key>Base.lproj/MainPaymeApi.storyboardc/NA8-0y-lEu-view-lhY-pA-Cid.nib/objects-11.0+.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			OZ0fdW5pF1mpRq+VUQgVPlIJ1OA=
-			</data>
-			<key>hash2</key>
-			<data>
-			gX22AbDqguVlCqUSJdDxRsuNRSTvM/NapvgqoZ6xsnw=
-			</data>
-		</dict>
-		<key>Base.lproj/MainPaymeApi.storyboardc/NA8-0y-lEu-view-lhY-pA-Cid.nib/runtime.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			REMPn2Q18xlWwlSjlHSQIL4RQFs=
-			</data>
-			<key>hash2</key>
-			<data>
-			rVWSk/Th37Ndd8hwPlA7wvIhrh1UNMZqm93vo0VfeP0=
-			</data>
-		</dict>
-		<key>Base.lproj/MainPaymeApi.storyboardc/PayController.nib/objects-11.0+.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			2VmnOjHBXIrceNuJfDoGXoRxUhY=
-			</data>
-			<key>hash2</key>
-			<data>
-			3kW1KNMiJeltPNyZGuSSMdIaJKZXiqdJh+SqBbKKtbo=
-			</data>
-		</dict>
-		<key>Base.lproj/MainPaymeApi.storyboardc/PayController.nib/runtime.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			2VmnOjHBXIrceNuJfDoGXoRxUhY=
-			</data>
-			<key>hash2</key>
-			<data>
-			3kW1KNMiJeltPNyZGuSSMdIaJKZXiqdJh+SqBbKKtbo=
+			TQpjD8CXm7hlcq1n3Czp4bu27uRPSy5q3Y6DT66ohhw=
 			</data>
 		</dict>
 		<key>DropDownCell.nib</key>
@@ -402,15 +427,191 @@
 			MltwUk+G6RE5qSslBN75C8pAQKlRzZMgy9i0q+11EvA=
 			</data>
 		</dict>
-		<key>Headers/DLRadioButton.h</key>
+		<key>Frameworks/VisaSensoryBranding.framework/Assets.car</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			opCduLHc0hMG+jV3x2hZaDX2RTE=
+			MxpDrLY8aEYI+gxwufZvvSfj39w=
 			</data>
 			<key>hash2</key>
 			<data>
-			ZoXhTGztRGLeWxfEPus2he6zxonMyM3BXHMHeQMctKk=
+			9w0bSDPehWZ+GDFG6VxdHTXQTdAlrHcQWkeIZ+lbPpo=
+			</data>
+		</dict>
+		<key>Frameworks/VisaSensoryBranding.framework/Info.plist</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			Fl3S4ZC4J2XXEb2kvfy7djMyE1Y=
+			</data>
+			<key>hash2</key>
+			<data>
+			Nfy09UTZV9sMv5mS1SkEzK4qZL/e1kEftNOmC6rSI4U=
+			</data>
+		</dict>
+		<key>Frameworks/VisaSensoryBranding.framework/VisaSensoryBranding</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			iRXE0AjbD1oKxoJuQJDgHMzllAc=
+			</data>
+			<key>hash2</key>
+			<data>
+			HJb0hdCYOLv4RWw6LgQy//H4ad5cHIEfvWDSCLqyZBA=
+			</data>
+		</dict>
+		<key>Frameworks/VisaSensoryBranding.framework/VisaSensoryBranding.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			pGPCJEczrMDY4l52obyCD/UqIF4=
+			</data>
+			<key>hash2</key>
+			<data>
+			jPDmEQreLfI7NdQk3afWqDWk8bQdGJY4XXdhiqQpWAY=
+			</data>
+		</dict>
+		<key>Frameworks/VisaSensoryBranding.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			GodpY3vGxCibPOyE2rHquLiRaow=
+			</data>
+			<key>hash2</key>
+			<data>
+			4S3yujdWmqI1DacrGTpAhDJL4oWPQaMVXCuYKtIXoAw=
+			</data>
+		</dict>
+		<key>Frameworks/VisaSensoryBranding.framework/languages.json</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			i8SSD1QFrPvFzrpEgnsgqP84NmE=
+			</data>
+			<key>hash2</key>
+			<data>
+			xgOOIBGroXqdVONPp+iR7xOORjun0e7lD1PnCaUSh28=
+			</data>
+		</dict>
+		<key>Frameworks/VisaSensoryBranding.framework/noto_sans_arabic.ttf</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			bhWRdVMDtfSGeosYua0DRri1SOI=
+			</data>
+			<key>hash2</key>
+			<data>
+			4goMHhW2g347aUjufNH90DSB11RZBqSD0V8FJYhi89s=
+			</data>
+		</dict>
+		<key>Frameworks/VisaSensoryBranding.framework/noto_sans_georgian.ttf</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			Z/xq0iIk/1h0snXJRXkm/LsHcZ0=
+			</data>
+			<key>hash2</key>
+			<data>
+			X8ElcyrydfGgewQEWCsmQ9/JIH0tC23ZjvjZ4kU1KjA=
+			</data>
+		</dict>
+		<key>Frameworks/VisaSensoryBranding.framework/noto_sans_hebrew.ttf</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			Hmz37IgKoOnvyrKhuZY2ZWpt+jA=
+			</data>
+			<key>hash2</key>
+			<data>
+			hMfi2070uCq6WLfnOSnJ21zSx2LqbCGbPNzV5hyx1Pk=
+			</data>
+		</dict>
+		<key>Frameworks/VisaSensoryBranding.framework/noto_sans_japanese.ttf</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			FLMcUy9D69Tx7hOV9QlqL0IyN10=
+			</data>
+			<key>hash2</key>
+			<data>
+			YF9aB4jwzII5bXk/ti1epSSS3Gs66WxhHqFLNj+sotE=
+			</data>
+		</dict>
+		<key>Frameworks/VisaSensoryBranding.framework/noto_sans_khmer.ttf</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			LTuup9zeOQw4TTUHZlxX2O92v1U=
+			</data>
+			<key>hash2</key>
+			<data>
+			DNZzxQtyPsjboQ1oHKtJU1oeAz6jiAtbGwZwMp5VDVI=
+			</data>
+		</dict>
+		<key>Frameworks/VisaSensoryBranding.framework/noto_sans_korean.ttf</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			PHNPNFwp/XL1GHCDdhGXgq2cE5s=
+			</data>
+			<key>hash2</key>
+			<data>
+			tU54kC9seUGRhW87JDtIDnvJZskd/GeHWkImWxtfqSA=
+			</data>
+		</dict>
+		<key>Frameworks/VisaSensoryBranding.framework/noto_sans_simplified_chinese.ttf</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			lalBJHa/rJQyldj3Rnw2Uucp98E=
+			</data>
+			<key>hash2</key>
+			<data>
+			DovmuPwK7/iSkAa0xRRbM6FKy9PzmbPPrlwY2twRWKw=
+			</data>
+		</dict>
+		<key>Frameworks/VisaSensoryBranding.framework/noto_sans_thai.ttf</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			gePBQzc5lfo75BVw0P4TupuU+x4=
+			</data>
+			<key>hash2</key>
+			<data>
+			V4aeXWZCrP+9qmk+s96aE8I3qSoTIdOlDznEYSKNvUE=
+			</data>
+		</dict>
+		<key>Frameworks/VisaSensoryBranding.framework/noto_sans_traditional_chinese.ttf</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			yD2vja28Atunb8JJPdiemWC+inQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			Ime7ZvqOzIPSze56MsC972Wj+OHKox5Olpi7qz8XMF0=
+			</data>
+		</dict>
+		<key>Frameworks/VisaSensoryBranding.framework/visa_branding_sound.mp3</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			nCvoNXwUeoyuZiR2hMmXT7DwX3Y=
+			</data>
+			<key>hash2</key>
+			<data>
+			S5G3WQt3zQ4jItAxYW4rxLwrPwH+ByFOJNzuEMX5rnM=
+			</data>
+		</dict>
+		<key>Frameworks/VisaSensoryBranding.framework/visa_font.ttf</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			OrMZNO2+sUwsjg0TdM+e4UjbQwk=
+			</data>
+			<key>hash2</key>
+			<data>
+			qfr8CxSSaZfV6KULLK58vx9N4Bv/si0U65dzAoG9pqE=
 			</data>
 		</dict>
 		<key>Headers/NSData+SHA.h</key>
@@ -428,22 +629,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			QtTgzzAgg1B60EHgUNTPr77KgSc=
+			QvVo59DCPDbPuKGhUpxHuUdRdFU=
 			</data>
 			<key>hash2</key>
 			<data>
-			RpC79N0wCrRnPFnOthv67UlOOISlf+4rm+RjFfruxoU=
+			/AeEQo0qvYnyhUipR1wQLm3/FpMtEU3Knn4LPGHkrx4=
 			</data>
 		</dict>
 		<key>Headers/Payme.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			O4SdefujbdHNDDCLzYNBb9o+hgk=
+			FBK6leYKl9tBY0hfGY1oM3gdpa0=
 			</data>
 			<key>hash2</key>
 			<data>
-			cYEK8Q8c5yfRXkuVKwauZLvHYPLsXM2jzafL414Xhx8=
+			SM2TblgRNjlFMjSqEzABAw7l1iTS25Ow6jrUR1kWQw4=
 			</data>
 		</dict>
 		<key>Headers/SwiftyRSA.h</key>
@@ -457,114 +658,136 @@
 			OIr2A49z25Pvl2DYsyFqq3IXrnvONskLVfTVECVNp7M=
 			</data>
 		</dict>
+		<key>HelpCvvAlertView.nib/objects-11.0+.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			jfII/rlWdVEn1/qK/tAj2bdV0DY=
+			</data>
+			<key>hash2</key>
+			<data>
+			AixmBZhHac776QUs+r8Eubkei0ODmFp8ZrEJuFXsoCo=
+			</data>
+		</dict>
+		<key>HelpCvvAlertView.nib/runtime.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			EpBwJtfYFAKyl/43RilOGObLZQU=
+			</data>
+			<key>hash2</key>
+			<data>
+			cF2iOn5RHofaxaAocEag7FwQ1dHOQpKnem3MOziquTk=
+			</data>
+		</dict>
 		<key>Modules/Payme.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			sdAzwzaHmoIuj8QtldtqMEg2008=
+			4tARfyna2S6kt2Kcguj60edIfxU=
 			</data>
 			<key>hash2</key>
 			<data>
-			hChGi51xFX36YEPAHAJdYfkayjAKlDG5X5NZUv5mkIw=
+			Jy46GM3+T1ZSbe1iKoQEQfX0zbNvcBwpYK5cqFUjqOY=
 			</data>
 		</dict>
 		<key>Modules/Payme.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			J2tMNNOb0LSXm2UN0xLILxZctDo=
+			2X1TNgzlH8oucnR5k2yWWPJlUko=
 			</data>
 			<key>hash2</key>
 			<data>
-			I4Vwf6BIhTKgciAXz8wCNvnBp3ti+703O1y+erpFqGc=
+			roeYQSSGQTyOWHixKJCNfIaGeVF5akLa2tvzVStpoVE=
 			</data>
 		</dict>
 		<key>Modules/Payme.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			yZPwR2xqDLxi2vIC53IIuNXWuxw=
+			IluYS4jb3vP+5cpKjSy+3FL3pP0=
 			</data>
 			<key>hash2</key>
 			<data>
-			i/VD+f8YJHDsWK/j8Xfos58rVrKRLt2jXeogNkji7nE=
+			+FAMcqRRkxWInr5CPRdCP1/u8GJjf1e/8UrGnfmA8rY=
 			</data>
 		</dict>
 		<key>Modules/Payme.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			J2tMNNOb0LSXm2UN0xLILxZctDo=
+			2X1TNgzlH8oucnR5k2yWWPJlUko=
 			</data>
 			<key>hash2</key>
 			<data>
-			I4Vwf6BIhTKgciAXz8wCNvnBp3ti+703O1y+erpFqGc=
+			roeYQSSGQTyOWHixKJCNfIaGeVF5akLa2tvzVStpoVE=
 			</data>
 		</dict>
 		<key>Modules/Payme.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			N1Fnn3u9u7kdB5yhXntV+1tmaoo=
+			7LcypfAR4yIpmY6Lx1C3aiBkgAo=
 			</data>
 			<key>hash2</key>
 			<data>
-			6Bk0/dFTTKErAZnKWnCwLZK6DwAVBzvHHAZi8hFDQRU=
+			/1/aKvi3EdNJNhOgH/l+W/zFL2fhpoq80Uko9UvG6Vs=
 			</data>
 		</dict>
 		<key>Modules/Payme.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			sdAzwzaHmoIuj8QtldtqMEg2008=
+			4tARfyna2S6kt2Kcguj60edIfxU=
 			</data>
 			<key>hash2</key>
 			<data>
-			hChGi51xFX36YEPAHAJdYfkayjAKlDG5X5NZUv5mkIw=
+			Jy46GM3+T1ZSbe1iKoQEQfX0zbNvcBwpYK5cqFUjqOY=
 			</data>
 		</dict>
 		<key>Modules/Payme.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			NxWLG87fiPiS9HYkBt1YWrGVQ88=
+			VbEO3CI2wb3JtuB/Ko0S+lWcp4o=
 			</data>
 			<key>hash2</key>
 			<data>
-			PrBUzr+bPSh8YoCJGBgZzKXI7OEjG0+evxjZ3XNGpXc=
+			ubqvQQ/npz7rb0D29ZZfC/wjuH5eT6TOZRvUvpPHs1A=
 			</data>
 		</dict>
 		<key>Modules/Payme.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			G9YBDKfwb35DmGUKGOpsS2QGULI=
+			GVLu/w97uneXW9crvBgF/nVDygk=
 			</data>
 			<key>hash2</key>
 			<data>
-			5pp5FZzK4Sa+hzW0giiuDSDomX6Yoot2xz76wPjqYA0=
+			7ceLx2GERnADlL+wnlXWsIuV0eDsyzdXPP7ToekW2TE=
 			</data>
 		</dict>
 		<key>Modules/Payme.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			NxWLG87fiPiS9HYkBt1YWrGVQ88=
+			VbEO3CI2wb3JtuB/Ko0S+lWcp4o=
 			</data>
 			<key>hash2</key>
 			<data>
-			PrBUzr+bPSh8YoCJGBgZzKXI7OEjG0+evxjZ3XNGpXc=
+			ubqvQQ/npz7rb0D29ZZfC/wjuH5eT6TOZRvUvpPHs1A=
 			</data>
 		</dict>
 		<key>Modules/Payme.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			mauYahKC1YZzVs/aMCVwmgxHPXk=
+			jaqYQeqLJtAxyi2W0zspwWHoDoU=
 			</data>
 			<key>hash2</key>
 			<data>
-			mXxbgwcQEeImwY0yPrXUmuKVY95oqSwD4rpSkj84C5I=
+			CIDn5pjitHglmt42tbiBw6lpnppb6sJMOAH4rXM3PrY=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -578,37 +801,279 @@
 			tVr7xrnXgUMxmECvC9JDsFS+hUJvsfQUu6MpBQwSAyM=
 			</data>
 		</dict>
+		<key>Payme.storyboardc/Info.plist</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			lHzkmvKU61O6Ia50BevRG023dP4=
+			</data>
+			<key>hash2</key>
+			<data>
+			VfcTtmjLo0Q/epwFgISZhFkGOz+Nno+FGHJgFu0aG3I=
+			</data>
+		</dict>
+		<key>Payme.storyboardc/PaymeCaptureFormController.nib/objects-11.0+.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			sDnpkQUmFaMfeqPYai0gx/cZ+bs=
+			</data>
+			<key>hash2</key>
+			<data>
+			K71rHO8fzuzWyUBPu4Ivz7srAXb0y3kWNFptta/ogRo=
+			</data>
+		</dict>
+		<key>Payme.storyboardc/PaymeCaptureFormController.nib/runtime.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			sDnpkQUmFaMfeqPYai0gx/cZ+bs=
+			</data>
+			<key>hash2</key>
+			<data>
+			K71rHO8fzuzWyUBPu4Ivz7srAXb0y3kWNFptta/ogRo=
+			</data>
+		</dict>
+		<key>Payme.storyboardc/PaymeMainController.nib/objects-11.0+.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			xvHOhMDyeN2+QrJdE897CCFIcqY=
+			</data>
+			<key>hash2</key>
+			<data>
+			BdL5ixspqMlMGB9t0nFvt2OjbCZ5Yy57Ui0lV/DkJT8=
+			</data>
+		</dict>
+		<key>Payme.storyboardc/PaymeMainController.nib/runtime.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			xvHOhMDyeN2+QrJdE897CCFIcqY=
+			</data>
+			<key>hash2</key>
+			<data>
+			BdL5ixspqMlMGB9t0nFvt2OjbCZ5Yy57Ui0lV/DkJT8=
+			</data>
+		</dict>
+		<key>Payme.storyboardc/PaymeWalletController.nib/objects-11.0+.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			ThxryxL9n/HDH7i4r5JXFGkh6dQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			Y0Zi2ywveL1ZVWQH7K/0jRBibKPEICt2ojbvLwVFfjk=
+			</data>
+		</dict>
+		<key>Payme.storyboardc/PaymeWalletController.nib/runtime.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			ThxryxL9n/HDH7i4r5JXFGkh6dQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			Y0Zi2ywveL1ZVWQH7K/0jRBibKPEICt2ojbvLwVFfjk=
+			</data>
+		</dict>
+		<key>Payme.storyboardc/Xsb-fP-N5k-view-zv7-9h-XDS.nib/objects-11.0+.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			opAwsG/9RAhDKsIVusEmOzNXdxw=
+			</data>
+			<key>hash2</key>
+			<data>
+			140a2ezD0xXQHpW/8d6SYMpDAxJEOKM/gDZiTj3CpVg=
+			</data>
+		</dict>
+		<key>Payme.storyboardc/Xsb-fP-N5k-view-zv7-9h-XDS.nib/runtime.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			J4GNGWWXnvQgi4iE+uU37MVvonA=
+			</data>
+			<key>hash2</key>
+			<data>
+			DRlPabuJeR+oZADmbXabkntYjV8BTgO9ChdfTTvoXnQ=
+			</data>
+		</dict>
+		<key>Payme.storyboardc/Y6W-OH-hqX-view-5EZ-qb-Rvc.nib/objects-11.0+.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			YLlytdCNhOSWmhntwy0o/HihcRs=
+			</data>
+			<key>hash2</key>
+			<data>
+			Xd62htlt3ra8F5JqdTR3mjR7pUzOU3vbyrwSuD68pzc=
+			</data>
+		</dict>
+		<key>Payme.storyboardc/Y6W-OH-hqX-view-5EZ-qb-Rvc.nib/runtime.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			yDzL669oRuzAkpUOyYU4pZ6AsAA=
+			</data>
+			<key>hash2</key>
+			<data>
+			5BwjiyKOuR9pb1j2kRf79gt/qkH72Qg1TM8AIzEKMIU=
+			</data>
+		</dict>
+		<key>Payme.storyboardc/unZ-S3-UiD-view-8RG-yb-XUw.nib/objects-11.0+.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			nmDwGDZdpRaDD+486+j+0s3S9JQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			cvsMsRjNyTY/CcI/iVK4zR6858jYS/yFhmUHFNL18Gc=
+			</data>
+		</dict>
+		<key>Payme.storyboardc/unZ-S3-UiD-view-8RG-yb-XUw.nib/runtime.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			Mz9k9hAGxeLWwtnGQOwp7OVEWtg=
+			</data>
+			<key>hash2</key>
+			<data>
+			RTQqjgsg2Yo30LUJxLv5LI6nS7Tcqn7FXPnvAAAauhg=
+			</data>
+		</dict>
 		<key>Payme.strings</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			mDPbthdUM6IItgjypLEHv52CZko=
+			WeNyUqeES/+fXMSCmordsB23avw=
 			</data>
 			<key>hash2</key>
 			<data>
-			6pAslFNBy0oGPZas15Vi82d2KMhp6lqXgMJVs+mhEac=
+			8CIG5br2KX7bcTAYwwCKtAEUea5wYy7jhI8YtuwvQ4M=
+			</data>
+		</dict>
+		<key>PaymeCreditCardView.nib/objects-11.0+.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			rUqsXnTHCbXTtlwn78njtHzjPpk=
+			</data>
+			<key>hash2</key>
+			<data>
+			dshmCQm8ZGgjR+zMGi/tXSc/TYbTYnTgxLfSLQ/FxTM=
+			</data>
+		</dict>
+		<key>PaymeCreditCardView.nib/runtime.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			HAmlsG4UZmAYhctz6YvdFBzVczI=
+			</data>
+			<key>hash2</key>
+			<data>
+			IW5lHDt7NA9Zup532g6y+FFR3FoBOoo9o+g9dcT1dZ8=
+			</data>
+		</dict>
+		<key>PaymeFormCreditCardView.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			78h6WS01fYHKgQMQyprFSLP1Ng8=
+			</data>
+			<key>hash2</key>
+			<data>
+			bc+1dRO2ppn2L674FPPZq+fCzWlSqoiTX55F6LSSM5U=
+			</data>
+		</dict>
+		<key>PaymeFormExtraFieldsView.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			PQv9dv2dY3mtiYAnSHPZuHJA+X0=
+			</data>
+			<key>hash2</key>
+			<data>
+			6dFRuHdv+zR00Tl22/hWToGfZDmRBkEGHwpue7OAVNw=
+			</data>
+		</dict>
+		<key>PaymeFormInstallmentsView.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			CLkm/AyI0FaZOE5F59fYiPBIuUY=
+			</data>
+			<key>hash2</key>
+			<data>
+			PAb+KS3O6cwQBrBr4NRhtQN2HMXEFCBwwUoyGmedO88=
+			</data>
+		</dict>
+		<key>PaymeWalletCardCell.nib/objects-12.3+.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			kjOl4YEvKql0gUuYjyySPVBmdCo=
+			</data>
+			<key>hash2</key>
+			<data>
+			GJQpK1+CO9DWfaSrcZFmFrseMCEMUvbvj+paoQteazI=
+			</data>
+		</dict>
+		<key>PaymeWalletCardCell.nib/runtime.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			68oHq65vAPCCm+Fx8UId8dHrCqM=
+			</data>
+			<key>hash2</key>
+			<data>
+			3UzdSIryD4QPsae1b8tNyrM6Wqvcym9TzFHrFW6PkvY=
+			</data>
+		</dict>
+		<key>PaymeWalletNewCardCell.nib/objects-12.3+.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			/glp2JX8ONHm1NvDXclSRrCAl2c=
+			</data>
+			<key>hash2</key>
+			<data>
+			qMv3g0wT4zluXx8mPCE5E6ypUtOVqaWtz2w7ZB84b0o=
+			</data>
+		</dict>
+		<key>PaymeWalletNewCardCell.nib/runtime.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			eOV7j/2je6Y+OdG2TIxHj7zitYI=
+			</data>
+			<key>hash2</key>
+			<data>
+			MXgIcFFXQ45/GxM4vepZD9OkD+3Qk1UW502+cQkEjEw=
 			</data>
 		</dict>
 		<key>ResultScreenView.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			7fspT0TYQkIe8arwcaksfIrzeio=
+			n5ynMVMoCWxeiaJapuMLKurIaRo=
 			</data>
 			<key>hash2</key>
 			<data>
-			P+4tIB3CwFptYuQVXfBrI6TsOLw/wYMvlVspwrt/cBY=
+			ylE0OkfmYbtU1lImog7m0AVIns2vPi6cqACCXsL8N9s=
 			</data>
 		</dict>
 		<key>ResultScreenView.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			U8pbrKosGq0owl94OZxXavm/byo=
+			HnS9NRrdoPjtMKUsB+9dveFC2gE=
 			</data>
 			<key>hash2</key>
 			<data>
-			7zDOrgsDJoyXkarC39Exb1Z7UISVAQ/c10/91bt8zDQ=
+			dEmlEAWBisbr18ygp/bOIJmQUTGaU+7Fc9fABi4PFgQ=
 			</data>
 		</dict>
 	</dict>

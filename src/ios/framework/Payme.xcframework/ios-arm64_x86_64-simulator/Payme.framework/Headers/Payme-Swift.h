@@ -263,7 +263,107 @@ SWIFT_PROTOCOL("_TtP5Payme10AnchorView_")
 @property (nonatomic, readonly, strong) UIView * _Nonnull plainView;
 @end
 
+@protocol CollectionSwipableCellExtensionDelegate;
+@class UICollectionView;
+@class UITableView;
+
+SWIFT_CLASS("_TtC5Payme31CollectionSwipableCellExtension")
+@interface CollectionSwipableCellExtension : NSObject
+/// Swipable extension delegate
+/// *
+@property (nonatomic, weak) id <CollectionSwipableCellExtensionDelegate> _Nullable delegate;
+/// Enable/disable swipable functionality
+/// *
+@property (nonatomic) BOOL isEnabled;
+/// Initialization with UICollectionView
+/// *
+- (nonnull instancetype)initWithCollectionView:(UICollectionView * _Nonnull)collectionView OBJC_DESIGNATED_INITIALIZER;
+/// Initialization with UITableView
+/// *
+- (nonnull instancetype)initWithTableView:(UITableView * _Nonnull)tableView OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+@class NSIndexPath;
+
+@interface CollectionSwipableCellExtension (SWIFT_EXTENSION(Payme))
+/// Open actions for cell at specified index path
+/// *
+- (void)openActionsForCellAt:(NSIndexPath * _Nonnull)indexPath animated:(BOOL)animated;
+/// Open actions for cell at specified index path with specified width
+/// *
+- (void)openActionsForCellAt:(NSIndexPath * _Nonnull)indexPath visibleWidth:(CGFloat)visibleWidth animated:(BOOL)animated;
+/// Close opened actions
+/// *
+- (void)closeAllActionsWithAnimated:(BOOL)animated;
+@end
+
+@protocol CollectionSwipableCellLayout;
+
+/// Swipable extension delegate
+/// *
+SWIFT_PROTOCOL("_TtP5Payme39CollectionSwipableCellExtensionDelegate_")
+@protocol CollectionSwipableCellExtensionDelegate
+/// Is needed show swipable buttons in cell on indexPath
+/// *
+- (BOOL)isSwipableWithItemAt:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+/// Return swipable buttons layout for cell on indexPath
+/// *
+- (id <CollectionSwipableCellLayout> _Nullable)swipableActionsLayoutForItemAt:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+/// Layout of swipable buttons
+/// *
+SWIFT_PROTOCOL("_TtP5Payme28CollectionSwipableCellLayout_")
+@protocol CollectionSwipableCellLayout
+/// Container view for action buttons
+/// *
+@property (nonatomic, readonly, strong) UIView * _Nonnull actionsView;
+/// Width of opened buttons
+/// *
+- (CGFloat)swipingAreaWidth SWIFT_WARN_UNUSED_RESULT;
+/// Swipable buttons inset for case when swipable area has some margin from cell’s content
+/// *
+- (CGFloat)swipingAreaInset SWIFT_WARN_UNUSED_RESULT;
+/// Initialization of actionsView and its subviews
+/// *
+- (void)setupActionsView;
+/// Method for set frames of action buttons
+/// *
+- (void)layoutActionsView;
+/// Call after long swipe when swipable area is fully opened
+/// *
+- (void)cellDidFullOpen;
+/// Use or not haptic feedback on full open
+/// *
+- (BOOL)hapticFeedbackIsEnabled SWIFT_WARN_UNUSED_RESULT;
+@end
+
+@class UIButton;
+@class UIImage;
 @class UIColor;
+
+/// Simple layout with one swipable button
+/// *
+SWIFT_CLASS("_TtC5Payme37CollectionSwipableCellOneButtonLayout")
+@interface CollectionSwipableCellOneButtonLayout : NSObject <CollectionSwipableCellLayout>
+@property (nonatomic, copy) void (^ _Nullable action)(void);
+@property (nonatomic, readonly, strong) UIView * _Nonnull actionsView;
+@property (nonatomic, readonly, strong) UIButton * _Nonnull button;
+@property (nonatomic, readonly) UIUserInterfaceLayoutDirection direction;
+- (CGFloat)swipingAreaWidth SWIFT_WARN_UNUSED_RESULT;
+- (CGFloat)swipingAreaInset SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)initWithIcon:(UIImage * _Nullable)icon bgColor:(UIColor * _Nonnull)bgColor buttonWidth:(CGFloat)buttonWidth insets:(UIEdgeInsets)insets direction:(UIUserInterfaceLayoutDirection)direction fullOpenInset:(CGFloat)fullOpenInset OBJC_DESIGNATED_INITIALIZER;
+- (void)setupActionsView;
+- (void)layoutActionsView;
+- (void)cellDidFullOpen;
+- (BOOL)hapticFeedbackIsEnabled SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
 @class UIFont;
 @class NSCoder;
 
@@ -311,7 +411,6 @@ SWIFT_CLASS("_TtC5Payme8DropDown")
 @end
 
 
-
 @class UIEvent;
 
 @interface DropDown (SWIFT_EXTENSION(Payme))
@@ -319,8 +418,7 @@ SWIFT_CLASS("_TtC5Payme8DropDown")
 @end
 
 
-@class UITableView;
-@class NSIndexPath;
+
 @class UITableViewCell;
 
 @interface DropDown (SWIFT_EXTENSION(Payme)) <UITableViewDataSource, UITableViewDelegate>
@@ -377,6 +475,13 @@ SWIFT_CLASS("_TtC5Payme12DropDownCell")
 SWIFT_CLASS("_TtC5Payme23PaymeAuthenticationData")
 @interface PaymeAuthenticationData : NSObject
 - (nonnull instancetype)initWithTdsChallengeInd:(NSString * _Nonnull)tdsChallengeInd OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC5Payme10PaymeBrand")
+@interface PaymeBrand : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
@@ -509,6 +614,24 @@ SWIFT_CLASS("_TtC5Payme15PaymeWalletData")
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
 
+@class UICollectionViewLayoutAttributes;
+@class UICollectionViewUpdateItem;
+
+SWIFT_CLASS("_TtC5Payme21PaymeWalletFlowLayout")
+@interface PaymeWalletFlowLayout : UICollectionViewFlowLayout
+@property (nonatomic, readonly) CGSize collectionViewContentSize;
+- (void)prepareLayout;
+- (UICollectionViewLayoutAttributes * _Nullable)layoutAttributesForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (NSArray<UICollectionViewLayoutAttributes *> * _Nullable)layoutAttributesForElementsInRect:(CGRect)rect SWIFT_WARN_UNUSED_RESULT;
+- (UICollectionViewLayoutAttributes * _Nullable)finalLayoutAttributesForDisappearingItemAtIndexPath:(NSIndexPath * _Nonnull)itemIndexPath SWIFT_WARN_UNUSED_RESULT;
+- (UICollectionViewLayoutAttributes * _Nullable)initialLayoutAttributesForAppearingItemAtIndexPath:(NSIndexPath * _Nonnull)itemIndexPath SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds SWIFT_WARN_UNUSED_RESULT;
+- (void)prepareForCollectionViewUpdates:(NSArray<UICollectionViewUpdateItem *> * _Nonnull)updateItems;
+- (void)finalizeCollectionViewUpdates;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
 
 SWIFT_CLASS("_TtC5Payme26PaymentIntallmentsResponse")
 @interface PaymentIntallmentsResponse : NSObject
@@ -536,84 +659,31 @@ SWIFT_CLASS("_TtC5Payme22PaymentProcessResponse")
 @end
 
 
-SWIFT_CLASS("_TtC5Payme6PopTip")
-@interface PopTip : UIView
-/// The <code>UIColor</code> of the text
-@property (nonatomic, strong) UIColor * _Nonnull textColor;
-/// The <code>NSTextAlignment</code> of the text
-@property (nonatomic) NSTextAlignment textAlignment;
-/// The <code>UIColor</code> for the poptip’s background
-@property (nonatomic, strong) UIColor * _Nonnull bubbleColor;
-/// The <code>UIColor</code> for the poptip’s bordedr
-@property (nonatomic, strong) UIColor * _Nonnull borderColor;
-/// The width for the poptip’s border
-@property (nonatomic) CGFloat borderWidth;
-/// The <code>Double</code> with the poptip’s border radius
-@property (nonatomic) CGFloat cornerRadius;
-/// The <code>BOOL</code> that determines wether the poptip is rounded. If set to <code>true</code> the radius will equal <code>frame.height / 2</code>
-@property (nonatomic) BOOL isRounded;
-/// Holds the offset between the poptip and origin
-@property (nonatomic) CGFloat offset;
-/// Holds the CGFloat with the padding used for the inner text
-@property (nonatomic) CGFloat padding;
-/// Holds the insets setting for padding different direction
-@property (nonatomic) UIEdgeInsets edgeInsets;
-/// Holds the CGSize with the width and height of the arrow
-@property (nonatomic) CGSize arrowSize;
-/// Holds the NSTimeInterval with the duration of the revealing animation
-@property (nonatomic) NSTimeInterval animationIn;
-/// Holds the NSTimeInterval with the duration of the disappearing animation
-@property (nonatomic) NSTimeInterval animationOut;
-/// Holds the NSTimeInterval with the delay of the revealing animation
-@property (nonatomic) NSTimeInterval delayIn;
-/// Holds the NSTimeInterval with the delay of the disappearing animation
-@property (nonatomic) NSTimeInterval delayOut;
-/// Holds the NSTimeInterval with the duration of the action animation
-@property (nonatomic) NSTimeInterval actionAnimationIn;
-/// Holds the NSTimeInterval with the duration of the action stop animation
-@property (nonatomic) NSTimeInterval actionAnimationOut;
-/// Holds the NSTimeInterval with the delay of the action animation
-@property (nonatomic) NSTimeInterval actionDelayIn;
-/// Holds the NSTimeInterval with the delay of the action animation stop
-@property (nonatomic) NSTimeInterval actionDelayOut;
-/// CGfloat value that determines the leftmost margin from the screen
-@property (nonatomic) CGFloat edgeMargin;
-/// Holds the offset between the bubble and origin
-@property (nonatomic) CGFloat bubbleOffset;
-/// Color of the mask that is going to dim the background when the pop up is visible
-@property (nonatomic, strong) UIColor * _Nonnull maskColor;
-/// Flag to enable or disable background mask
-@property (nonatomic) BOOL shouldShowMask;
-/// A boolean value that determines whether the poptip is dismissed on tap.
-@property (nonatomic) BOOL shouldDismissOnTap;
-/// A boolean value that determines whether to dismiss when tapping outside the poptip.
-@property (nonatomic) BOOL shouldDismissOnTapOutside;
-/// A boolean value that determines whether to dismiss when swiping outside the poptip.
-@property (nonatomic) BOOL shouldDismissOnSwipeOutside;
-/// A boolean value that determines if the action animation should start automatically when the poptip is shown
-@property (nonatomic) BOOL startActionAnimationOnShow;
-/// Custom draw override
-/// \param rect the rect occupied by the view
-///
-- (void)drawRect:(CGRect)rect;
-/// Hides the poptip and removes it from the view. The property <code>isVisible</code> will be set to <code>false</code> when the animation is complete and the poptip is removed from the parent view.
-/// \param forced Force the removal, ignoring running animations
-///
-- (void)hideWithForced:(BOOL)forced;
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
 @interface UIBarButtonItem (SWIFT_EXTENSION(Payme)) <AnchorView>
 @property (nonatomic, readonly, strong) UIView * _Nonnull plainView;
 @end
 
 
 
+@interface UICollectionViewCell (SWIFT_EXTENSION(Payme))
+/// Call this method in collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) of UICollectionViewDelegate of UITableViewDelegate
+/// *
+- (void)resetSwipableActions;
+@end
 
+
+
+
+@interface UITableViewCell (SWIFT_EXTENSION(Payme))
+/// <ul>
+///   <li>
+///     Call this method in tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath)
+///   </li>
+///   <li>
+///   </li>
+/// </ul>
+- (void)resetSwipableActions;
+@end
 
 
 
@@ -997,7 +1067,107 @@ SWIFT_PROTOCOL("_TtP5Payme10AnchorView_")
 @property (nonatomic, readonly, strong) UIView * _Nonnull plainView;
 @end
 
+@protocol CollectionSwipableCellExtensionDelegate;
+@class UICollectionView;
+@class UITableView;
+
+SWIFT_CLASS("_TtC5Payme31CollectionSwipableCellExtension")
+@interface CollectionSwipableCellExtension : NSObject
+/// Swipable extension delegate
+/// *
+@property (nonatomic, weak) id <CollectionSwipableCellExtensionDelegate> _Nullable delegate;
+/// Enable/disable swipable functionality
+/// *
+@property (nonatomic) BOOL isEnabled;
+/// Initialization with UICollectionView
+/// *
+- (nonnull instancetype)initWithCollectionView:(UICollectionView * _Nonnull)collectionView OBJC_DESIGNATED_INITIALIZER;
+/// Initialization with UITableView
+/// *
+- (nonnull instancetype)initWithTableView:(UITableView * _Nonnull)tableView OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+@class NSIndexPath;
+
+@interface CollectionSwipableCellExtension (SWIFT_EXTENSION(Payme))
+/// Open actions for cell at specified index path
+/// *
+- (void)openActionsForCellAt:(NSIndexPath * _Nonnull)indexPath animated:(BOOL)animated;
+/// Open actions for cell at specified index path with specified width
+/// *
+- (void)openActionsForCellAt:(NSIndexPath * _Nonnull)indexPath visibleWidth:(CGFloat)visibleWidth animated:(BOOL)animated;
+/// Close opened actions
+/// *
+- (void)closeAllActionsWithAnimated:(BOOL)animated;
+@end
+
+@protocol CollectionSwipableCellLayout;
+
+/// Swipable extension delegate
+/// *
+SWIFT_PROTOCOL("_TtP5Payme39CollectionSwipableCellExtensionDelegate_")
+@protocol CollectionSwipableCellExtensionDelegate
+/// Is needed show swipable buttons in cell on indexPath
+/// *
+- (BOOL)isSwipableWithItemAt:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+/// Return swipable buttons layout for cell on indexPath
+/// *
+- (id <CollectionSwipableCellLayout> _Nullable)swipableActionsLayoutForItemAt:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+/// Layout of swipable buttons
+/// *
+SWIFT_PROTOCOL("_TtP5Payme28CollectionSwipableCellLayout_")
+@protocol CollectionSwipableCellLayout
+/// Container view for action buttons
+/// *
+@property (nonatomic, readonly, strong) UIView * _Nonnull actionsView;
+/// Width of opened buttons
+/// *
+- (CGFloat)swipingAreaWidth SWIFT_WARN_UNUSED_RESULT;
+/// Swipable buttons inset for case when swipable area has some margin from cell’s content
+/// *
+- (CGFloat)swipingAreaInset SWIFT_WARN_UNUSED_RESULT;
+/// Initialization of actionsView and its subviews
+/// *
+- (void)setupActionsView;
+/// Method for set frames of action buttons
+/// *
+- (void)layoutActionsView;
+/// Call after long swipe when swipable area is fully opened
+/// *
+- (void)cellDidFullOpen;
+/// Use or not haptic feedback on full open
+/// *
+- (BOOL)hapticFeedbackIsEnabled SWIFT_WARN_UNUSED_RESULT;
+@end
+
+@class UIButton;
+@class UIImage;
 @class UIColor;
+
+/// Simple layout with one swipable button
+/// *
+SWIFT_CLASS("_TtC5Payme37CollectionSwipableCellOneButtonLayout")
+@interface CollectionSwipableCellOneButtonLayout : NSObject <CollectionSwipableCellLayout>
+@property (nonatomic, copy) void (^ _Nullable action)(void);
+@property (nonatomic, readonly, strong) UIView * _Nonnull actionsView;
+@property (nonatomic, readonly, strong) UIButton * _Nonnull button;
+@property (nonatomic, readonly) UIUserInterfaceLayoutDirection direction;
+- (CGFloat)swipingAreaWidth SWIFT_WARN_UNUSED_RESULT;
+- (CGFloat)swipingAreaInset SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)initWithIcon:(UIImage * _Nullable)icon bgColor:(UIColor * _Nonnull)bgColor buttonWidth:(CGFloat)buttonWidth insets:(UIEdgeInsets)insets direction:(UIUserInterfaceLayoutDirection)direction fullOpenInset:(CGFloat)fullOpenInset OBJC_DESIGNATED_INITIALIZER;
+- (void)setupActionsView;
+- (void)layoutActionsView;
+- (void)cellDidFullOpen;
+- (BOOL)hapticFeedbackIsEnabled SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
 @class UIFont;
 @class NSCoder;
 
@@ -1045,7 +1215,6 @@ SWIFT_CLASS("_TtC5Payme8DropDown")
 @end
 
 
-
 @class UIEvent;
 
 @interface DropDown (SWIFT_EXTENSION(Payme))
@@ -1053,8 +1222,7 @@ SWIFT_CLASS("_TtC5Payme8DropDown")
 @end
 
 
-@class UITableView;
-@class NSIndexPath;
+
 @class UITableViewCell;
 
 @interface DropDown (SWIFT_EXTENSION(Payme)) <UITableViewDataSource, UITableViewDelegate>
@@ -1111,6 +1279,13 @@ SWIFT_CLASS("_TtC5Payme12DropDownCell")
 SWIFT_CLASS("_TtC5Payme23PaymeAuthenticationData")
 @interface PaymeAuthenticationData : NSObject
 - (nonnull instancetype)initWithTdsChallengeInd:(NSString * _Nonnull)tdsChallengeInd OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC5Payme10PaymeBrand")
+@interface PaymeBrand : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
@@ -1243,6 +1418,24 @@ SWIFT_CLASS("_TtC5Payme15PaymeWalletData")
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
 
+@class UICollectionViewLayoutAttributes;
+@class UICollectionViewUpdateItem;
+
+SWIFT_CLASS("_TtC5Payme21PaymeWalletFlowLayout")
+@interface PaymeWalletFlowLayout : UICollectionViewFlowLayout
+@property (nonatomic, readonly) CGSize collectionViewContentSize;
+- (void)prepareLayout;
+- (UICollectionViewLayoutAttributes * _Nullable)layoutAttributesForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (NSArray<UICollectionViewLayoutAttributes *> * _Nullable)layoutAttributesForElementsInRect:(CGRect)rect SWIFT_WARN_UNUSED_RESULT;
+- (UICollectionViewLayoutAttributes * _Nullable)finalLayoutAttributesForDisappearingItemAtIndexPath:(NSIndexPath * _Nonnull)itemIndexPath SWIFT_WARN_UNUSED_RESULT;
+- (UICollectionViewLayoutAttributes * _Nullable)initialLayoutAttributesForAppearingItemAtIndexPath:(NSIndexPath * _Nonnull)itemIndexPath SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds SWIFT_WARN_UNUSED_RESULT;
+- (void)prepareForCollectionViewUpdates:(NSArray<UICollectionViewUpdateItem *> * _Nonnull)updateItems;
+- (void)finalizeCollectionViewUpdates;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
 
 SWIFT_CLASS("_TtC5Payme26PaymentIntallmentsResponse")
 @interface PaymentIntallmentsResponse : NSObject
@@ -1270,84 +1463,31 @@ SWIFT_CLASS("_TtC5Payme22PaymentProcessResponse")
 @end
 
 
-SWIFT_CLASS("_TtC5Payme6PopTip")
-@interface PopTip : UIView
-/// The <code>UIColor</code> of the text
-@property (nonatomic, strong) UIColor * _Nonnull textColor;
-/// The <code>NSTextAlignment</code> of the text
-@property (nonatomic) NSTextAlignment textAlignment;
-/// The <code>UIColor</code> for the poptip’s background
-@property (nonatomic, strong) UIColor * _Nonnull bubbleColor;
-/// The <code>UIColor</code> for the poptip’s bordedr
-@property (nonatomic, strong) UIColor * _Nonnull borderColor;
-/// The width for the poptip’s border
-@property (nonatomic) CGFloat borderWidth;
-/// The <code>Double</code> with the poptip’s border radius
-@property (nonatomic) CGFloat cornerRadius;
-/// The <code>BOOL</code> that determines wether the poptip is rounded. If set to <code>true</code> the radius will equal <code>frame.height / 2</code>
-@property (nonatomic) BOOL isRounded;
-/// Holds the offset between the poptip and origin
-@property (nonatomic) CGFloat offset;
-/// Holds the CGFloat with the padding used for the inner text
-@property (nonatomic) CGFloat padding;
-/// Holds the insets setting for padding different direction
-@property (nonatomic) UIEdgeInsets edgeInsets;
-/// Holds the CGSize with the width and height of the arrow
-@property (nonatomic) CGSize arrowSize;
-/// Holds the NSTimeInterval with the duration of the revealing animation
-@property (nonatomic) NSTimeInterval animationIn;
-/// Holds the NSTimeInterval with the duration of the disappearing animation
-@property (nonatomic) NSTimeInterval animationOut;
-/// Holds the NSTimeInterval with the delay of the revealing animation
-@property (nonatomic) NSTimeInterval delayIn;
-/// Holds the NSTimeInterval with the delay of the disappearing animation
-@property (nonatomic) NSTimeInterval delayOut;
-/// Holds the NSTimeInterval with the duration of the action animation
-@property (nonatomic) NSTimeInterval actionAnimationIn;
-/// Holds the NSTimeInterval with the duration of the action stop animation
-@property (nonatomic) NSTimeInterval actionAnimationOut;
-/// Holds the NSTimeInterval with the delay of the action animation
-@property (nonatomic) NSTimeInterval actionDelayIn;
-/// Holds the NSTimeInterval with the delay of the action animation stop
-@property (nonatomic) NSTimeInterval actionDelayOut;
-/// CGfloat value that determines the leftmost margin from the screen
-@property (nonatomic) CGFloat edgeMargin;
-/// Holds the offset between the bubble and origin
-@property (nonatomic) CGFloat bubbleOffset;
-/// Color of the mask that is going to dim the background when the pop up is visible
-@property (nonatomic, strong) UIColor * _Nonnull maskColor;
-/// Flag to enable or disable background mask
-@property (nonatomic) BOOL shouldShowMask;
-/// A boolean value that determines whether the poptip is dismissed on tap.
-@property (nonatomic) BOOL shouldDismissOnTap;
-/// A boolean value that determines whether to dismiss when tapping outside the poptip.
-@property (nonatomic) BOOL shouldDismissOnTapOutside;
-/// A boolean value that determines whether to dismiss when swiping outside the poptip.
-@property (nonatomic) BOOL shouldDismissOnSwipeOutside;
-/// A boolean value that determines if the action animation should start automatically when the poptip is shown
-@property (nonatomic) BOOL startActionAnimationOnShow;
-/// Custom draw override
-/// \param rect the rect occupied by the view
-///
-- (void)drawRect:(CGRect)rect;
-/// Hides the poptip and removes it from the view. The property <code>isVisible</code> will be set to <code>false</code> when the animation is complete and the poptip is removed from the parent view.
-/// \param forced Force the removal, ignoring running animations
-///
-- (void)hideWithForced:(BOOL)forced;
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
 @interface UIBarButtonItem (SWIFT_EXTENSION(Payme)) <AnchorView>
 @property (nonatomic, readonly, strong) UIView * _Nonnull plainView;
 @end
 
 
 
+@interface UICollectionViewCell (SWIFT_EXTENSION(Payme))
+/// Call this method in collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) of UICollectionViewDelegate of UITableViewDelegate
+/// *
+- (void)resetSwipableActions;
+@end
 
+
+
+
+@interface UITableViewCell (SWIFT_EXTENSION(Payme))
+/// <ul>
+///   <li>
+///     Call this method in tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath)
+///   </li>
+///   <li>
+///   </li>
+/// </ul>
+- (void)resetSwipableActions;
+@end
 
 
 

@@ -2,7 +2,7 @@
 #import <Cordova/CDVPlugin.h>
 #import <Payme/Payme.h>
 #import "PayViewController.h"
-@interface SdkPayme : CDVPlugin<PaymeMobileDelegate>
+@interface SdkPayme : CDVPlugin<PaymeClientDelegate>
 
 + (SdkPayme *)sdkPayme;
 
