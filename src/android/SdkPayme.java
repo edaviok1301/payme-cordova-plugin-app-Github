@@ -1,26 +1,12 @@
 package sdkpayme;
 
 import android.util.Log;
-import android.content.Context;
-import android.util.Base64;
 
 import androidx.annotation.NonNull;
 
-import java.io.UnsupportedEncodingException;
-import java.security.InvalidKeyException;
-import java.security.KeyFactory;
-import java.security.NoSuchAlgorithmException;
-import java.security.PrivateKey;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.PKCS8EncodedKeySpec;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-
-import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
 
 // Cordova-required packages
 import org.apache.cordova.CallbackContext;
@@ -44,32 +30,28 @@ import com.google.gson.Gson;
 public class SdkPayme extends CordovaPlugin implements PaymeClientDelegate {
 
     private static final String TAG = "SdkPayme";
-    private Context context=null;
     private CallbackContext callbackContext = null;
-    String text_amount =  "";
 
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
     }
 
     @Override
-    public boolean execute(String action,final JSONArray args, CallbackContext newcallbackContext) throws JSONException {
+    public boolean execute(String action,final JSONArray args, CallbackContext newcallbackContext){
         callbackContext=newcallbackContext;
         Log.d(TAG, "execute plugin");
         if (action.equals("coolMethod")) {            
             Log.d(TAG,"Into Coolmethod of If");
-            this.cordova.getActivity().runOnUiThread(new Runnable(){
-                public void run(){
-                    try{
-                        Log.d(TAG,"Into runOnUiThread");
-                        JSONObject Jobject = new JSONObject(args.getString(0));
-                        coolMethod(Jobject);
-                    }catch(Exception e){
-                        callbackContext.error(e.getMessage());
-                        Log.d(TAG,"Error"+e.getMessage());
-                    }
-                    
+            this.cordova.getActivity().runOnUiThread(() -> {
+                try{
+                    Log.d(TAG,"Into runOnUiThread");
+                    JSONObject jsonObject = new JSONObject(args.getString(0));
+                    coolMethod(jsonObject);
+                } catch (Exception e){
+                    callbackContext.error(e.getMessage());
+                    Log.d(TAG,"Error"+e.getMessage());
                 }
+
             });
             return true;
         }
@@ -78,65 +60,91 @@ public class SdkPayme extends CordovaPlugin implements PaymeClientDelegate {
         return false;
     }
 
-    private final void coolMethod(final JSONObject params) throws JSONException{
+    private void coolMethod(final JSONObject params) throws JSONException{
+
         Log.d(TAG,"Into coolMethod method");
+        launchPayme(params);
 
-        final String text_currency_code ="604"; //params.getString("code");
-        final String text_currency_symbol ="S/"; //params.getString("symbol");
+    }
 
-        final String text_number ="98765432"; //params.getString("operationNumber");//decrypt(params.getString("operationNumber"));
-        
-        text_amount="10.55"; //params.getString("amount");
-        final String text_product_description = "Recargas"; //params.getString("productDescription");
-        final String text_locale = "es_PE"; //params.getString("locale");
-        final String text_user ="1234"; //params.getString("userCommerce");
-        final String text_plan_quota = params.getString("planQuota");
-        final String spinner_brands = "VISA,MSCD,AMEX,DINC"; //params.getString("brands");
-        final String[] brandsArray = spinner_brands.split(",");
+    private PaymeRequest setParamsMerchant(JSONObject request)throws JSONException{
 
-        final String signatureKey = params.getString("signatureKey");//decrypt(params.getString("signatureKey"));
-        final String text_merchant ="13517"; params.getString("identifier");//decrypt(params.getString("identifier"));
+        String firstName = request.getString("firstName");
+        String lastName = request.getString("lastName");
+        String email = request.getString("email");
+        String address1 = request.getString("address1");
+        String address2 = request.getString("address2");
+        String countryCode = request.getString("countryCode");
+        String countryNumber = request.getString("countryNumber");
+        String zip = request.getString("zip");
+        String city = request.getString("city");
+        String state = request.getString("state");
+        String homePhone = request.getString("homePhone");
+        String workPhone = request.getString("workPhone");
+        String mobilePhone = request.getString("mobilePhone");
 
-        final List<String> brands = Arrays.asList(spinner_brands.split(","));
+        String currencyCode = request.getString("currencyCode");
+        String currencySymbol = request.getString("currencySymbol");
 
-        PaymePersonData paymePersonData = new PaymePersonData("Levis", "Silvestre", "levis.silvestre@alignet.com",
-                "Av casimiro Ulloa 333","Av casimiro Ulloa 333", "PE","604","18",
-                "Lima", "Lima","51997047941","51997047941","51997047941");
+        String operationNumber = request.getString("operationNumber");
+        String operationDescription = request.getString("productDescription");
+        String amount = request.getString("amount");
 
-        HashMap<String,String> reservedData = new HashMap<String,String>();
-        reservedData.put("reserved1","1");
+        String name = request.getString("name");
+        String value = request.getString("value");
+        HashMap<String,String> reservedData = new HashMap<>();
+        reservedData.put(name,value);
         reservedData.put("reserved2","2");
+        reservedData.put("reserved3","3");
 
-        PaymeAuthenticationData paymeAuthenticationData = new PaymeAuthenticationData("01");
+        String userCode = request.getString("userCommerce");
+        String planQuota = request.getString("planQuota");
+        boolean installments = planQuota.equals("1");
 
-        PaymeMerchantData paymeMerchantData = new PaymeMerchantData(new PaymeOperationData("000001","Recargas","10.55",new PaymeCurrencyData("604","S/")),true,paymePersonData,paymePersonData);
+        String authentication = request.getString("authentication");
 
-        PaymeFeatureData paymeFeatureData = new PaymeFeatureData(reservedData,new PaymeWalletData(true,text_user),new PaymeInstallmentsData(false),paymeAuthenticationData);
+        String locale = request.getString("locale");
+        String settingBrands = request.getString("brands");
+        List<String> brands = Arrays.asList(settingBrands.split(","));
 
-        PaymeSettingData paymeSettingData = new PaymeSettingData("es_PE",brands);
+        PaymePersonData paymePersonData = new PaymePersonData(firstName, lastName, email,
+                address1,address2, countryCode,countryNumber,zip,
+                city, state,mobilePhone,homePhone,workPhone);
 
+        PaymeCurrencyData paymeCurrencyData = new PaymeCurrencyData(currencyCode,currencySymbol);
 
+        PaymeOperationData paymeOperationData = new PaymeOperationData(operationNumber,operationDescription,amount,paymeCurrencyData);
 
-        PaymeRequest paymeRequest = new PaymeRequest(paymeMerchantData, paymeFeatureData, paymeSettingData);
+        PaymeMerchantData paymeMerchantData = new PaymeMerchantData(paymeOperationData,true,paymePersonData,paymePersonData);
 
-        String environment=params.getString("environment");
-        PaymeEnvironment paymeEnvironment = PaymeEnvironment.DEVELOPMENT;
-        switch (environment){
-            case "1":
+        PaymeSettingData paymeSettingData = new PaymeSettingData(locale,brands);
+
+        PaymeWalletData paymeWalletData = new PaymeWalletData(true,userCode);
+
+        PaymeFeatureData paymeFeatureData = new PaymeFeatureData(reservedData,paymeWalletData,new PaymeInstallmentsData(installments),new PaymeAuthenticationData(authentication));
+
+        return new PaymeRequest(paymeMerchantData,paymeFeatureData,paymeSettingData);
+    }
+
+    private void launchPayme(JSONObject request) throws JSONException{
+        String environment=request.getString("environment");
+        PaymeEnvironment paymeEnvironment = (environment.equals("1"))?PaymeEnvironment.PRODUCTION:PaymeEnvironment.DEVELOPMENT;
+        switch (paymeEnvironment){
+            case PRODUCTION:
                 Log.d(TAG,"GET PROD");
-                paymeEnvironment = PaymeEnvironment.PRODUCTION;
                 break;
-            case "2":
+            case DEVELOPMENT:
                 Log.d(TAG,"GET DEV");
-                paymeEnvironment = PaymeEnvironment.DEVELOPMENT;
                 break;
         }
 
-        PaymeClient paymeClient = new PaymeClient(SdkPayme.this,text_merchant);
+        PaymeRequest paymeRequest = setParamsMerchant(request);
+
+        PaymeClient paymeClient = new PaymeClient(SdkPayme.this,request.getString("identifier"));
         paymeClient.setEnvironment(paymeEnvironment);
         String gson = new Gson().toJson(paymeRequest);
         Log.i(TAG+"-request",gson);
-        Log.i(TAG+"-merchantId",text_merchant);
+        Log.i(TAG+"-merchantId",request.getString("identifier"));
         Log.i(TAG+"-environment",paymeEnvironment.toString());
 
         paymeClient.authorizeTransaction(cordova.getActivity(), paymeRequest);
