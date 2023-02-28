@@ -1,5 +1,7 @@
 package sdkpayme;
 
+import android.content.Context;
+import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -23,12 +25,14 @@ import com.alignet.payme.PaymeClient;
 import com.alignet.payme.PaymeClientDelegate;
 import com.alignet.payme.util.PaymeEnvironment;
 import com.alignet.payme.model.*;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.gson.Gson;
 /**
  * This class echoes a string called from JavaScript.
  */
 public class SdkPayme extends CordovaPlugin implements PaymeClientDelegate {
 
+    private FirebaseAnalytics mFirebaseAnalytics;
     private static final String TAG = "SdkPayme";
     private CallbackContext callbackContext = null;
 
@@ -39,8 +43,11 @@ public class SdkPayme extends CordovaPlugin implements PaymeClientDelegate {
     @Override
     public boolean execute(String action,final JSONArray args, CallbackContext newcallbackContext){
         callbackContext=newcallbackContext;
+        final Context context = this.cordova.getActivity().getApplicationContext();
         Log.d(TAG, "execute plugin");
-        if (action.equals("coolMethod")) {            
+        if (action.equals("coolMethod")) {
+            mFirebaseAnalytics = FirebaseAnalytics.getInstance(context);
+            mFirebaseAnalytics.setAnalyticsCollectionEnabled(true);
             Log.d(TAG,"Into Coolmethod of If");
             this.cordova.getActivity().runOnUiThread(() -> {
                 try{
@@ -151,32 +158,46 @@ public class SdkPayme extends CordovaPlugin implements PaymeClientDelegate {
 
     }
 
+    private Bundle logEvent(String eventCategory,String eventAction, String eventLabel){
+        Bundle bundle = new Bundle();
+        bundle.putString("eventCategory",eventCategory);
+        bundle.putString("eventAction",eventAction);
+        bundle.putString("eventLabel",eventLabel);
+        return bundle;
+    }
+
     @Override
     public void onNotificate(@NonNull PaymeInternalAction paymeInternalAction) {
         String notificate="NOTIFICATE";
         switch (paymeInternalAction) {
             case PRESS_PAY_BUTTON : {
                 Log.d(notificate,"El usuario presionó el boton pagar exitosamente.");
+                mFirebaseAnalytics.logEvent("InPasarela",logEvent("PRESS_PAY_BUTTON","click","El usuario presionó el boton pagar exitosamente."));
                 break;
             }
              case START_SCORING : {
                 Log.d(notificate,"Inicia el proceso de evaluación de riesgo.");
-                break;
+                 mFirebaseAnalytics.logEvent("InPasarela",logEvent("START_SCORING","scoring","Inicia el proceso de evaluación de riesgo."));
+                 break;
             }
             case END_SCORING : {
                 Log.d(notificate,"Termina el proceso de evaluación de riesgo.");
+                mFirebaseAnalytics.logEvent("InPasarela",logEvent("END_SCORING","scoring","Termina el proceso de evaluación de riesgo."));
                 break;
             }
             case START_TDS : {
                 Log.d(notificate,"Inicia el proceso de autenticación.");
+                mFirebaseAnalytics.logEvent("InPasarela",logEvent("START_TDS","tds","Inicia el proceso de autenticación."));
                 break;
             }
             case END_TDS : {
                 Log.d(notificate,"Termina el proceso de autenticación.");
+                mFirebaseAnalytics.logEvent("InPasarela",logEvent("END_TDS","tds","Termina el proceso de autenticación."));
                 break;
             }
             case START_AUTHORIZATION : {
                 Log.d(notificate, "Se inicia la autorización.");
+                mFirebaseAnalytics.logEvent("InPasarela",logEvent("START_AUTHORIZATION","authorization","Se inicia la autorización."));
                 break;
             }
             default: {
