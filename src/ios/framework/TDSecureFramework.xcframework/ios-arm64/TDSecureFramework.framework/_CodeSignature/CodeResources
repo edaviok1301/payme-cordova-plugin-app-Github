@@ -22,7 +22,7 @@
 		</data>
 		<key>Headers/TDSecureFramework-Swift.h</key>
 		<data>
-		hx9QEFPxT/J5/pKoZNbC9be8yJY=
+		P7LWIUUZMDFLJ0u0AxxMlopzu8M=
 		</data>
 		<key>Headers/TDSecureFramework.h</key>
 		<data>
@@ -30,47 +30,27 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		vUzbf45gNi6pbdSOcpSH9SUtHgo=
+		QWfpghv1xfGcRprB/ThJibblpK4=
 		</data>
-		<key>Modules/TDSecureFramework.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
+		<key>Modules/TDSecureFramework.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		WRoTqv/lNnXukSWnBE0CIOo6mts=
+		9piywS5xM7jhAtQZJmfVYN9KrHQ=
 		</data>
-		<key>Modules/TDSecureFramework.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
+		<key>Modules/TDSecureFramework.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		2Vm9TgqltdYR+ypdQWTt3ckOu4s=
+		cGrxYM4xTmx7MzowbKyjSpB3cXQ=
 		</data>
-		<key>Modules/TDSecureFramework.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
+		<key>Modules/TDSecureFramework.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		qu3awhKKmM5uNkp54+m3Bjan0lA=
+		oZ/tES5dj+b9C74/xoXmOxB1hjo=
 		</data>
-		<key>Modules/TDSecureFramework.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
+		<key>Modules/TDSecureFramework.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		2Vm9TgqltdYR+ypdQWTt3ckOu4s=
+		cGrxYM4xTmx7MzowbKyjSpB3cXQ=
 		</data>
-		<key>Modules/TDSecureFramework.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
+		<key>Modules/TDSecureFramework.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		jHrODQr9ac+3AT7fk5oUF0+vL7M=
-		</data>
-		<key>Modules/TDSecureFramework.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
-		<data>
-		WRoTqv/lNnXukSWnBE0CIOo6mts=
-		</data>
-		<key>Modules/TDSecureFramework.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
-		<data>
-		87jjMi60eQGoHFyGufp0CaiZpz0=
-		</data>
-		<key>Modules/TDSecureFramework.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
-		<data>
-		GU+ZNp5NDQ91xKW3xu4/7mVTax0=
-		</data>
-		<key>Modules/TDSecureFramework.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
-		<data>
-		87jjMi60eQGoHFyGufp0CaiZpz0=
-		</data>
-		<key>Modules/TDSecureFramework.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
-		<data>
-		Y4Fz8eNqjh05mpDl+XvLwL2wy2Y=
+		N4JscPMTTR/eQfcOyTw74zfs6Pg=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -115,7 +95,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Oa3nzGpQ6y2gMQOvAx86kxorbjVzCkhfLr9osX85i0A=
+			A7p+RNn59InUUGJDKWDSGjC6xJieZ5wTMRqPa7wGWIo=
 			</data>
 		</dict>
 		<key>Headers/TDSecureFramework.h</key>
@@ -125,74 +105,39 @@
 			hT87acS9IE64OFn6Qt8Rc4HLH/GAvajOLTCl+BiR0ow=
 			</data>
 		</dict>
-		<key>Modules/TDSecureFramework.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
+		<key>Modules/TDSecureFramework.swiftmodule/arm64-apple-ios.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			QQCAfej0b25jP+44N+grVYY6Ew+UdIjcGg29i+9eSfE=
+			hXGg4H5c8UTiqUAv2/bsF37Dtqk0gbpgr9vmHinmZP8=
 			</data>
 		</dict>
-		<key>Modules/TDSecureFramework.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
+		<key>Modules/TDSecureFramework.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			mcwrE69ObkWeAue5SNkwu5gEFVSJt99YOrUgQjXnqsQ=
+			BNedTkQuMMzPLwdZh9TyVosNR1xBchBrIXWbhksfU6M=
 			</data>
 		</dict>
-		<key>Modules/TDSecureFramework.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
+		<key>Modules/TDSecureFramework.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Crc/XbMZPtMNanDJmpdOh9FcAZXv61U30GS5K9ubXcQ=
+			ru8YU+RoEiCUYsZId+UM5usIw9PaqcPG0VzIOhky11g=
 			</data>
 		</dict>
-		<key>Modules/TDSecureFramework.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
+		<key>Modules/TDSecureFramework.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			mcwrE69ObkWeAue5SNkwu5gEFVSJt99YOrUgQjXnqsQ=
+			BNedTkQuMMzPLwdZh9TyVosNR1xBchBrIXWbhksfU6M=
 			</data>
 		</dict>
-		<key>Modules/TDSecureFramework.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
+		<key>Modules/TDSecureFramework.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			h9eZx5Nso+u11thWN76xCuqJXalxL/iaA+KyFyFiZBY=
-			</data>
-		</dict>
-		<key>Modules/TDSecureFramework.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			QQCAfej0b25jP+44N+grVYY6Ew+UdIjcGg29i+9eSfE=
-			</data>
-		</dict>
-		<key>Modules/TDSecureFramework.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			PnBqfNO0KLeaQRzLBU4xvwbv7b7Af942hch7MOTm0As=
-			</data>
-		</dict>
-		<key>Modules/TDSecureFramework.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			x5vVjZD3YO1vAE8sNKRqeOctMUhavRW2AAQ4vdCmZKE=
-			</data>
-		</dict>
-		<key>Modules/TDSecureFramework.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			PnBqfNO0KLeaQRzLBU4xvwbv7b7Af942hch7MOTm0As=
-			</data>
-		</dict>
-		<key>Modules/TDSecureFramework.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			a/5yJITaBX2t27GDfjsCgK5v0YouHQxibzS24QnBBJs=
+			CXxtEbXp4zGMXnmLzAt3zt7PBDWJGHNCYk8Y6zVil3c=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

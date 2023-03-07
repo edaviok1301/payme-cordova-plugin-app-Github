@@ -10503,6 +10503,16 @@
         ]
       },
       {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "TDSecureFramework",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
         "kind": "TypeDecl",
         "name": "Signer",
         "printedName": "Signer",
@@ -52298,146 +52308,146 @@
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/tds-sdk-ios\/TDSecureFramework\/TDSecureFramework\/TDSCore\/TDSConfiguration.swift",
       "kind": "StringLiteral",
       "offset": 709,
-      "length": 38,
-      "value": "\"https:\/\/uatalgreq.3dsecurekey.cloud\/\""
+      "length": 29,
+      "value": "\"https:\/\/api.dev.alignet.io\/\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/tds-sdk-ios\/TDSecureFramework\/TDSecureFramework\/TDSCore\/TDSConfiguration.swift",
       "kind": "StringLiteral",
-      "offset": 786,
+      "offset": 777,
       "length": 25,
       "value": "\"https:\/\/api.alignet.io\/\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/tds-sdk-ios\/TDSecureFramework\/TDSecureFramework\/TDSCore\/TDSConfiguration.swift",
       "kind": "StringLiteral",
-      "offset": 893,
+      "offset": 884,
       "length": 39,
       "value": "\"https:\/\/multimarca.3dsecurekey.cloud\/\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/tds-sdk-ios\/TDSecureFramework\/TDSecureFramework\/TDSCore\/TDSConfiguration.swift",
       "kind": "StringLiteral",
-      "offset": 971,
+      "offset": 962,
       "length": 36,
       "value": "\"https:\/\/uat3dss.3dsecurekey.cloud\/\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/tds-sdk-ios\/TDSecureFramework\/TDSecureFramework\/TDSCore\/TDSConfiguration.swift",
       "kind": "StringLiteral",
-      "offset": 1046,
+      "offset": 1037,
       "length": 29,
       "value": "\"https:\/\/3ds.api.alignet.io\/\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/tds-sdk-ios\/TDSecureFramework\/TDSecureFramework\/TDSCore\/TDSConfiguration.swift",
       "kind": "StringLiteral",
-      "offset": 1170,
+      "offset": 1161,
       "length": 38,
       "value": "\"ae879cd5-bb38-4ce6-b2f5-8db9e56df973\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/tds-sdk-ios\/TDSecureFramework\/TDSecureFramework\/TDSCore\/TDSConfiguration.swift",
       "kind": "StringLiteral",
-      "offset": 1247,
+      "offset": 1238,
       "length": 38,
       "value": "\"ae879cd5-bb38-4ce6-b2f5-8db9e56df973\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/tds-sdk-ios\/TDSecureFramework\/TDSecureFramework\/TDSCore\/TDSConfiguration.swift",
       "kind": "StringLiteral",
-      "offset": 1324,
+      "offset": 1315,
       "length": 38,
       "value": "\"ae879cd5-bb38-4ce6-b2f5-8db9e56df973\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/tds-sdk-ios\/TDSecureFramework\/TDSecureFramework\/TDSCore\/TDSConfiguration.swift",
       "kind": "StringLiteral",
-      "offset": 2023,
+      "offset": 2014,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/tds-sdk-ios\/TDSecureFramework\/TDSecureFramework\/TDSCore\/TDSConfiguration.swift",
       "kind": "StringLiteral",
-      "offset": 2054,
+      "offset": 2045,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/tds-sdk-ios\/TDSecureFramework\/TDSecureFramework\/TDSCore\/TDSConfiguration.swift",
       "kind": "StringLiteral",
-      "offset": 2085,
+      "offset": 2076,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/tds-sdk-ios\/TDSecureFramework\/TDSecureFramework\/TDSCore\/TDSConfiguration.swift",
       "kind": "StringLiteral",
-      "offset": 2156,
+      "offset": 2147,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/tds-sdk-ios\/TDSecureFramework\/TDSecureFramework\/TDSCore\/TDSConfiguration.swift",
       "kind": "StringLiteral",
-      "offset": 2190,
+      "offset": 2181,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/tds-sdk-ios\/TDSecureFramework\/TDSecureFramework\/TDSCore\/TDSConfiguration.swift",
       "kind": "StringLiteral",
-      "offset": 2224,
+      "offset": 2215,
       "length": 4,
       "value": "\"05\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/tds-sdk-ios\/TDSecureFramework\/TDSecureFramework\/TDSCore\/TDSConfiguration.swift",
       "kind": "IntegerLiteral",
-      "offset": 2276,
+      "offset": 2267,
       "length": 2,
       "value": "10"
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/tds-sdk-ios\/TDSecureFramework\/TDSecureFramework\/TDSCore\/TDSConfiguration.swift",
       "kind": "IntegerLiteral",
-      "offset": 2325,
+      "offset": 2316,
       "length": 2,
       "value": "10"
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/tds-sdk-ios\/TDSecureFramework\/TDSecureFramework\/TDSCore\/TDSConfiguration.swift",
       "kind": "StringLiteral",
-      "offset": 2378,
+      "offset": 2369,
       "length": 7,
       "value": "\"2.1.0\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/tds-sdk-ios\/TDSecureFramework\/TDSecureFramework\/TDSCore\/TDSConfiguration.swift",
       "kind": "StringLiteral",
-      "offset": 2416,
+      "offset": 2407,
       "length": 5,
       "value": "\"1.4\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/tds-sdk-ios\/TDSecureFramework\/TDSecureFramework\/TDSCore\/TDSConfiguration.swift",
       "kind": "StringLiteral",
-      "offset": 2452,
+      "offset": 2443,
       "length": 4,
       "value": "\"01\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/tds-sdk-ios\/TDSecureFramework\/TDSecureFramework\/TDSCore\/TDSConfiguration.swift",
       "kind": "StringLiteral",
-      "offset": 2530,
+      "offset": 2521,
       "length": 4,
       "value": "\"03\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/tds-sdk-ios\/TDSecureFramework\/TDSecureFramework\/TDSCore\/TDSConfiguration.swift",
       "kind": "Array",
-      "offset": 2555,
+      "offset": 2546,
       "length": 30,
       "value": "[\"01\", \"02\", \"03\", \"04\", \"05\"]"
     },
@@ -52517,6 +52527,13 @@
       "offset": 496,
       "length": 1,
       "value": "6"
+    },
+    {
+      "filePath": "\/Users\/levissilvestre\/iOSProjects\/tds-sdk-ios\/TDSecureFramework\/TDSecureFramework\/TDSCore\/TDSSDK\/Utils\/TDSLog.swift",
+      "kind": "BooleanLiteral",
+      "offset": 266,
+      "length": 5,
+      "value": "false"
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/tds-sdk-ios\/TDSecureFramework\/TDSecureFramework\/TDSClient\/ThreeDSClient.swift",
@@ -52857,21 +52874,21 @@
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/tds-sdk-ios\/TDSecureFramework\/TDSecureFramework\/TDSCore\/TDSSDK\/ACS\/Views\/ChallangeController.swift",
       "kind": "StringLiteral",
-      "offset": 911,
+      "offset": 1150,
       "length": 9,
       "value": "\"LOADING\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/tds-sdk-ios\/TDSecureFramework\/TDSecureFramework\/TDSCore\/TDSSDK\/ACS\/Views\/ChallangeController.swift",
       "kind": "BooleanLiteral",
-      "offset": 988,
+      "offset": 1227,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/tds-sdk-ios\/TDSecureFramework\/TDSecureFramework\/TDSCore\/TDSSDK\/ACS\/Views\/ChallangeController.swift",
       "kind": "StringLiteral",
-      "offset": 1039,
+      "offset": 1278,
       "length": 2,
       "value": "\"\""
     },

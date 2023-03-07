@@ -1,7 +1,8 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.7.2 effective-4.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
-// swift-module-flags: -target arm64-apple-ios10.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 4.2 -enforce-exclusivity=checked -O -module-name Payme
+// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
+// swift-module-flags: -target arm64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name Payme
 // swift-module-flags-ignorable: -enable-bare-slash-regex
+import AVKit
 import CommonCrypto
 import Foundation
 @_exported import Payme
@@ -12,59 +13,6 @@ import UIKit
 import VisaSensoryBranding
 import _Concurrency
 import _StringProcessing
-@objc public class PaymeBrand : ObjectiveC.NSObject {
-  public init(dict: [Swift.String : Any])
-  @objc deinit
-}
-@objc public class PaymeInstallmentsData : ObjectiveC.NSObject {
-  @objc public init(enable: Swift.Bool)
-  @objc deinit
-}
-@objc public class PaymeAuthenticationData : ObjectiveC.NSObject {
-  @objc public init(tdsChallengeInd: Swift.String)
-  @objc deinit
-}
-public protocol Key : AnyObject {
-  var reference: Security.SecKey { get }
-  var originalData: Foundation.Data? { get }
-  init(data: Foundation.Data) throws
-  init(reference: Security.SecKey) throws
-  init(base64Encoded base64String: Swift.String) throws
-  init(pemEncoded pemString: Swift.String) throws
-  init(pemNamed pemName: Swift.String, in bundle: Foundation.Bundle) throws
-  init(derNamed derName: Swift.String, in bundle: Foundation.Bundle) throws
-  func pemString() throws -> Swift.String
-  func data() throws -> Foundation.Data
-  func base64String() throws -> Swift.String
-}
-extension Payme.Key {
-  public func base64String() throws -> Swift.String
-  public func data() throws -> Foundation.Data
-  public init(base64Encoded base64String: Swift.String) throws
-  public init(pemEncoded pemString: Swift.String) throws
-  public init(pemNamed pemName: Swift.String, in bundle: Foundation.Bundle = Bundle.main) throws
-  public init(derNamed derName: Swift.String, in bundle: Foundation.Bundle = Bundle.main) throws
-}
-@objc public class PaymeClient : ObjectiveC.NSObject {
-  @objc public init(delegate: Payme.PaymeClientDelegate, key: Swift.String)
-  @objc public func setEnvironment(environment: Payme.PaymeEnviroment)
-  @objc public func authorizeTransaction(controller: UIKit.UIViewController, usePresent: Swift.Bool = false, paymeRequest: Payme.PaymeRequest)
-  @objc deinit
-}
-@objc @objcMembers open class CollectionSwipableCellOneButtonLayout : ObjectiveC.NSObject, Payme.CollectionSwipableCellLayout {
-  @objc public var action: (() -> Swift.Void)?
-  @objc final public let actionsView: UIKit.UIView
-  @objc final public let button: UIKit.UIButton
-  @objc final public let direction: UIKit.UIUserInterfaceLayoutDirection
-  @objc public func swipingAreaWidth() -> CoreFoundation.CGFloat
-  @objc public func swipingAreaInset() -> CoreFoundation.CGFloat
-  @objc public init(icon: UIKit.UIImage?, bgColor: UIKit.UIColor, buttonWidth: CoreFoundation.CGFloat, insets: UIKit.UIEdgeInsets, direction: UIKit.UIUserInterfaceLayoutDirection, fullOpenInset: CoreFoundation.CGFloat = 0)
-  @objc open func setupActionsView()
-  @objc open func layoutActionsView()
-  @objc open func cellDidFullOpen()
-  @objc open func hapticFeedbackIsEnabled() -> Swift.Bool
-  @objc deinit
-}
 public enum SwiftyRSAError : Swift.Error {
   case pemDoesNotContainKey
   case keyRepresentationFailed(error: CoreFoundation.CFError?)
@@ -89,99 +37,6 @@ public enum SwiftyRSAError : Swift.Error {
   case notAPublicKey
   case notAPrivateKey
 }
-@objc public class PaymeFeatureData : ObjectiveC.NSObject {
-  @objc public init(reserved: [Swift.String : Swift.String]?, wallet: Payme.PaymeWalletData?, installments: Payme.PaymeInstallmentsData?, authentication: Payme.PaymeAuthenticationData?)
-  @objc deinit
-}
-extension UIKit.UICollectionViewCell {
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func resetSwipableActions()
-}
-@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class PaymeWalletFlowLayout : UIKit.UICollectionViewFlowLayout {
-  @_Concurrency.MainActor(unsafe) public var selectPath: Foundation.IndexPath? {
-    get
-    set
-  }
-  @_Concurrency.MainActor(unsafe) public var bottomShowCount: Swift.Int {
-    get
-    set
-  }
-  @_Concurrency.MainActor(unsafe) public var titleHeight: CoreFoundation.CGFloat {
-    get
-    set
-  }
-  @_Concurrency.MainActor(unsafe) public var cardHeight: CoreFoundation.CGFloat {
-    get
-    set
-  }
-  @_Concurrency.MainActor(unsafe) public var cardWidth: CoreFoundation.CGFloat {
-    get
-    set
-  }
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public var collectionViewContentSize: CoreFoundation.CGSize {
-    @objc get
-  }
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func prepare()
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutAttributesForItem(at indexPath: Foundation.IndexPath) -> UIKit.UICollectionViewLayoutAttributes?
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutAttributesForElements(in rect: CoreFoundation.CGRect) -> [UIKit.UICollectionViewLayoutAttributes]?
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func finalLayoutAttributesForDisappearingItem(at itemIndexPath: Foundation.IndexPath) -> UIKit.UICollectionViewLayoutAttributes?
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func initialLayoutAttributesForAppearingItem(at itemIndexPath: Foundation.IndexPath) -> UIKit.UICollectionViewLayoutAttributes?
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func shouldInvalidateLayout(forBoundsChange newBounds: CoreFoundation.CGRect) -> Swift.Bool
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func prepare(forCollectionViewUpdates updateItems: [UIKit.UICollectionViewUpdateItem])
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func finalizeCollectionViewUpdates()
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init()
-  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
-  @objc deinit
-}
-@objc public class PaymeMerchantData : ObjectiveC.NSObject {
-  @objc public init(operation: Payme.PaymeOperationData, addrMatch: Swift.Bool = false, billing: Payme.PaymePersonData, shipping: Payme.PaymePersonData?)
-  @objc deinit
-}
-public class EncryptedMessage : Payme.Message {
-  final public let data: Foundation.Data
-  required public init(data: Foundation.Data)
-  public func decrypted(with key: Payme.PrivateKey, padding: Payme.Padding) throws -> Payme.ClearMessage
-  @objc deinit
-}
-public class PrivateKey : Payme.Key {
-  final public let reference: Security.SecKey
-  final public let originalData: Foundation.Data?
-  public func pemString() throws -> Swift.String
-  required public init(reference: Security.SecKey) throws
-  required public init(data: Foundation.Data) throws
-  @objc deinit
-}
-public class Signature {
-  public enum DigestType {
-    case sha1
-    case sha224
-    case sha256
-    case sha384
-    case sha512
-    public static func == (a: Payme.Signature.DigestType, b: Payme.Signature.DigestType) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
-    public var hashValue: Swift.Int {
-      get
-    }
-  }
-  final public let data: Foundation.Data
-  public init(data: Foundation.Data)
-  convenience public init(base64Encoded base64String: Swift.String) throws
-  public var base64String: Swift.String {
-    get
-  }
-  @objc deinit
-}
-extension UIKit.UITableViewCell {
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func resetSwipableActions()
-}
-@objc public protocol PaymeClientDelegate {
-  @objc func onNotificate(action: Payme.PaymeInternalAction)
-  @objc func onRespondsPayme(response: Payme.PaymeResponse)
-}
-@objc public class PaymePersonData : ObjectiveC.NSObject {
-  @objc public init(firstName: Swift.String, lastName: Swift.String, email: Swift.String, addrLine1: Swift.String, addrLine2: Swift.String, countryCode: Swift.String, countryNumber: Swift.String, zip: Swift.String, city: Swift.String, state: Swift.String, mobilePhone: Swift.String, homePhone: Swift.String? = nil, workPhone: Swift.String? = nil)
-  @objc deinit
-}
 public class PublicKey : Payme.Key {
   final public let reference: Security.SecKey
   final public let originalData: Foundation.Data?
@@ -191,150 +46,8 @@ public class PublicKey : Payme.Key {
   public static func publicKeys(pemEncoded pemString: Swift.String) -> [Payme.PublicKey]
   @objc deinit
 }
-@objc public class PaymeWalletData : ObjectiveC.NSObject {
-  @objc public init(enable: Swift.Bool, userID: Swift.String?)
-  @objc deinit
-}
-public protocol Message {
-  var data: Foundation.Data { get }
-  var base64String: Swift.String { get }
-  init(data: Foundation.Data)
-  init(base64Encoded base64String: Swift.String) throws
-}
-extension Payme.Message {
-  public var base64String: Swift.String {
-    get
-  }
-  public init(base64Encoded base64String: Swift.String) throws
-}
-@objc public class PaymeCurrencyData : ObjectiveC.NSObject {
-  @objc public init(code: Swift.String, symbol: Swift.String)
-  @objc deinit
-}
-@objc public class PaymeResponse : ObjectiveC.NSObject {
-  @objc final public let success: Swift.Bool
-  @objc final public let resultCode: Swift.String?
-  @objc final public let resultMessage: Swift.String?
-  @objc final public let resultDetail: Swift.String?
-  @objc final public let reserved: [Swift.String : Swift.String]?
-  @objc final public let payment: Payme.PaymentProcessResponse?
-  public init(success: Swift.Bool, resultCode: Swift.String? = nil, resultMessage: Swift.String? = nil, resultDetail: Swift.String? = nil, reserved: [Swift.String : Swift.String]? = nil, payment: Payme.PaymentProcessResponse? = nil)
-  @objc deinit
-}
-@objc public class PaymentProcessResponse : ObjectiveC.NSObject {
-  @objc final public let accepted: Swift.Bool
-  @objc final public let operationNumber: Swift.String?
-  @objc final public let operationDate: Swift.String?
-  @objc final public let authorizationCode: Swift.String?
-  @objc final public let maskedPan: Swift.String?
-  @objc final public let brand: Swift.String?
-  @objc final public let installment: Payme.PaymentIntallmentsResponse?
-  public init(accepted: Swift.Bool, operationNumber: Swift.String?, operationDate: Swift.String?, authorizationCode: Swift.String?, maskedPan: Swift.String?, brand: Swift.String?, installment: Payme.PaymentIntallmentsResponse? = nil)
-  @objc deinit
-}
-@objc public class PaymentIntallmentsResponse : ObjectiveC.NSObject {
-  @objc final public let type: Swift.String?
-  @objc final public let number: Swift.String?
-  @objc final public let amount: Swift.String?
-  @objc final public let currencyCode: Swift.String?
-  @objc final public let firstExpirationDate: Swift.String?
-  public init(type: Swift.String?, number: Swift.String?, amount: Swift.String?, currencyCode: Swift.String?, firstExpirationDate: Swift.String?)
-  @objc deinit
-}
-@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class DropDownCell : UIKit.UITableViewCell {
-  @objc @IBOutlet @_Concurrency.MainActor(unsafe) weak open var optionLabel: UIKit.UILabel!
-  @available(iOS 3.0, *)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(style: UIKit.UITableViewCell.CellStyle, reuseIdentifier: Swift.String?)
-  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
-  @objc deinit
-}
-extension Payme.DropDownCell {
-  @_Concurrency.MainActor(unsafe) @objc override dynamic open func awakeFromNib()
-  @_Concurrency.MainActor(unsafe) @objc override dynamic open var isSelected: Swift.Bool {
-    @objc get
-    @objc set
-  }
-  @_Concurrency.MainActor(unsafe) @objc override dynamic open var isHighlighted: Swift.Bool {
-    @objc get
-    @objc set
-  }
-  @_Concurrency.MainActor(unsafe) @objc override dynamic open func setHighlighted(_ highlighted: Swift.Bool, animated: Swift.Bool)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic open func setSelected(_ selected: Swift.Bool, animated: Swift.Bool)
-}
-@objc public enum PaymeEnviroment : Swift.Int {
-  case development
-  case production
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
-}
-@objc public class PaymeOperationData : ObjectiveC.NSObject {
-  @objc public init(operationNumber: Swift.String, operationDescription: Swift.String, amount: Swift.String, currency: Payme.PaymeCurrencyData)
-  @objc deinit
-}
-public typealias Padding = Security.SecPadding
-public enum SwiftyRSA {
-  @available(iOS 10.0, watchOS 3.0, tvOS 10.0, *)
-  public static func generateRSAKeyPair(sizeInBits size: Swift.Int) throws -> (privateKey: Payme.PrivateKey, publicKey: Payme.PublicKey)
-}
-@objc public protocol CollectionSwipableCellLayout {
-  @objc var actionsView: UIKit.UIView { get }
-  @objc func swipingAreaWidth() -> CoreFoundation.CGFloat
-  @objc func swipingAreaInset() -> CoreFoundation.CGFloat
-  @objc func setupActionsView()
-  @objc func layoutActionsView()
-  @objc func cellDidFullOpen()
-  @objc func hapticFeedbackIsEnabled() -> Swift.Bool
-}
-@objc public protocol CollectionSwipableCellExtensionDelegate {
-  @objc func isSwipable(itemAt indexPath: Foundation.IndexPath) -> Swift.Bool
-  @objc func swipableActionsLayout(forItemAt indexPath: Foundation.IndexPath) -> Payme.CollectionSwipableCellLayout?
-}
-@objc @objcMembers public class CollectionSwipableCellExtension : ObjectiveC.NSObject {
-  @objc weak public var delegate: Payme.CollectionSwipableCellExtensionDelegate? {
-    @objc get
-    @objc set
-  }
-  @objc public var isEnabled: Swift.Bool {
-    @objc get
-    @objc set
-  }
-  @objc(initWithCollectionView:) public init(with collectionView: UIKit.UICollectionView)
-  @objc(initWithTableView:) public init(with tableView: UIKit.UITableView)
-  @objc deinit
-}
-extension Payme.CollectionSwipableCellExtension {
-  @objc dynamic public func openActionsForCell(at indexPath: Foundation.IndexPath, animated: Swift.Bool = true)
-  @objc dynamic public func openActionsForCell(at indexPath: Foundation.IndexPath, visibleWidth: CoreFoundation.CGFloat, animated: Swift.Bool = true)
-  @objc dynamic public func closeAllActions(animated: Swift.Bool = true)
-}
-extension Payme.DropDown {
-  @_Concurrency.MainActor(unsafe) final public class func setupDefaultAppearance()
-}
-@objc public enum PaymeInternalAction : Swift.Int {
-  case PRESS_PAY_BUTTON
-  case START_SCORING
-  case END_SCORING
-  case START_TDS
-  case END_TDS
-  case START_AUTHORIZATION
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
-}
-@_hasMissingDesignatedInitializers public class PaymeBrandUtil {
-  public func getBrandIcon(brand: Payme.PaymeBrandCode) -> UIKit.UIImage?
-  public func getBrand(brand: Payme.PaymeBrandCode) -> Payme.PaymeBrand
-  public func getBrand(cardNumber: Swift.String) -> Payme.PaymeBrand
-  public func applyFormat(format: Swift.String, cardNumber: Swift.String, applyMasked: Swift.Bool = true) -> Swift.String
-  @objc deinit
-}
-@objc public class PaymeSettingData : ObjectiveC.NSObject {
-  @objc public init(locale: Swift.String, brands: [Swift.String])
+@objc public class PaymeInstallmentsData : ObjectiveC.NSObject {
+  @objc public init(enable: Swift.Bool)
   @objc deinit
 }
 public typealias Index = Swift.Int
@@ -536,21 +249,175 @@ extension Payme.DropDown {
   @objc public init(merchant: Payme.PaymeMerchantData, feature: Payme.PaymeFeatureData?, setting: Payme.PaymeSettingData)
   @objc deinit
 }
-public enum PaymeBrandCode : Swift.String, Swift.CaseIterable {
-  case DEFAULT
-  case VISA
-  case MSCD
-  case AMEX
-  case DINERS
-  public init?(rawValue: Swift.String)
-  public typealias AllCases = [Payme.PaymeBrandCode]
-  public typealias RawValue = Swift.String
-  public static var allCases: [Payme.PaymeBrandCode] {
+@objc public enum PaymeEnviroment : Swift.Int {
+  case development
+  case production
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
     get
   }
-  public var rawValue: Swift.String {
+}
+public protocol Key : AnyObject {
+  var reference: Security.SecKey { get }
+  var originalData: Foundation.Data? { get }
+  init(data: Foundation.Data) throws
+  init(reference: Security.SecKey) throws
+  init(base64Encoded base64String: Swift.String) throws
+  init(pemEncoded pemString: Swift.String) throws
+  init(pemNamed pemName: Swift.String, in bundle: Foundation.Bundle) throws
+  init(derNamed derName: Swift.String, in bundle: Foundation.Bundle) throws
+  func pemString() throws -> Swift.String
+  func data() throws -> Foundation.Data
+  func base64String() throws -> Swift.String
+}
+extension Payme.Key {
+  public func base64String() throws -> Swift.String
+  public func data() throws -> Foundation.Data
+  public init(base64Encoded base64String: Swift.String) throws
+  public init(pemEncoded pemString: Swift.String) throws
+  public init(pemNamed pemName: Swift.String, in bundle: Foundation.Bundle = Bundle.main) throws
+  public init(derNamed derName: Swift.String, in bundle: Foundation.Bundle = Bundle.main) throws
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class DropDownCell : UIKit.UITableViewCell {
+  @objc @IBOutlet @_Concurrency.MainActor(unsafe) weak open var optionLabel: UIKit.UILabel!
+  @available(iOS 3.0, *)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(style: UIKit.UITableViewCell.CellStyle, reuseIdentifier: Swift.String?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension Payme.DropDownCell {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func awakeFromNib()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var isSelected: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var isHighlighted: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func setHighlighted(_ highlighted: Swift.Bool, animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func setSelected(_ selected: Swift.Bool, animated: Swift.Bool)
+}
+public class PrivateKey : Payme.Key {
+  final public let reference: Security.SecKey
+  final public let originalData: Foundation.Data?
+  public func pemString() throws -> Swift.String
+  required public init(reference: Security.SecKey) throws
+  required public init(data: Foundation.Data) throws
+  @objc deinit
+}
+@objc public protocol PaymeClientDelegate {
+  @objc func onNotificate(action: Payme.PaymeInternalAction)
+  @objc func onRespondsPayme(response: Payme.PaymeResponse)
+}
+@objc public enum PaymeInternalAction : Swift.Int {
+  case PRESS_PAY_BUTTON
+  case START_SCORING
+  case END_SCORING
+  case START_TDS
+  case END_TDS
+  case START_AUTHORIZATION
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
     get
   }
+}
+public typealias Padding = Security.SecPadding
+public enum SwiftyRSA {
+  @available(iOS 10.0, watchOS 3.0, tvOS 10.0, *)
+  public static func generateRSAKeyPair(sizeInBits size: Swift.Int) throws -> (privateKey: Payme.PrivateKey, publicKey: Payme.PublicKey)
+}
+@objc public class PaymePersonData : ObjectiveC.NSObject {
+  @objc public init(firstName: Swift.String, lastName: Swift.String, email: Swift.String, addrLine1: Swift.String, addrLine2: Swift.String, countryCode: Swift.String, countryNumber: Swift.String, zip: Swift.String, city: Swift.String, state: Swift.String, mobilePhone: Swift.String, homePhone: Swift.String? = nil, workPhone: Swift.String? = nil)
+  @objc deinit
+}
+extension Payme.DropDown {
+  @_Concurrency.MainActor(unsafe) final public class func setupDefaultAppearance()
+}
+@objc public class PaymeOperationData : ObjectiveC.NSObject {
+  @objc public init(operationNumber: Swift.String, operationDescription: Swift.String, amount: Swift.String, currency: Payme.PaymeCurrencyData)
+  @objc deinit
+}
+@objc public class PaymeWalletData : ObjectiveC.NSObject {
+  @objc public init(enable: Swift.Bool, userID: Swift.String?)
+  @objc deinit
+}
+@objc public class PaymeCurrencyData : ObjectiveC.NSObject {
+  @objc public init(code: Swift.String, symbol: Swift.String)
+  @objc deinit
+}
+public class Signature {
+  public enum DigestType {
+    case sha1
+    case sha224
+    case sha256
+    case sha384
+    case sha512
+    public static func == (a: Payme.Signature.DigestType, b: Payme.Signature.DigestType) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  final public let data: Foundation.Data
+  public init(data: Foundation.Data)
+  convenience public init(base64Encoded base64String: Swift.String) throws
+  public var base64String: Swift.String {
+    get
+  }
+  @objc deinit
+}
+public class ClearMessage : Payme.Message {
+  final public let data: Foundation.Data
+  required public init(data: Foundation.Data)
+  convenience public init(string: Swift.String, using encoding: Swift.String.Encoding) throws
+  public func string(encoding: Swift.String.Encoding) throws -> Swift.String
+  public func encrypted(with key: Payme.PublicKey, padding: Payme.Padding) throws -> Payme.EncryptedMessage
+  public func signed(with key: Payme.PrivateKey, digestType: Payme.Signature.DigestType) throws -> Payme.Signature
+  public func verify(with key: Payme.PublicKey, signature: Payme.Signature, digestType: Payme.Signature.DigestType) throws -> Swift.Bool
+  @objc deinit
+}
+@objc public class PaymeFeatureData : ObjectiveC.NSObject {
+  @objc public init(reserved: [Swift.String : Swift.String]?, wallet: Payme.PaymeWalletData?, installments: Payme.PaymeInstallmentsData?, authentication: Payme.PaymeAuthenticationData?)
+  @objc deinit
+}
+@objc public class PaymeSettingData : ObjectiveC.NSObject {
+  @objc public init(locale: Swift.String, brands: [Swift.String])
+  @objc deinit
+}
+@objc public class PaymeClient : ObjectiveC.NSObject {
+  @objc public init(delegate: Payme.PaymeClientDelegate, key: Swift.String)
+  @objc public func setEnvironment(environment: Payme.PaymeEnviroment)
+  @objc public func authorizeTransaction(controller: UIKit.UIViewController, usePresent: Swift.Bool = false, paymeRequest: Payme.PaymeRequest)
+  @objc deinit
+}
+public protocol Message {
+  var data: Foundation.Data { get }
+  var base64String: Swift.String { get }
+  init(data: Foundation.Data)
+  init(base64Encoded base64String: Swift.String) throws
+}
+extension Payme.Message {
+  public var base64String: Swift.String {
+    get
+  }
+  public init(base64Encoded base64String: Swift.String) throws
+}
+@objc public class PaymeMerchantData : ObjectiveC.NSObject {
+  @objc public init(operation: Payme.PaymeOperationData, addrMatch: Swift.Bool = false, billing: Payme.PaymePersonData, shipping: Payme.PaymePersonData?)
+  @objc deinit
+}
+@objc public class PaymeAuthenticationData : ObjectiveC.NSObject {
+  @objc public init(tdsChallengeInd: Swift.String)
+  @objc deinit
+}
+public class EncryptedMessage : Payme.Message {
+  final public let data: Foundation.Data
+  required public init(data: Foundation.Data)
+  public func decrypted(with key: Payme.PrivateKey, padding: Payme.Padding) throws -> Payme.ClearMessage
+  @objc deinit
 }
 @objc(PublicKey) public class _objc_PublicKey : ObjectiveC.NSObject, Payme.Key {
   @objc public var reference: Security.SecKey {
@@ -649,31 +516,48 @@ public enum PaymeBrandCode : Swift.String, Swift.CaseIterable {
   @objc required public init(base64Encoded base64String: Swift.String) throws
   @objc deinit
 }
-public class ClearMessage : Payme.Message {
-  final public let data: Foundation.Data
-  required public init(data: Foundation.Data)
-  convenience public init(string: Swift.String, using encoding: Swift.String.Encoding) throws
-  public func string(encoding: Swift.String.Encoding) throws -> Swift.String
-  public func encrypted(with key: Payme.PublicKey, padding: Payme.Padding) throws -> Payme.EncryptedMessage
-  public func signed(with key: Payme.PrivateKey, digestType: Payme.Signature.DigestType) throws -> Payme.Signature
-  public func verify(with key: Payme.PublicKey, signature: Payme.Signature, digestType: Payme.Signature.DigestType) throws -> Swift.Bool
+@objc public class PaymeResponse : ObjectiveC.NSObject {
+  @objc final public let success: Swift.Bool
+  @objc final public let resultCode: Swift.String?
+  @objc final public let resultMessage: Swift.String?
+  @objc final public let resultDetail: Swift.String?
+  @objc final public let reserved: [Swift.String : Swift.String]?
+  @objc final public let payment: Payme.PaymentProcessResponse?
+  public init(success: Swift.Bool, resultCode: Swift.String? = nil, resultMessage: Swift.String? = nil, resultDetail: Swift.String? = nil, reserved: [Swift.String : Swift.String]? = nil, payment: Payme.PaymentProcessResponse? = nil)
   @objc deinit
 }
-extension Payme.Signature.DigestType : Swift.Equatable {}
-extension Payme.Signature.DigestType : Swift.Hashable {}
+@objc public class PaymentProcessResponse : ObjectiveC.NSObject {
+  @objc final public let accepted: Swift.Bool
+  @objc final public let operationNumber: Swift.String?
+  @objc final public let operationDate: Swift.String?
+  @objc final public let authorizationCode: Swift.String?
+  @objc final public let maskedPan: Swift.String?
+  @objc final public let brand: Swift.String?
+  @objc final public let installment: Payme.PaymentIntallmentsResponse?
+  public init(accepted: Swift.Bool, operationNumber: Swift.String?, operationDate: Swift.String?, authorizationCode: Swift.String?, maskedPan: Swift.String?, brand: Swift.String?, installment: Payme.PaymentIntallmentsResponse? = nil)
+  @objc deinit
+}
+@objc public class PaymentIntallmentsResponse : ObjectiveC.NSObject {
+  @objc final public let type: Swift.String?
+  @objc final public let number: Swift.String?
+  @objc final public let amount: Swift.String?
+  @objc final public let currencyCode: Swift.String?
+  @objc final public let firstExpirationDate: Swift.String?
+  public init(type: Swift.String?, number: Swift.String?, amount: Swift.String?, currencyCode: Swift.String?, firstExpirationDate: Swift.String?)
+  @objc deinit
+}
+extension Payme.DropDown.DismissMode : Swift.Equatable {}
+extension Payme.DropDown.DismissMode : Swift.Hashable {}
+extension Payme.DropDown.Direction : Swift.Equatable {}
+extension Payme.DropDown.Direction : Swift.Hashable {}
 extension Payme.PaymeEnviroment : Swift.Equatable {}
 extension Payme.PaymeEnviroment : Swift.Hashable {}
 extension Payme.PaymeEnviroment : Swift.RawRepresentable {}
 extension Payme.PaymeInternalAction : Swift.Equatable {}
 extension Payme.PaymeInternalAction : Swift.Hashable {}
 extension Payme.PaymeInternalAction : Swift.RawRepresentable {}
-extension Payme.DropDown.DismissMode : Swift.Equatable {}
-extension Payme.DropDown.DismissMode : Swift.Hashable {}
-extension Payme.DropDown.Direction : Swift.Equatable {}
-extension Payme.DropDown.Direction : Swift.Hashable {}
-extension Payme.PaymeBrandCode : Swift.Equatable {}
-extension Payme.PaymeBrandCode : Swift.Hashable {}
-extension Payme.PaymeBrandCode : Swift.RawRepresentable {}
+extension Payme.Signature.DigestType : Swift.Equatable {}
+extension Payme.Signature.DigestType : Swift.Hashable {}
 extension Payme._objc_Signature.DigestType : Swift.Equatable {}
 extension Payme._objc_Signature.DigestType : Swift.Hashable {}
 extension Payme._objc_Signature.DigestType : Swift.RawRepresentable {}
