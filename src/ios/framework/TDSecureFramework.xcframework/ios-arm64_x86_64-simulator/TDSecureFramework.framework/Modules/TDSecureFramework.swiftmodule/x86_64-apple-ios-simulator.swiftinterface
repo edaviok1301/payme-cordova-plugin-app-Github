@@ -1,0 +1,1800 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
+// swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name TDSecureFramework
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import AdSupport
+import CommonCrypto
+import Compression
+import CoreLocation
+import Darwin
+import Foundation
+import Security
+import Swift
+import SystemConfiguration
+@_exported import TDSecureFramework
+import UIKit
+import WebKit
+import _Concurrency
+import _StringProcessing
+public struct CBC : TDSecureFramework.BlockMode {
+  public enum Error : Swift.Error {
+    case invalidInitializationVector
+    public static func == (a: TDSecureFramework.CBC.Error, b: TDSecureFramework.CBC.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public let options: TDSecureFramework.BlockModeOption
+  public init(iv: Swift.Array<Swift.UInt8>)
+  public func worker(blockSize: Swift.Int, cipherOperation: @escaping TDSecureFramework.CipherOperationOnBlock) throws -> TDSecureFramework.CipherModeWorker
+}
+extension TDSecureFramework.HMAC {
+  convenience public init(key: Swift.String, variant: TDSecureFramework.HMAC.Variant = .md5) throws
+}
+public struct PCBC : TDSecureFramework.BlockMode {
+  public enum Error : Swift.Error {
+    case invalidInitializationVector
+    public static func == (a: TDSecureFramework.PCBC.Error, b: TDSecureFramework.PCBC.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public let options: TDSecureFramework.BlockModeOption
+  public init(iv: Swift.Array<Swift.UInt8>)
+  public func worker(blockSize: Swift.Int, cipherOperation: @escaping TDSecureFramework.CipherOperationOnBlock) throws -> TDSecureFramework.CipherModeWorker
+}
+extension TDSecureFramework.AES {
+  convenience public init(key: Swift.String, iv: Swift.String, padding: TDSecureFramework.Padding = .pkcs7) throws
+}
+extension Security.SecKey : TDSecureFramework.ExpressibleAsRSAPublicKeyComponents {
+  public static func representing(rsaPublicKeyComponents components: TDSecureFramework.RSAPublicKeyComponents) throws -> Self
+  public func rsaPublicKeyComponents() throws -> TDSecureFramework.RSAPublicKeyComponents
+}
+public protocol AEAD {
+  static var kLen: Swift.Int { get }
+  static var ivRange: Swift.Range<Swift.Int> { get }
+}
+public struct EcdhEsJwe : TDSecureFramework.JSONWebEncryption {
+  public let header: TDSecureFramework.JSONWebEncryptionHeader
+  public let encryptedKey: Foundation.Data
+  public let initializationVector: Foundation.Data
+  public var ciphertext: Foundation.Data
+  public var authenticationTag: Foundation.Data
+  public var additionalAuthenticatedData: Foundation.Data
+  public var compactSerializedString: Swift.String {
+    get
+  }
+  public var compactSerializedData: Foundation.Data {
+    get
+  }
+  public func decrypt(key: TDSecureFramework.JWK) throws -> Foundation.Data
+  public func decrypt(privKeyJwkJson: Foundation.Data) throws -> Foundation.Data
+  public func decrypt(privKeyJwkJson: Swift.String) throws -> Foundation.Data
+  public init(plaintext: Foundation.Data, pubKeyJwkJson: Foundation.Data, header: TDSecureFramework.JSONWebEncryptionHeader, options: [Swift.String : Any] = [:]) throws
+  public init(plaintext: Foundation.Data, pubKeyJwkJson: Swift.String, header: TDSecureFramework.JSONWebEncryptionHeader, options: [Swift.String : Any] = [:]) throws
+  public init(plaintext: Foundation.Data, pubKey: TDSecureFramework.ECPublicKey, header: TDSecureFramework.JSONWebEncryptionHeader, options: [Swift.String : Any] = [:]) throws
+  public init(plaintext: Foundation.Data, pubKeyJwkJson: Foundation.Data, headerDic: [Swift.String : Any] = [:], options: [Swift.String : Any] = [:]) throws
+  public init(plaintext: Foundation.Data, pubKeyJwkJson: Swift.String, headerDic: [Swift.String : Any] = [:], options: [Swift.String : Any] = [:]) throws
+  public init(plaintext: Foundation.Data, pubKey: TDSecureFramework.ECPublicKey, headerDic: [Swift.String : Any] = [:], options: [Swift.String : Any] = [:]) throws
+  public init(compactSerializedString: Swift.String) throws
+  public init(compactSerializedData: Foundation.Data) throws
+}
+extension Swift.Array where Element == Swift.UInt8 {
+  public func toBase64() -> Swift.String?
+  public init(base64: Swift.String)
+}
+public struct Verifier {
+  public init?<KeyType>(verifyingAlgorithm: TDSecureFramework.SignatureAlgorithm, publicKey: KeyType)
+}
+extension TDSecureFramework.JWK {
+  public subscript(parameter: Swift.String) -> Swift.String? {
+    get
+  }
+}
+extension TDSecureFramework.JWK {
+  public func jsonString() -> Swift.String?
+  public func jsonData() -> Foundation.Data?
+}
+public protocol JSONWebEncryptionHeader {
+  var alg: Swift.String { get }
+  var enc: Swift.String { get }
+  var epk: TDSecureFramework.ECPublicKey? { get }
+  var apu: Swift.String? { get }
+  var apv: Swift.String? { get }
+  subscript(index: Swift.String) -> Any? { get }
+  func jsonSerializedData() -> Foundation.Data
+  func allParameters() -> [Swift.String : Any]
+}
+extension Swift.String {
+  public func decryptBase64ToString(cipher: TDSecureFramework.Cipher) throws -> Swift.String
+  public func decryptBase64(cipher: TDSecureFramework.Cipher) throws -> Swift.Array<Swift.UInt8>
+}
+final public class AES {
+  public enum Error : Swift.Error {
+    case invalidKeySize
+    case dataPaddingRequired
+    case invalidData
+    public static func == (a: TDSecureFramework.AES.Error, b: TDSecureFramework.AES.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum Variant : Swift.Int {
+    case aes128, aes192, aes256
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public static let blockSize: Swift.Int
+  final public let keySize: Swift.Int
+  final public let variant: TDSecureFramework.AES.Variant
+  public init(key: Swift.Array<Swift.UInt8>, blockMode: TDSecureFramework.BlockMode, padding: TDSecureFramework.Padding = .pkcs7) throws
+  @objc deinit
+}
+extension TDSecureFramework.AES : TDSecureFramework.Cipher {
+  final public func encrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  final public func decrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+}
+final public class SHA1 {
+  public init()
+  final public func calculate(for bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  @objc deinit
+}
+extension TDSecureFramework.SHA1 : TDSecureFramework.Updatable {
+  @discardableResult
+  final public func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
+}
+final public class SHA3 {
+  final public let blockSize: Swift.Int
+  final public let digestLength: Swift.Int
+  final public let markByte: Swift.UInt8
+  public enum Variant {
+    case sha224, sha256, sha384, sha512, keccak224, keccak256, keccak384, keccak512
+    public var outputLength: Swift.Int {
+      get
+    }
+    public static func == (a: TDSecureFramework.SHA3.Variant, b: TDSecureFramework.SHA3.Variant) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public init(variant: TDSecureFramework.SHA3.Variant)
+  final public func calculate(for bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  @objc deinit
+}
+extension TDSecureFramework.SHA3 : TDSecureFramework.Updatable {
+  final public func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
+}
+public protocol CompactSerializable {
+  func serialize(to serializer: inout TDSecureFramework.CompactSerializer)
+}
+public protocol CompactSerializer {
+  var components: [TDSecureFramework.DataConvertible] { get }
+  mutating func serialize<T>(_ object: T) where T : TDSecureFramework.DataConvertible
+}
+public struct JOSESerializer {
+  public func serialize<T>(compact object: T) -> Swift.String where T : TDSecureFramework.CompactSerializable
+}
+public protocol RadioButtonDelegate : AnyObject {
+  func radioButtonDidSelect(_ button: TDSecureFramework.RadioButton)
+  func radioButtonDidDeselect(_ button: TDSecureFramework.RadioButton)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class RadioButton : TDSecureFramework.RadioCheckboxBaseButton {
+  @_Concurrency.MainActor(unsafe) weak public var delegate: TDSecureFramework.RadioButtonDelegate?
+  @_Concurrency.MainActor(unsafe) public var radioCircle: TDSecureFramework.RadioButtonCircleStyle {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var radioButtonColor: TDSecureFramework.RadioButtonColor! {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @objc deinit
+}
+extension TDSecureFramework.Blowfish {
+  convenience public init(key: Swift.String, iv: Swift.String, padding: TDSecureFramework.Padding = .pkcs7) throws
+}
+extension TDSecureFramework.ECCurveType {
+  public var bitLength: Swift.Int {
+    get
+  }
+}
+extension TDSecureFramework.ECPrivateKey {
+  public func getPublic() -> TDSecureFramework.ECPublicKey
+  public func isCorrespondWith(_ key: TDSecureFramework.ECPublicKey) -> Swift.Bool
+}
+extension TDSecureFramework.ECPrivateKey {
+  public func getPrivate() -> TDSecureFramework.ECPrivateKey
+}
+public func generateECKeyPair(curveType: TDSecureFramework.ECCurveType) throws -> TDSecureFramework.ECKeyPair
+extension TDSecureFramework.JWK {
+  public func dictionarized() -> [Swift.String : Swift.String]
+  public init(dictionary: [Swift.String : Any]) throws
+}
+public protocol CompactDeserializable {
+  static var componentCount: Swift.Int { get }
+  init(from deserializer: TDSecureFramework.CompactDeserializer) throws
+}
+public protocol CompactDeserializer {
+  func deserialize<T>(_ type: T.Type, at index: Swift.Int) throws -> T where T : TDSecureFramework.DataConvertible
+}
+public struct JOSEDeserializer {
+  public init()
+  public func deserialize<T>(_ type: T.Type, fromCompactSerialization compactSerialization: Swift.String) throws -> T where T : TDSecureFramework.CompactDeserializable
+}
+public enum ComponentCompactSerializedIndex {
+}
+public struct CCM {
+  public enum Error : Swift.Error {
+    case invalidInitializationVector
+    case invalidParameter
+    case fail
+    public static func == (a: TDSecureFramework.CCM.Error, b: TDSecureFramework.CCM.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public let options: TDSecureFramework.BlockModeOption
+  public var authenticationTag: Swift.Array<Swift.UInt8>?
+  public init(iv: Swift.Array<Swift.UInt8>, tagLength: Swift.Int, messageLength: Swift.Int, additionalAuthenticatedData: Swift.Array<Swift.UInt8>? = nil)
+  public init(iv: Swift.Array<Swift.UInt8>, tagLength: Swift.Int, messageLength: Swift.Int, authenticationTag: Swift.Array<Swift.UInt8>, additionalAuthenticatedData: Swift.Array<Swift.UInt8>? = nil)
+  public func worker(blockSize: Swift.Int, cipherOperation: @escaping TDSecureFramework.CipherOperationOnBlock) throws -> TDSecureFramework.CipherModeWorker
+}
+extension Foundation.Data : TDSecureFramework.ExpressibleAsRSAPublicKeyComponents {
+  public static func representing(rsaPublicKeyComponents components: TDSecureFramework.RSAPublicKeyComponents) throws -> Foundation.Data
+  public func rsaPublicKeyComponents() throws -> TDSecureFramework.RSAPublicKeyComponents
+}
+final public class MD5 {
+  public init()
+  final public func calculate(for bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  @objc deinit
+}
+extension TDSecureFramework.MD5 : TDSecureFramework.Updatable {
+  final public func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
+}
+final public class Blowfish {
+  public enum Error : Swift.Error {
+    case dataPaddingRequired
+    case invalidKeyOrInitializationVector
+    case invalidInitializationVector
+    case invalidBlockMode
+    public static func == (a: TDSecureFramework.Blowfish.Error, b: TDSecureFramework.Blowfish.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public static let blockSize: Swift.Int
+  final public let keySize: Swift.Int
+  public init(key: Swift.Array<Swift.UInt8>, blockMode: TDSecureFramework.BlockMode = CBC(iv: Array<UInt8>(repeating: 0, count: Blowfish.blockSize)), padding: TDSecureFramework.Padding) throws
+  @objc deinit
+}
+extension TDSecureFramework.Blowfish : TDSecureFramework.Cipher {
+  final public func encrypt<C>(_ bytes: C) throws -> Swift.Array<Swift.UInt8> where C : Swift.Collection, C.Element == Swift.UInt8, C.Index == Swift.Int
+  final public func decrypt<C>(_ bytes: C) throws -> Swift.Array<Swift.UInt8> where C : Swift.Collection, C.Element == Swift.UInt8, C.Index == Swift.Int
+}
+public enum SignatureAlgorithm : Swift.String {
+  case RS256
+  case RS512
+  case ES256
+  case ES384
+  case ES512
+  @available(iOS 11, *)
+  case PS256
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum AsymmetricKeyAlgorithm : Swift.String, Swift.CaseIterable {
+  case RSA1_5
+  case RSAOAEP
+  case RSAOAEP256
+  case direct
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [TDSecureFramework.AsymmetricKeyAlgorithm]
+  public typealias RawValue = Swift.String
+  public static var allCases: [TDSecureFramework.AsymmetricKeyAlgorithm] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum SymmetricKeyAlgorithm : Swift.String {
+  case A256CBCHS512
+  case A128CBCHS256
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum HMACAlgorithm : Swift.String {
+  case SHA512
+  case SHA256
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum CompressionAlgorithm : Swift.String {
+  case DEFLATE
+  case NONE
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct CheckboxLineStyle {
+  public init(checkBoxHeight: CoreFoundation.CGFloat, checkmarkLineWidth: CoreFoundation.CGFloat = -1, padding: CoreFoundation.CGFloat = 6)
+  public init(checkmarkLineWidth: CoreFoundation.CGFloat, padding: CoreFoundation.CGFloat = 6)
+  public init(padding: CoreFoundation.CGFloat = 6)
+  public var size: CoreFoundation.CGSize {
+    get
+  }
+}
+public enum TDSEnvironment {
+  case DEVELOPMENT
+  case UAT
+  case PRODUCTION
+  public static func == (a: TDSecureFramework.TDSEnvironment, b: TDSecureFramework.TDSEnvironment) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum JOSESwiftError : Swift.Error {
+  case signingFailed(description: Swift.String)
+  case verifyingFailed(description: Swift.String)
+  case signatureInvalid
+  case encryptingFailed(description: Swift.String)
+  case decryptingFailed(description: Swift.String)
+  case wrongDataEncoding(data: Foundation.Data)
+  case invalidCompactSerializationComponentCount(count: Swift.Int)
+  case componentNotValidBase64URL(component: Swift.String)
+  case componentCouldNotBeInitializedFromData(data: Foundation.Data)
+  case couldNotConstructJWK
+  case modulusNotBase64URLUIntEncoded
+  case exponentNotBase64URLUIntEncoded
+  case privateExponentNotBase64URLUIntEncoded
+  case symmetricKeyNotBase64URLEncoded
+  case xNotBase64URLUIntEncoded
+  case yNotBase64URLUIntEncoded
+  case privateKeyNotBase64URLUIntEncoded
+  case invalidCurveType
+  case compressedCurvePointsUnsupported
+  case invalidCurvePointOctetLength
+  case compressionFailed
+  case decompressionFailed
+  case compressionAlgorithmNotSupported
+  case rawDataMustBeGreaterThanZero
+  case compressedDataMustBeGreaterThanZero
+}
+@available(*, renamed: "Digest")
+public typealias HashDigest = TDSecureFramework.Digest
+public struct Digest {
+  public static func md5(_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  public static func sha1(_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  public static func sha224(_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  public static func sha256(_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  public static func sha384(_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  public static func sha512(_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  public static func sha2(_ bytes: Swift.Array<Swift.UInt8>, variant: TDSecureFramework.SHA2.Variant) -> Swift.Array<Swift.UInt8>
+  public static func sha3(_ bytes: Swift.Array<Swift.UInt8>, variant: TDSecureFramework.SHA3.Variant) -> Swift.Array<Swift.UInt8>
+}
+@_hasMissingDesignatedInitializers final public class Checksum {
+  @objc deinit
+}
+extension TDSecureFramework.Checksum {
+  public static func crc32(_ message: Swift.Array<Swift.UInt8>, seed: Swift.UInt32? = nil, reflect: Swift.Bool = true) -> Swift.UInt32
+  public static func crc32c(_ message: Swift.Array<Swift.UInt8>, seed: Swift.UInt32? = nil, reflect: Swift.Bool = true) -> Swift.UInt32
+  public static func crc16(_ message: Swift.Array<Swift.UInt8>, seed: Swift.UInt16? = nil) -> Swift.UInt16
+}
+public struct RadioButtonCircleStyle {
+  public init(outerCircle: CoreFoundation.CGFloat = 16, innerCircle: CoreFoundation.CGFloat = 7, outerCircleBorder: CoreFoundation.CGFloat = 2, contentPadding: CoreFoundation.CGFloat = 6)
+  public init(outerCircle: CoreFoundation.CGFloat, innerCircle: CoreFoundation.CGFloat)
+  public init(outerCircle: CoreFoundation.CGFloat, innerCircle: CoreFoundation.CGFloat, outerCircleBorder: CoreFoundation.CGFloat)
+}
+public struct Signer<KeyType> {
+  public init?(signingAlgorithm: TDSecureFramework.SignatureAlgorithm, privateKey: KeyType)
+}
+@objc public class ThreeDSClient : ObjectiveC.NSObject {
+  public var delegate: TDSecureFramework.ThreeDSClientDelegate?
+  public var locale: Swift.String?
+  public init(delegate: TDSecureFramework.ThreeDSClientDelegate, key: Swift.String)
+  public init(key: Swift.String)
+  public func setEnvironment(environment: TDSecureFramework.TDSEnvironment)
+  public func authenticateTransaction(controller: UIKit.UIViewController? = nil, tdsClientRequest: TDSecureFramework.TDSClientRequest)
+  @objc deinit
+}
+extension TDSecureFramework.ThreeDSClient {
+  public func onRespondsTDSRequestor(tdsClientResponse: TDSecureFramework.TDSClientResponse)
+}
+public protocol Updatable {
+  mutating func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool) throws -> Swift.Array<Swift.UInt8>
+  mutating func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool, output: (_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Void) throws
+}
+extension TDSecureFramework.Updatable {
+  public mutating func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false, output: (_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Void) throws
+  public mutating func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
+  public mutating func update(withBytes bytes: Swift.Array<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
+  public mutating func update(withBytes bytes: Swift.Array<Swift.UInt8>, isLast: Swift.Bool = false, output: (_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Void) throws
+  public mutating func finish(withBytes bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  public mutating func finish(withBytes bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  public mutating func finish() throws -> Swift.Array<Swift.UInt8>
+  public mutating func finish(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, output: (_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Void) throws
+  public mutating func finish(withBytes bytes: Swift.Array<Swift.UInt8>, output: (_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Void) throws
+  public mutating func finish(output: (Swift.Array<Swift.UInt8>) -> Swift.Void) throws
+}
+public class CBCMAC : TDSecureFramework.Authenticator {
+  public enum Error : Swift.Error {
+    case wrongKeyLength
+    public static func == (a: TDSecureFramework.CBCMAC.Error, b: TDSecureFramework.CBCMAC.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public init(key: Swift.Array<Swift.UInt8>) throws
+  public func authenticate(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  @objc deinit
+}
+public protocol DataConvertible {
+  init?(_ data: Foundation.Data)
+  func data() -> Foundation.Data
+}
+public protocol Cryptor {
+  mutating func seek(to: Swift.Int) throws
+}
+extension Security.SecKey : TDSecureFramework.ExpressibleAsECPublicKeyComponents {
+  public static func representing(ecPublicKeyComponents components: TDSecureFramework.ECPublicKeyComponents) throws -> Self
+  public func ecPublicKeyComponents() throws -> TDSecureFramework.ECPublicKeyComponents
+}
+@_inheritsConvenienceInitializers public class CheckboxButtonContainer : TDSecureFramework.RadioCheckboxBaseContainer<TDSecureFramework.CheckboxButton> {
+  weak public var delegate: TDSecureFramework.CheckboxButtonDelegate? {
+    get
+    set
+  }
+  @discardableResult
+  override public func addButton(_ button: TDSecureFramework.CheckboxButtonContainer.Kind) -> Swift.Bool
+  public var checkboxButtonColor: TDSecureFramework.CheckBoxColor? {
+    get
+    set
+  }
+  public var checkboxLineStyle: TDSecureFramework.CheckboxLineStyle? {
+    get
+    set
+  }
+  public func setEachCheckboxButtonColor(_ body: (TDSecureFramework.CheckboxButtonContainer.Kind) -> TDSecureFramework.CheckBoxColor)
+  public func setEachCheckboxButtonLineStyle(_ body: (TDSecureFramework.CheckboxButtonContainer.Kind) -> TDSecureFramework.CheckboxLineStyle)
+  override public init(_ buttons: [TDSecureFramework.CheckboxButton] = super)
+  @objc deinit
+}
+public protocol Cryptors : AnyObject {
+  func makeEncryptor() throws -> TDSecureFramework.Cryptor & TDSecureFramework.Updatable
+  func makeDecryptor() throws -> TDSecureFramework.Cryptor & TDSecureFramework.Updatable
+  static func randomIV(_ blockSize: Swift.Int) -> Swift.Array<Swift.UInt8>
+}
+extension TDSecureFramework.Cryptors {
+  public static func randomIV(_ blockSize: Swift.Int) -> Swift.Array<Swift.UInt8>
+}
+public enum SecureRandomError : Swift.Error {
+  case failed(status: Darwin.OSStatus)
+  case countMustBeGreaterThanZero
+}
+public struct SecureRandom {
+  public static func generate(count: Swift.Int) throws -> Foundation.Data
+}
+extension Swift.String {
+  public var bytes: Swift.Array<Swift.UInt8> {
+    get
+  }
+  public func md5() -> Swift.String
+  public func sha1() -> Swift.String
+  public func sha224() -> Swift.String
+  public func sha256() -> Swift.String
+  public func sha384() -> Swift.String
+  public func sha512() -> Swift.String
+  public func sha3(_ variant: TDSecureFramework.SHA3.Variant) -> Swift.String
+  public func crc32(seed: Swift.UInt32? = nil, reflect: Swift.Bool = true) -> Swift.String
+  public func crc32c(seed: Swift.UInt32? = nil, reflect: Swift.Bool = true) -> Swift.String
+  public func crc16(seed: Swift.UInt16? = nil) -> Swift.String
+  public func encrypt(cipher: TDSecureFramework.Cipher) throws -> Swift.String
+  public func encryptToBase64(cipher: TDSecureFramework.Cipher) throws -> Swift.String?
+  public func authenticate<A>(with authenticator: A) throws -> Swift.String where A : TDSecureFramework.Authenticator
+}
+@objc @_Concurrency.MainActor(unsafe) open class CheckboxButtonContainerView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public var buttonContainer: TDSecureFramework.CheckboxButtonContainer {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func didAddSubview(_ subview: UIKit.UIView)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func willRemoveSubview(_ subview: UIKit.UIView)
+  @_Concurrency.MainActor(unsafe) public func addButton(_ button: TDSecureFramework.CheckboxButtonContainer.Kind)
+  @_Concurrency.MainActor(unsafe) public func removeButton(_ button: TDSecureFramework.CheckboxButtonContainer.Kind)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class TDSClientResponse {
+  public var success: Swift.Bool {
+    get
+  }
+  public var errorCode: Swift.String? {
+    get
+  }
+  public var errorComponent: Swift.String? {
+    get
+  }
+  public var errorDescription: Swift.String? {
+    get
+  }
+  public var errorDetail: Swift.String? {
+    get
+  }
+  public var sdkTransID: Swift.String? {
+    get
+  }
+  public var tdsServerTransID: Swift.String? {
+    get
+  }
+  public var dsTransID: Swift.String? {
+    get
+  }
+  public var acsTransID: Swift.String? {
+    get
+  }
+  public var vci: Swift.String? {
+    get
+  }
+  public var eci: Swift.String? {
+    get
+  }
+  public var authValue: Swift.String? {
+    get
+  }
+  public var transStatus: Swift.String? {
+    get
+  }
+  public var authenticated: Swift.Bool? {
+    get
+  }
+  public var madeChallenge: Swift.Bool? {
+    get
+  }
+  public var p_errorCode: Swift.String? {
+    get
+  }
+  public var p_madeChallenge: Swift.Bool? {
+    get
+  }
+  @objc deinit
+}
+final public class HMAC : TDSecureFramework.Authenticator {
+  public enum Error : Swift.Error {
+    case authenticateError
+    case invalidInput
+    public static func == (a: TDSecureFramework.HMAC.Error, b: TDSecureFramework.HMAC.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum Variant {
+    case sha1, sha256, sha384, sha512, md5
+    public static func == (a: TDSecureFramework.HMAC.Variant, b: TDSecureFramework.HMAC.Variant) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public init(key: Swift.Array<Swift.UInt8>, variant: TDSecureFramework.HMAC.Variant = .md5)
+  final public func authenticate(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  @objc deinit
+}
+public enum CipherError : Swift.Error {
+  case encrypt
+  case decrypt
+  public static func == (a: TDSecureFramework.CipherError, b: TDSecureFramework.CipherError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public protocol Cipher : AnyObject {
+  var keySize: Swift.Int { get }
+  func encrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  func encrypt(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  func decrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  func decrypt(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+}
+extension TDSecureFramework.Cipher {
+  public func encrypt(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  public func decrypt(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+}
+public enum PKCS5 {
+}
+public struct RadioButtonColor {
+  public init(active: UIKit.UIColor, inactive: UIKit.UIColor)
+}
+public struct JWKSet {
+  public let keys: [TDSecureFramework.JWK]
+  public init(keys: [TDSecureFramework.JWK])
+  public init(data: Foundation.Data) throws
+  public func jsonString() -> Swift.String?
+  public func jsonData() -> Foundation.Data?
+}
+extension TDSecureFramework.JWKSet : Swift.Collection {
+  public typealias ArrayType = [TDSecureFramework.JWK]
+  public typealias Element = TDSecureFramework.JWKSet.ArrayType.Element
+  public typealias Index = TDSecureFramework.JWKSet.ArrayType.Index
+  public typealias Iterator = TDSecureFramework.JWKSet.ArrayType.Iterator
+  public var startIndex: TDSecureFramework.JWKSet.Index {
+    get
+  }
+  public var endIndex: TDSecureFramework.JWKSet.Index {
+    get
+  }
+  public subscript(index: TDSecureFramework.JWKSet.Index) -> TDSecureFramework.JWKSet.Element {
+    get
+  }
+  public func index(after index: TDSecureFramework.JWKSet.Index) -> TDSecureFramework.JWKSet.Index
+  public func makeIterator() -> Swift.IndexingIterator<TDSecureFramework.JWKSet.ArrayType>
+  public typealias Indices = Swift.DefaultIndices<TDSecureFramework.JWKSet>
+  public typealias SubSequence = Swift.Slice<TDSecureFramework.JWKSet>
+}
+extension TDSecureFramework.JWKSet : Swift.ExpressibleByArrayLiteral {
+  public typealias ArrayLiteralElement = TDSecureFramework.JWKSet.Element
+  public init(arrayLiteral elements: TDSecureFramework.JWKSet.ArrayLiteralElement...)
+}
+public struct HKDF {
+  public enum Error : Swift.Error {
+    case invalidInput
+    case derivedKeyTooLong
+    public static func == (a: TDSecureFramework.HKDF.Error, b: TDSecureFramework.HKDF.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public init(password: Swift.Array<Swift.UInt8>, salt: Swift.Array<Swift.UInt8>? = nil, info: Swift.Array<Swift.UInt8>? = nil, keyLength: Swift.Int? = nil, variant: TDSecureFramework.HMAC.Variant = .sha256) throws
+  public func calculate() throws -> Swift.Array<Swift.UInt8>
+}
+public enum ECCurveType : Swift.String, Swift.Codable {
+  case P256
+  case P384
+  case P521
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum ECCompression : Swift.UInt8 {
+  case CompressedYEven
+  case CompressedYOdd
+  case Uncompressed
+  case HybridYEven
+  case HybridYOdd
+  public init?(rawValue: Swift.UInt8)
+  public typealias RawValue = Swift.UInt8
+  public var rawValue: Swift.UInt8 {
+    get
+  }
+}
+@_inheritsConvenienceInitializers public class RadioButtonContainer : TDSecureFramework.RadioCheckboxBaseContainer<TDSecureFramework.RadioButton> {
+  weak public var delegate: TDSecureFramework.RadioButtonDelegate? {
+    get
+    set
+  }
+  public var selectedButton: TDSecureFramework.RadioButtonContainer.Kind? {
+    get
+    set
+  }
+  @discardableResult
+  override public func addButton(_ button: TDSecureFramework.RadioButtonContainer.Kind) -> Swift.Bool
+  public var radioButtonColor: TDSecureFramework.RadioButtonColor? {
+    get
+    set
+  }
+  public var radioCircleStyle: TDSecureFramework.RadioButtonCircleStyle? {
+    get
+    set
+  }
+  public func setEachRadioButtonColor(_ body: (TDSecureFramework.RadioButtonContainer.Kind) -> TDSecureFramework.RadioButtonColor)
+  public func setEachRadioButtonCircleStyle(_ body: (TDSecureFramework.RadioButtonContainer.Kind) -> TDSecureFramework.RadioButtonCircleStyle)
+  override public init(_ buttons: [TDSecureFramework.RadioButton] = super)
+  @objc deinit
+}
+public struct CTR {
+  public enum Error : Swift.Error {
+    case invalidInitializationVector
+    public static func == (a: TDSecureFramework.CTR.Error, b: TDSecureFramework.CTR.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public let options: TDSecureFramework.BlockModeOption
+  public init(iv: Swift.Array<Swift.UInt8>, counter: Swift.Int = 0)
+  public func worker(blockSize: Swift.Int, cipherOperation: @escaping TDSecureFramework.CipherOperationOnBlock) throws -> TDSecureFramework.CipherModeWorker
+}
+public struct JWE {
+  public let header: TDSecureFramework.JWEHeader
+  public let encryptedKey: Foundation.Data
+  public let initializationVector: Foundation.Data
+  public let ciphertext: Foundation.Data
+  public let authenticationTag: Foundation.Data
+  public var compactSerializedString: Swift.String {
+    get
+  }
+  public var compactSerializedData: Foundation.Data {
+    get
+  }
+  public init<KeyType>(header: TDSecureFramework.JWEHeader, payload: TDSecureFramework.Payload, encrypter: TDSecureFramework.Encrypter<KeyType>) throws
+  public init(compactSerialization: Swift.String) throws
+  public init(compactSerialization: Foundation.Data) throws
+  @available(*, deprecated, message: "Use `decrypt(using decrypter:)` instead")
+  public func decrypt<KeyType>(with key: KeyType) throws -> TDSecureFramework.Payload
+  public func decrypt(using decrypter: TDSecureFramework.Decrypter) throws -> TDSecureFramework.Payload
+}
+extension TDSecureFramework.JWE : TDSecureFramework.CompactSerializable {
+  public func serialize(to serializer: inout TDSecureFramework.CompactSerializer)
+}
+extension TDSecureFramework.JWE : TDSecureFramework.CompactDeserializable {
+  public static var componentCount: Swift.Int {
+    get
+  }
+  public init(from deserializer: TDSecureFramework.CompactDeserializer) throws
+}
+public struct Payload : TDSecureFramework.DataConvertible {
+  public init(_ payload: Foundation.Data)
+  public func data() -> Foundation.Data
+}
+@_inheritsConvenienceInitializers final public class CMAC : TDSecureFramework.CBCMAC {
+  override public init(key: Swift.Array<Swift.UInt8>) throws
+  @objc deinit
+}
+public struct ECB : TDSecureFramework.BlockMode {
+  public let options: TDSecureFramework.BlockModeOption
+  public init()
+  public func worker(blockSize: Swift.Int, cipherOperation: @escaping TDSecureFramework.CipherOperationOnBlock) throws -> TDSecureFramework.CipherModeWorker
+}
+public enum Bit : Swift.Int {
+  case zero
+  case one
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public protocol ThreeDSClientDelegate : AnyObject {
+  func onResponds3DSecure(response: TDSecureFramework.TDSClientResponse)
+}
+public enum RadioCheckboxStyle {
+  case rounded(radius: CoreFoundation.CGFloat), square, circle
+}
+@objc @_inheritsConvenienceInitializers @IBDesignable @_Concurrency.MainActor(unsafe) public class RadioCheckboxBaseButton : UIKit.UIButton {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var isOn: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) convenience public init?(type buttonType: UIKit.UIButton.ButtonType)
+  @_Concurrency.MainActor(unsafe) public var style: TDSecureFramework.RadioCheckboxStyle {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public func updateSelectionState()
+  @objc deinit
+}
+extension Security.SecKey : TDSecureFramework.ExpressibleAsECPrivateKeyComponents {
+  public static func representing(ecPrivateKeyComponents components: TDSecureFramework.ECPrivateKeyComponents) throws -> Self
+  public func ecPrivateKeyComponents() throws -> TDSecureFramework.ECPrivateKeyComponents
+}
+public enum PKCS7 {
+}
+public struct JWSHeader {
+  public init(algorithm: TDSecureFramework.SignatureAlgorithm)
+  public init(parameters: [Swift.String : Any]) throws
+}
+extension TDSecureFramework.JWSHeader {
+  public var algorithm: TDSecureFramework.SignatureAlgorithm? {
+    get
+  }
+}
+extension TDSecureFramework.JWSHeader : TDSecureFramework.CommonHeaderParameterSpace {
+  public var jku: Foundation.URL? {
+    get
+    set
+  }
+  public var jwk: Swift.String? {
+    get
+    set
+  }
+  public var kid: Swift.String? {
+    get
+    set
+  }
+  public var x5u: Foundation.URL? {
+    get
+    set
+  }
+  public var x5c: [Swift.String]? {
+    get
+    set
+  }
+  public var x5t: Swift.String? {
+    get
+    set
+  }
+  public var x5tS256: Swift.String? {
+    get
+    set
+  }
+  public var typ: Swift.String? {
+    get
+    set
+  }
+  public var cty: Swift.String? {
+    get
+    set
+  }
+  public var crit: [Swift.String]? {
+    get
+    set
+  }
+}
+public class RadioCheckboxBaseContainer<T> where T : TDSecureFramework.RadioCheckboxBaseButton {
+  public typealias Kind = T
+  public init(_ buttons: [T] = [])
+  public var allButtons: [T] {
+    get
+  }
+  public func addButtons(_ buttons: [T])
+  public func deselectAll()
+  public var selectedButtons: [T] {
+    get
+    set
+  }
+  @discardableResult
+  public func addButton(_ button: T) -> Swift.Bool
+  @discardableResult
+  public func removeButton(_ button: T) -> Swift.Bool
+  public var buttonStyle: TDSecureFramework.RadioCheckboxStyle? {
+    get
+    set
+  }
+  public func setEachButtonStyle(_ body: (T) -> TDSecureFramework.RadioCheckboxStyle)
+  public func compact()
+  @objc deinit
+}
+public struct OFB : TDSecureFramework.BlockMode {
+  public enum Error : Swift.Error {
+    case invalidInitializationVector
+    public static func == (a: TDSecureFramework.OFB.Error, b: TDSecureFramework.OFB.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public let options: TDSecureFramework.BlockModeOption
+  public init(iv: Swift.Array<Swift.UInt8>)
+  public func worker(blockSize: Swift.Int, cipherOperation: @escaping TDSecureFramework.CipherOperationOnBlock) throws -> TDSecureFramework.CipherModeWorker
+}
+extension TDSecureFramework.JWKSet : Swift.Encodable {
+  public func encode(to encoder: Swift.Encoder) throws
+}
+extension TDSecureFramework.JWKSet : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
+}
+public enum JWKKeyType : Swift.String, Swift.Codable {
+  case RSA
+  case OCT
+  case EC
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public protocol JWK : Swift.Decodable, Swift.Encodable {
+  var keyType: TDSecureFramework.JWKKeyType { get }
+  var parameters: [Swift.String : Swift.String] { get }
+  subscript(parameter: Swift.String) -> Swift.String? { get }
+  init(data: Foundation.Data) throws
+  func jsonString() -> Swift.String?
+  func jsonData() -> Foundation.Data?
+}
+public protocol CommonHeaderParameterSpace {
+  var jku: Foundation.URL? { get set }
+  var jwk: Swift.String? { get set }
+  var kid: Swift.String? { get set }
+  var x5u: Foundation.URL? { get set }
+  var x5c: [Swift.String]? { get set }
+  var x5t: Swift.String? { get set }
+  var x5tS256: Swift.String? { get set }
+  var typ: Swift.String? { get set }
+  var cty: Swift.String? { get set }
+  var crit: [Swift.String]? { get set }
+}
+@objc @_Concurrency.MainActor(unsafe) open class RadioButtonContainerView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public var buttonContainer: TDSecureFramework.RadioButtonContainer {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func didAddSubview(_ subview: UIKit.UIView)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func willRemoveSubview(_ subview: UIKit.UIView)
+  @_Concurrency.MainActor(unsafe) public func addButton(_ button: TDSecureFramework.RadioButtonContainer.Kind)
+  @_Concurrency.MainActor(unsafe) public func removeButton(_ view: TDSecureFramework.RadioButtonContainer.Kind)
+  @objc deinit
+}
+extension Foundation.Data : TDSecureFramework.ExpressibleAsECPublicKeyComponents {
+  public static func representing(ecPublicKeyComponents components: TDSecureFramework.ECPublicKeyComponents) throws -> Foundation.Data
+  public func ecPublicKeyComponents() throws -> TDSecureFramework.ECPublicKeyComponents
+}
+public enum JWKParameter : Swift.String, Swift.CodingKey {
+  case keyType
+  case keyUse
+  case keyOperations
+  case algorithm
+  case keyIdentifier
+  case X509URL
+  case X509CertificateChain
+  case X509CertificateSHA1Thumbprint
+  case X509CertificateSHA256Thumbprint
+  public init?(rawValue: Swift.String)
+  public init?(stringValue: Swift.String)
+  public init?(intValue: Swift.Int)
+  public typealias RawValue = Swift.String
+  public var intValue: Swift.Int? {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+  public var stringValue: Swift.String {
+    get
+  }
+}
+public enum RSAParameter : Swift.String, Swift.CodingKey {
+  case modulus
+  case exponent
+  case privateExponent
+  public init?(rawValue: Swift.String)
+  public init?(stringValue: Swift.String)
+  public init?(intValue: Swift.Int)
+  public typealias RawValue = Swift.String
+  public var intValue: Swift.Int? {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+  public var stringValue: Swift.String {
+    get
+  }
+}
+public enum SymmetricKeyParameter : Swift.String, Swift.CodingKey {
+  case key
+  public init?(rawValue: Swift.String)
+  public init?(stringValue: Swift.String)
+  public init?(intValue: Swift.Int)
+  public typealias RawValue = Swift.String
+  public var intValue: Swift.Int? {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+  public var stringValue: Swift.String {
+    get
+  }
+}
+public enum ECParameter : Swift.String, Swift.CodingKey {
+  case curve
+  case x
+  case y
+  case privateKey
+  public init?(rawValue: Swift.String)
+  public init?(stringValue: Swift.String)
+  public init?(intValue: Swift.Int)
+  public typealias RawValue = Swift.String
+  public var intValue: Swift.Int? {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+  public var stringValue: Swift.String {
+    get
+  }
+}
+extension TDSecureFramework.Rabbit {
+  convenience public init(key: Swift.String) throws
+  convenience public init(key: Swift.String, iv: Swift.String) throws
+}
+extension Foundation.Data {
+  public init?(base64URLEncoded base64URLString: Swift.String)
+  public init?(base64URLEncoded base64URLData: Foundation.Data)
+  public func base64URLEncodedString() -> Swift.String
+  public func base64URLEncodedData() -> Foundation.Data
+}
+extension Foundation.Data : TDSecureFramework.DataConvertible {
+  public init(_ data: Foundation.Data)
+  public func data() -> Foundation.Data
+}
+final public class Rabbit {
+  public enum Error : Swift.Error {
+    case invalidKeyOrInitializationVector
+    public static func == (a: TDSecureFramework.Rabbit.Error, b: TDSecureFramework.Rabbit.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public static let ivSize: Swift.Int
+  public static let keySize: Swift.Int
+  public static let blockSize: Swift.Int
+  final public var keySize: Swift.Int {
+    get
+  }
+  convenience public init(key: Swift.Array<Swift.UInt8>) throws
+  public init(key: Swift.Array<Swift.UInt8>, iv: Swift.Array<Swift.UInt8>?) throws
+  @objc deinit
+}
+extension TDSecureFramework.Rabbit : TDSecureFramework.Cipher {
+  final public func encrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  final public func decrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+}
+extension Swift.Array {
+  public init(reserveCapacity: Swift.Int)
+}
+extension Swift.Array where Element == Swift.UInt8 {
+  public init(hex: Swift.String)
+  public func toHexString() -> Swift.String
+}
+extension Swift.Array where Element == Swift.UInt8 {
+  @available(*, deprecated)
+  public func chunks(size chunksize: Swift.Int) -> Swift.Array<Swift.Array<Element>>
+  public func md5() -> [Element]
+  public func sha1() -> [Element]
+  public func sha224() -> [Element]
+  public func sha256() -> [Element]
+  public func sha384() -> [Element]
+  public func sha512() -> [Element]
+  public func sha2(_ variant: TDSecureFramework.SHA2.Variant) -> [Element]
+  public func sha3(_ variant: TDSecureFramework.SHA3.Variant) -> [Element]
+  public func crc32(seed: Swift.UInt32? = nil, reflect: Swift.Bool = true) -> Swift.UInt32
+  public func crc32c(seed: Swift.UInt32? = nil, reflect: Swift.Bool = true) -> Swift.UInt32
+  public func crc16(seed: Swift.UInt16? = nil) -> Swift.UInt16
+  public func encrypt(cipher: TDSecureFramework.Cipher) throws -> [Element]
+  public func decrypt(cipher: TDSecureFramework.Cipher) throws -> [Element]
+  public func authenticate<A>(with authenticator: A) throws -> [Element] where A : TDSecureFramework.Authenticator
+}
+extension Foundation.Data : TDSecureFramework.ExpressibleAsECPrivateKeyComponents {
+  public static func representing(ecPrivateKeyComponents components: TDSecureFramework.ECPrivateKeyComponents) throws -> Foundation.Data
+  public func ecPrivateKeyComponents() throws -> TDSecureFramework.ECPrivateKeyComponents
+}
+public protocol PaddingProtocol {
+  func add(to: Swift.Array<Swift.UInt8>, blockSize: Swift.Int) -> Swift.Array<Swift.UInt8>
+  func remove(from: Swift.Array<Swift.UInt8>, blockSize: Swift.Int?) -> Swift.Array<Swift.UInt8>
+}
+public enum Padding : TDSecureFramework.PaddingProtocol {
+  case noPadding, zeroPadding, pkcs7, pkcs5
+  public func add(to: Swift.Array<Swift.UInt8>, blockSize: Swift.Int) -> Swift.Array<Swift.UInt8>
+  public func remove(from: Swift.Array<Swift.UInt8>, blockSize: Swift.Int?) -> Swift.Array<Swift.UInt8>
+  public static func == (a: TDSecureFramework.Padding, b: TDSecureFramework.Padding) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public typealias SymmetricKeyComponents = (Foundation.Data)
+public protocol ExpressibleAsSymmetricKeyComponents {
+  static func representing(symmetricKeyComponents components: TDSecureFramework.SymmetricKeyComponents) throws -> Self
+  func symmetricKeyComponents() throws -> TDSecureFramework.SymmetricKeyComponents
+}
+public struct SymmetricKey : TDSecureFramework.JWK {
+  public let keyType: TDSecureFramework.JWKKeyType
+  public let parameters: [Swift.String : Swift.String]
+  public let key: Swift.String
+  public init(key: Foundation.Data, additionalParameters parameters: [Swift.String : Swift.String] = [:])
+  public init(key: TDSecureFramework.ExpressibleAsSymmetricKeyComponents, additionalParameters parameters: [Swift.String : Swift.String] = [:]) throws
+  public init(data: Foundation.Data) throws
+  public func converted<T>(to type: T.Type) throws -> T where T : TDSecureFramework.ExpressibleAsSymmetricKeyComponents
+}
+extension TDSecureFramework.SymmetricKey : Swift.Encodable {
+  public func encode(to encoder: Swift.Encoder) throws
+}
+extension TDSecureFramework.SymmetricKey : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
+}
+public class TDSClientRequest {
+  public var acquirerMerchantID: Swift.String
+  public var tdsRequestorChallengeInd: Swift.String?
+  public var cardHolderData: TDSecureFramework.CardHolderData
+  public var purchaseData: TDSecureFramework.PurchaseData
+  public init(acquirerMerchantID: Swift.String, tdsRequestorChallengeInd: Swift.String? = nil, cardHolderData: TDSecureFramework.CardHolderData, purchaseData: TDSecureFramework.PurchaseData)
+  @objc deinit
+}
+public class CardHolderData {
+  public var cardholderName: Swift.String?
+  public var acctID: Swift.String?
+  public var acctType: Swift.String?
+  public var acctNumber: Swift.String?
+  public var cardExpiryDate: Swift.String?
+  public var addrMatch: Swift.String?
+  public var billAddrCountry: Swift.String?
+  public var billAddrCity: Swift.String?
+  public var billAddrState: Swift.String?
+  public var billAddrPostCode: Swift.String?
+  public var billAddrLine1: Swift.String?
+  public var billAddrLine2: Swift.String?
+  public var billAddrLine3: Swift.String?
+  public var shipAddrCountry: Swift.String?
+  public var shipAddrCity: Swift.String?
+  public var shipAddrState: Swift.String?
+  public var shipAddrPostCode: Swift.String?
+  public var shipAddrLine1: Swift.String?
+  public var shipAddrLine2: Swift.String?
+  public var shipAddrLine3: Swift.String?
+  public var homePhone: Swift.String?
+  public var mobilePhone: Swift.String?
+  public var workPhone: Swift.String?
+  public var email: Swift.String?
+  public init()
+  @objc deinit
+}
+public class PurchaseData {
+  public var messageCategory: TDSecureFramework.MessageCategory
+  public var tsdRequestorAuthInd: Swift.String?
+  public var transType: Swift.String?
+  public var purchaseNumber: Swift.String?
+  public var purchaseAmount: Swift.String?
+  public var purchaseCurrency: Swift.String?
+  public var purchaseExponent: Swift.String?
+  public var purchaseDate: Swift.String?
+  public init()
+  @objc deinit
+}
+public enum MessageCategory {
+  case PA
+  case NPA
+  public static func == (a: TDSecureFramework.MessageCategory, b: TDSecureFramework.MessageCategory) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct CheckBoxColor {
+  public init(activeColor: UIKit.UIColor, inactiveColor: UIKit.UIColor, inactiveBorderColor: UIKit.UIColor, checkMarkColor: UIKit.UIColor)
+}
+final public class SHA2 {
+  public enum Variant : Swift.RawRepresentable {
+    case sha224, sha256, sha384, sha512
+    public var digestLength: Swift.Int {
+      get
+    }
+    public var blockSize: Swift.Int {
+      get
+    }
+    public typealias RawValue = Swift.Int
+    public var rawValue: TDSecureFramework.SHA2.Variant.RawValue {
+      get
+    }
+    public init?(rawValue: TDSecureFramework.SHA2.Variant.RawValue)
+  }
+  public init(variant: TDSecureFramework.SHA2.Variant)
+  final public func calculate(for bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  @objc deinit
+}
+extension TDSecureFramework.SHA2 : TDSecureFramework.Updatable {
+  final public func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
+}
+extension TDSecureFramework.PKCS5 {
+  public struct PBKDF2 {
+    public enum Error : Swift.Error {
+      case invalidInput
+      case derivedKeyTooLong
+      public static func == (a: TDSecureFramework.PKCS5.PBKDF2.Error, b: TDSecureFramework.PKCS5.PBKDF2.Error) -> Swift.Bool
+      public func hash(into hasher: inout Swift.Hasher)
+      public var hashValue: Swift.Int {
+        get
+      }
+    }
+    public init(password: Swift.Array<Swift.UInt8>, salt: Swift.Array<Swift.UInt8>, iterations: Swift.Int = 4096, keyLength: Swift.Int? = nil, variant: TDSecureFramework.HMAC.Variant = .sha256) throws
+    public func calculate() throws -> Swift.Array<Swift.UInt8>
+  }
+}
+public struct JWEHeader {
+  public init(algorithm: TDSecureFramework.AsymmetricKeyAlgorithm, encryptionAlgorithm: TDSecureFramework.SymmetricKeyAlgorithm)
+  public init(parameters: [Swift.String : Any]) throws
+}
+extension TDSecureFramework.JWEHeader {
+  public var algorithm: TDSecureFramework.AsymmetricKeyAlgorithm? {
+    get
+  }
+  public var encryptionAlgorithm: TDSecureFramework.SymmetricKeyAlgorithm? {
+    get
+  }
+  public var compressionAlgorithm: TDSecureFramework.CompressionAlgorithm? {
+    get
+  }
+  public var zip: Swift.String? {
+    get
+    set
+  }
+}
+extension TDSecureFramework.JWEHeader : TDSecureFramework.CommonHeaderParameterSpace {
+  public var jku: Foundation.URL? {
+    get
+    set
+  }
+  public var jwk: Swift.String? {
+    get
+    set
+  }
+  public var kid: Swift.String? {
+    get
+    set
+  }
+  public var x5u: Foundation.URL? {
+    get
+    set
+  }
+  public var x5c: [Swift.String]? {
+    get
+    set
+  }
+  public var x5t: Swift.String? {
+    get
+    set
+  }
+  public var x5tS256: Swift.String? {
+    get
+    set
+  }
+  public var typ: Swift.String? {
+    get
+    set
+  }
+  public var cty: Swift.String? {
+    get
+    set
+  }
+  public var crit: [Swift.String]? {
+    get
+    set
+  }
+}
+public typealias RSAPublicKeyComponents = (modulus: Foundation.Data, exponent: Foundation.Data)
+public typealias RSAPrivateKeyComponents = (modulus: Foundation.Data, exponent: Foundation.Data, privateExponent: Foundation.Data)
+public protocol ExpressibleAsRSAPublicKeyComponents {
+  static func representing(rsaPublicKeyComponents components: TDSecureFramework.RSAPublicKeyComponents) throws -> Self
+  func rsaPublicKeyComponents() throws -> TDSecureFramework.RSAPublicKeyComponents
+}
+public protocol ExpressibleAsRSAPrivateKeyComponents {
+  static func representing(rsaPrivateKeyComponents components: TDSecureFramework.RSAPrivateKeyComponents) throws -> Self
+  func rsaPrivateKeyComponents() throws -> TDSecureFramework.RSAPrivateKeyComponents
+}
+public struct RSAPublicKey : TDSecureFramework.JWK {
+  public let keyType: TDSecureFramework.JWKKeyType
+  public let parameters: [Swift.String : Swift.String]
+  public let modulus: Swift.String
+  public let exponent: Swift.String
+  public init(modulus: Swift.String, exponent: Swift.String, additionalParameters parameters: [Swift.String : Swift.String] = [:])
+  public init(publicKey: TDSecureFramework.ExpressibleAsRSAPublicKeyComponents, additionalParameters parameters: [Swift.String : Swift.String] = [:]) throws
+  public init(data: Foundation.Data) throws
+  public func converted<T>(to type: T.Type) throws -> T where T : TDSecureFramework.ExpressibleAsRSAPublicKeyComponents
+}
+public struct RSAPrivateKey : TDSecureFramework.JWK {
+  public let keyType: TDSecureFramework.JWKKeyType
+  public let parameters: [Swift.String : Swift.String]
+  public let modulus: Swift.String
+  public let exponent: Swift.String
+  public let privateExponent: Swift.String
+  public init(modulus: Swift.String, exponent: Swift.String, privateExponent: Swift.String, additionalParameters parameters: [Swift.String : Swift.String] = [:])
+  public init(privateKey: TDSecureFramework.ExpressibleAsRSAPrivateKeyComponents, additionalParameters parameters: [Swift.String : Swift.String] = [:]) throws
+  public init(data: Foundation.Data) throws
+  public func converted<T>(to type: T.Type) throws -> T where T : TDSecureFramework.ExpressibleAsRSAPrivateKeyComponents
+}
+public typealias RSAKeyPair = TDSecureFramework.RSAPrivateKey
+public protocol CipherModeWorker {
+  var cipherOperation: TDSecureFramework.CipherOperationOnBlock { get }
+  var additionalBufferSize: Swift.Int { get }
+  mutating func encrypt(block plaintext: Swift.ArraySlice<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  mutating func decrypt(block ciphertext: Swift.ArraySlice<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+}
+public protocol BlockModeWorker : TDSecureFramework.CipherModeWorker {
+  var blockSize: Swift.Int { get }
+}
+public protocol CounterModeWorker : TDSecureFramework.CipherModeWorker {
+  associatedtype Counter
+  var counter: Self.Counter { get set }
+}
+public protocol SeekableModeWorker : TDSecureFramework.CipherModeWorker {
+  mutating func seek(to position: Swift.Int) throws
+}
+public protocol StreamModeWorker : TDSecureFramework.CipherModeWorker {
+}
+public protocol FinalizingEncryptModeWorker : TDSecureFramework.CipherModeWorker {
+  mutating func finalize(encrypt ciphertext: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.ArraySlice<Swift.UInt8>
+}
+public protocol FinalizingDecryptModeWorker : TDSecureFramework.CipherModeWorker {
+  @discardableResult
+  mutating func willDecryptLast(bytes ciphertext: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.ArraySlice<Swift.UInt8>
+  mutating func didDecryptLast(bytes plaintext: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.ArraySlice<Swift.UInt8>
+  mutating func finalize(decrypt plaintext: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.ArraySlice<Swift.UInt8>
+}
+extension TDSecureFramework.AES : TDSecureFramework.Cryptors {
+  final public func makeEncryptor() throws -> TDSecureFramework.Cryptor & TDSecureFramework.Updatable
+  final public func makeDecryptor() throws -> TDSecureFramework.Cryptor & TDSecureFramework.Updatable
+}
+@_hasMissingDesignatedInitializers final public class AEADChaCha20Poly1305 : TDSecureFramework.AEAD {
+  public static let kLen: Swift.Int
+  public static var ivRange: Swift.Range<Swift.Int>
+  public static func encrypt(_ plainText: Swift.Array<Swift.UInt8>, key: Swift.Array<Swift.UInt8>, iv: Swift.Array<Swift.UInt8>, authenticationHeader: Swift.Array<Swift.UInt8>) throws -> (cipherText: Swift.Array<Swift.UInt8>, authenticationTag: Swift.Array<Swift.UInt8>)
+  public static func decrypt(_ cipherText: Swift.Array<Swift.UInt8>, key: Swift.Array<Swift.UInt8>, iv: Swift.Array<Swift.UInt8>, authenticationHeader: Swift.Array<Swift.UInt8>, authenticationTag: Swift.Array<Swift.UInt8>) throws -> (plainText: Swift.Array<Swift.UInt8>, success: Swift.Bool)
+  @objc deinit
+}
+public protocol CheckboxButtonDelegate : AnyObject {
+  func chechboxButtonDidSelect(_ button: TDSecureFramework.CheckboxButton)
+  func chechboxButtonDidDeselect(_ button: TDSecureFramework.CheckboxButton)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class CheckboxButton : TDSecureFramework.RadioCheckboxBaseButton {
+  @_Concurrency.MainActor(unsafe) weak public var delegate: TDSecureFramework.CheckboxButtonDelegate?
+  @_Concurrency.MainActor(unsafe) public var checkBoxColor: TDSecureFramework.CheckBoxColor! {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var checkboxLine: TDSecureFramework.CheckboxLineStyle {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @objc deinit
+}
+extension TDSecureFramework.RSAPublicKey : Swift.Encodable {
+  public func encode(to encoder: Swift.Encoder) throws
+}
+extension TDSecureFramework.RSAPublicKey : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
+}
+extension TDSecureFramework.RSAPrivateKey : Swift.Encodable {
+  public func encode(to encoder: Swift.Encoder) throws
+}
+extension TDSecureFramework.RSAPrivateKey : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
+}
+public typealias ECPublicKeyComponents = (crv: Swift.String, x: Foundation.Data, y: Foundation.Data)
+public typealias ECPrivateKeyComponents = (crv: Swift.String, x: Foundation.Data, y: Foundation.Data, d: Foundation.Data)
+public protocol ExpressibleAsECPublicKeyComponents {
+  static func representing(ecPublicKeyComponents components: TDSecureFramework.ECPublicKeyComponents) throws -> Self
+  func ecPublicKeyComponents() throws -> TDSecureFramework.ECPublicKeyComponents
+}
+public protocol ExpressibleAsECPrivateKeyComponents {
+  static func representing(ecPrivateKeyComponents components: TDSecureFramework.ECPrivateKeyComponents) throws -> Self
+  func ecPrivateKeyComponents() throws -> TDSecureFramework.ECPrivateKeyComponents
+}
+public struct ECPublicKey : TDSecureFramework.JWK {
+  public let keyType: TDSecureFramework.JWKKeyType
+  public let parameters: [Swift.String : Swift.String]
+  public let crv: TDSecureFramework.ECCurveType
+  public let x: Swift.String
+  public let y: Swift.String
+  public init(crv: TDSecureFramework.ECCurveType, x: Swift.String, y: Swift.String, additionalParameters parameters: [Swift.String : Swift.String] = [:])
+  public init(publicKey: TDSecureFramework.ExpressibleAsECPublicKeyComponents, additionalParameters parameters: [Swift.String : Swift.String] = [:]) throws
+  public init(data: Foundation.Data) throws
+  public func converted<T>(to type: T.Type) throws -> T where T : TDSecureFramework.ExpressibleAsECPublicKeyComponents
+}
+public struct ECPrivateKey : TDSecureFramework.JWK {
+  public let keyType: TDSecureFramework.JWKKeyType
+  public let parameters: [Swift.String : Swift.String]
+  public let crv: TDSecureFramework.ECCurveType
+  public let x: Swift.String
+  public let y: Swift.String
+  public let privateKey: Swift.String
+  public init(crv: Swift.String, x: Swift.String, y: Swift.String, privateKey: Swift.String, additionalParameters parameters: [Swift.String : Swift.String] = [:]) throws
+  public init(privateKey: TDSecureFramework.ExpressibleAsECPrivateKeyComponents, additionalParameters parameters: [Swift.String : Swift.String] = [:]) throws
+  public init(data: Foundation.Data) throws
+  public func converted<T>(to type: T.Type) throws -> T where T : TDSecureFramework.ExpressibleAsECPrivateKeyComponents
+}
+public typealias ECKeyPair = TDSecureFramework.ECPrivateKey
+public struct EcdhEsJweHeader : TDSecureFramework.JSONWebEncryptionHeader {
+  public init(alg: Swift.String, enc: Swift.String)
+  public init(parameters: [Swift.String : Any]) throws
+  public init(jsonData: Foundation.Data) throws
+  public init(b64uData: Foundation.Data) throws
+  public init(cloneFrom: TDSecureFramework.JSONWebEncryptionHeader) throws
+  public func jsonSerializedData() -> Foundation.Data
+  public func allParameters() -> [Swift.String : Any]
+}
+extension TDSecureFramework.EcdhEsJweHeader {
+  public var alg: Swift.String {
+    get
+    set
+  }
+  public var enc: Swift.String {
+    get
+    set
+  }
+  public var epk: TDSecureFramework.ECPublicKey? {
+    get
+    set
+  }
+  public var apu: Swift.String? {
+    get
+    set
+  }
+  public var apv: Swift.String? {
+    get
+    set
+  }
+}
+extension TDSecureFramework.EcdhEsJweHeader {
+  public subscript(index: Swift.String) -> Any? {
+    get
+    set
+  }
+}
+final public class ChaCha20 {
+  public enum Error : Swift.Error {
+    case invalidKeyOrInitializationVector
+    case notSupported
+    public static func == (a: TDSecureFramework.ChaCha20.Error, b: TDSecureFramework.ChaCha20.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public static let blockSize: Swift.Int
+  final public let keySize: Swift.Int
+  public init(key: Swift.Array<Swift.UInt8>, iv nonce: Swift.Array<Swift.UInt8>) throws
+  @objc deinit
+}
+extension TDSecureFramework.ChaCha20 : TDSecureFramework.Cipher {
+  final public func encrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  final public func decrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+}
+extension TDSecureFramework.ChaCha20 {
+  public struct ChaChaEncryptor : TDSecureFramework.Cryptor, TDSecureFramework.Updatable {
+    public mutating func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
+    public func seek(to: Swift.Int) throws
+  }
+}
+extension TDSecureFramework.ChaCha20 {
+  public struct ChaChaDecryptor : TDSecureFramework.Cryptor, TDSecureFramework.Updatable {
+    public mutating func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = true) throws -> Swift.Array<Swift.UInt8>
+    public func seek(to: Swift.Int) throws
+  }
+}
+extension TDSecureFramework.ChaCha20 : TDSecureFramework.Cryptors {
+  final public func makeEncryptor() -> TDSecureFramework.Cryptor & TDSecureFramework.Updatable
+  final public func makeDecryptor() -> TDSecureFramework.Cryptor & TDSecureFramework.Updatable
+}
+extension TDSecureFramework.PKCS5 {
+  public struct PBKDF1 {
+    public enum Error : Swift.Error {
+      case invalidInput
+      case derivedKeyTooLong
+      public static func == (a: TDSecureFramework.PKCS5.PBKDF1.Error, b: TDSecureFramework.PKCS5.PBKDF1.Error) -> Swift.Bool
+      public func hash(into hasher: inout Swift.Hasher)
+      public var hashValue: Swift.Int {
+        get
+      }
+    }
+    public enum Variant {
+      case md5, sha1
+      public static func == (a: TDSecureFramework.PKCS5.PBKDF1.Variant, b: TDSecureFramework.PKCS5.PBKDF1.Variant) -> Swift.Bool
+      public func hash(into hasher: inout Swift.Hasher)
+      public var hashValue: Swift.Int {
+        get
+      }
+    }
+    public init(password: Swift.Array<Swift.UInt8>, salt: Swift.Array<Swift.UInt8>, variant: TDSecureFramework.PKCS5.PBKDF1.Variant = .sha1, iterations: Swift.Int = 4096, keyLength: Swift.Int? = nil) throws
+    public func calculate() -> Swift.Array<Swift.UInt8>
+  }
+}
+final public class Poly1305 : TDSecureFramework.Authenticator {
+  public enum Error : Swift.Error {
+    case authenticateError
+    public static func == (a: TDSecureFramework.Poly1305.Error, b: TDSecureFramework.Poly1305.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public static let blockSize: Swift.Int
+  public init(key: Swift.Array<Swift.UInt8>)
+  final public func authenticate(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  @objc deinit
+}
+public struct JWS {
+  public let header: TDSecureFramework.JWSHeader
+  public let payload: TDSecureFramework.Payload
+  public let signature: Foundation.Data
+  public var compactSerializedString: Swift.String {
+    get
+  }
+  public var compactSerializedData: Foundation.Data {
+    get
+  }
+  public init<KeyType>(header: TDSecureFramework.JWSHeader, payload: TDSecureFramework.Payload, signer: TDSecureFramework.Signer<KeyType>) throws
+  public init(compactSerialization: Swift.String) throws
+  public init(compactSerialization: Foundation.Data) throws
+  @available(*, deprecated, message: "Use `isValid(for verifier:)` instead")
+  public func isValid<KeyType>(for publicKey: KeyType) -> Swift.Bool
+  @available(*, deprecated, message: "Use `validate(using verifier:)` instead")
+  public func validate<KeyType>(with publicKey: KeyType) throws -> TDSecureFramework.JWS
+  public func validate(using verifier: TDSecureFramework.Verifier) throws -> TDSecureFramework.JWS
+  public func isValid(for verifier: TDSecureFramework.Verifier) -> Swift.Bool
+}
+extension TDSecureFramework.JWS : TDSecureFramework.CompactSerializable {
+  public func serialize(to serializer: inout TDSecureFramework.CompactSerializer)
+}
+extension TDSecureFramework.JWS : TDSecureFramework.CompactDeserializable {
+  public static var componentCount: Swift.Int {
+    get
+  }
+  public init(from deserializer: TDSecureFramework.CompactDeserializer) throws
+}
+public protocol JSONWebEncryption {
+  var header: TDSecureFramework.JSONWebEncryptionHeader { get }
+  var encryptedKey: Foundation.Data { get }
+  var initializationVector: Foundation.Data { get }
+  var ciphertext: Foundation.Data { get }
+  var authenticationTag: Foundation.Data { get }
+  var compactSerializedString: Swift.String { get }
+  var compactSerializedData: Foundation.Data { get }
+  var additionalAuthenticatedData: Foundation.Data { get }
+  func decrypt(key: TDSecureFramework.JWK) throws -> Foundation.Data
+}
+extension Foundation.Data : TDSecureFramework.ExpressibleAsSymmetricKeyComponents {
+  public static func representing(symmetricKeyComponents components: TDSecureFramework.SymmetricKeyComponents) throws -> Foundation.Data
+  public func symmetricKeyComponents() throws -> TDSecureFramework.SymmetricKeyComponents
+}
+extension TDSecureFramework.ChaCha20 {
+  convenience public init(key: Swift.String, iv: Swift.String) throws
+}
+public protocol _UInt8Type {
+}
+extension Swift.UInt8 : TDSecureFramework._UInt8Type {
+}
+extension Swift.UInt8 {
+  public func bits() -> [TDSecureFramework.Bit]
+  public func bits() -> Swift.String
+}
+final public class Scrypt {
+  public init(password: Swift.Array<Swift.UInt8>, salt: Swift.Array<Swift.UInt8>, dkLen: Swift.Int, N: Swift.Int, r: Swift.Int, p: Swift.Int) throws
+  final public func calculate() throws -> [Swift.UInt8]
+  @objc deinit
+}
+final public class GCM : TDSecureFramework.BlockMode {
+  public enum Mode {
+    case combined
+    case detached
+    public static func == (a: TDSecureFramework.GCM.Mode, b: TDSecureFramework.GCM.Mode) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  final public let options: TDSecureFramework.BlockModeOption
+  public enum Error : Swift.Error {
+    case invalidInitializationVector
+    case fail
+    public static func == (a: TDSecureFramework.GCM.Error, b: TDSecureFramework.GCM.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  final public var authenticationTag: Swift.Array<Swift.UInt8>?
+  public init(iv: Swift.Array<Swift.UInt8>, additionalAuthenticatedData: Swift.Array<Swift.UInt8>? = nil, tagLength: Swift.Int = 16, mode: TDSecureFramework.GCM.Mode = .detached)
+  convenience public init(iv: Swift.Array<Swift.UInt8>, authenticationTag: Swift.Array<Swift.UInt8>, additionalAuthenticatedData: Swift.Array<Swift.UInt8>? = nil, mode: TDSecureFramework.GCM.Mode = .detached)
+  final public func worker(blockSize: Swift.Int, cipherOperation: @escaping TDSecureFramework.CipherOperationOnBlock) throws -> TDSecureFramework.CipherModeWorker
+  @objc deinit
+}
+public protocol Authenticator {
+  func authenticate(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+}
+extension Foundation.Data {
+  public func checksum() -> Swift.UInt16
+  public func md5() -> Foundation.Data
+  public func sha1() -> Foundation.Data
+  public func sha224() -> Foundation.Data
+  public func sha256() -> Foundation.Data
+  public func sha384() -> Foundation.Data
+  public func sha512() -> Foundation.Data
+  public func sha3(_ variant: TDSecureFramework.SHA3.Variant) -> Foundation.Data
+  public func crc32(seed: Swift.UInt32? = nil, reflect: Swift.Bool = true) -> Foundation.Data
+  public func crc32c(seed: Swift.UInt32? = nil, reflect: Swift.Bool = true) -> Foundation.Data
+  public func crc16(seed: Swift.UInt16? = nil) -> Foundation.Data
+  public func encrypt(cipher: TDSecureFramework.Cipher) throws -> Foundation.Data
+  public func decrypt(cipher: TDSecureFramework.Cipher) throws -> Foundation.Data
+  public func authenticate(with authenticator: TDSecureFramework.Authenticator) throws -> Foundation.Data
+}
+extension Foundation.Data {
+  public init(hex: Swift.String)
+  public var bytes: Swift.Array<Swift.UInt8> {
+    get
+  }
+  public func toHexString() -> Swift.String
+}
+public struct DecryptionContext {
+}
+public struct SymmetricDecryptionContext {
+}
+public struct Decrypter {
+  public init?<KeyType>(keyDecryptionAlgorithm: TDSecureFramework.AsymmetricKeyAlgorithm, decryptionKey key: KeyType, contentDecryptionAlgorithm: TDSecureFramework.SymmetricKeyAlgorithm)
+  @available(*, deprecated, message: "Use `init?(keyDecryptionAlgorithm:decryptionKey:contentDecyptionAlgorithm:)` instead")
+  public init?<KeyType>(keyDecryptionAlgorithm: TDSecureFramework.AsymmetricKeyAlgorithm, keyDecryptionKey kdk: KeyType, contentDecryptionAlgorithm: TDSecureFramework.SymmetricKeyAlgorithm)
+}
+public struct EncryptionContext {
+}
+public struct SymmetricEncryptionContext {
+}
+public struct Encrypter<KeyType> {
+  public init?(keyEncryptionAlgorithm: TDSecureFramework.AsymmetricKeyAlgorithm, encryptionKey key: KeyType, contentEncyptionAlgorithm: TDSecureFramework.SymmetricKeyAlgorithm)
+  @available(*, deprecated, message: "Use `init?(keyEncryptionAlgorithm:encryptionKey:contentEncyptionAlgorithm:)` instead")
+  public init?(keyEncryptionAlgorithm: TDSecureFramework.AsymmetricKeyAlgorithm, keyEncryptionKey kek: KeyType, contentEncyptionAlgorithm: TDSecureFramework.SymmetricKeyAlgorithm)
+}
+@_hasMissingDesignatedInitializers public class BlockDecryptor : TDSecureFramework.Cryptor, TDSecureFramework.Updatable {
+  public func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
+  public func seek(to position: Swift.Int) throws
+  @objc deinit
+}
+public struct CFB : TDSecureFramework.BlockMode {
+  public enum Error : Swift.Error {
+    case invalidInitializationVector
+    public static func == (a: TDSecureFramework.CFB.Error, b: TDSecureFramework.CFB.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public let options: TDSecureFramework.BlockModeOption
+  public init(iv: Swift.Array<Swift.UInt8>)
+  public func worker(blockSize: Swift.Int, cipherOperation: @escaping TDSecureFramework.CipherOperationOnBlock) throws -> TDSecureFramework.CipherModeWorker
+}
+public typealias CipherOperationOnBlock = (_ block: Swift.ArraySlice<Swift.UInt8>) -> Swift.Array<Swift.UInt8>?
+public protocol BlockMode {
+  var options: TDSecureFramework.BlockModeOption { get }
+  func worker(blockSize: Swift.Int, cipherOperation: @escaping TDSecureFramework.CipherOperationOnBlock) throws -> TDSecureFramework.CipherModeWorker
+}
+extension TDSecureFramework.ECPublicKey : Swift.Encodable {
+  public func encode(to encoder: Swift.Encoder) throws
+}
+extension TDSecureFramework.ECPublicKey : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
+}
+extension TDSecureFramework.ECPrivateKey : Swift.Encodable {
+  public func encode(to encoder: Swift.Encoder) throws
+}
+extension TDSecureFramework.ECPrivateKey : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct BlockModeOption : Swift.OptionSet {
+  public let rawValue: Swift.Int
+  public init(rawValue: Swift.Int)
+  public typealias ArrayLiteralElement = TDSecureFramework.BlockModeOption
+  public typealias Element = TDSecureFramework.BlockModeOption
+  public typealias RawValue = Swift.Int
+}
+public protocol JWEEncryptor {
+  func encrypt(plaintext: Foundation.Data, key: TDSecureFramework.JWK, header: TDSecureFramework.JSONWebEncryptionHeader, options: [Swift.String : Any]) throws -> (header: TDSecureFramework.JSONWebEncryptionHeader, encryptedKey: Foundation.Data, iv: Foundation.Data, ciphertext: Foundation.Data, tag: Foundation.Data)
+  func decrypt(key: TDSecureFramework.JWK, header: TDSecureFramework.JSONWebEncryptionHeader, encryptedKey: Foundation.Data, iv: Foundation.Data, ciphertext: Foundation.Data, tag: Foundation.Data, aad: Foundation.Data) throws -> Foundation.Data
+}
+extension TDSecureFramework.CBC.Error : Swift.Equatable {}
+extension TDSecureFramework.CBC.Error : Swift.Hashable {}
+extension TDSecureFramework.PCBC.Error : Swift.Equatable {}
+extension TDSecureFramework.PCBC.Error : Swift.Hashable {}
+extension TDSecureFramework.AES.Error : Swift.Equatable {}
+extension TDSecureFramework.AES.Error : Swift.Hashable {}
+extension TDSecureFramework.AES.Variant : Swift.Equatable {}
+extension TDSecureFramework.AES.Variant : Swift.Hashable {}
+extension TDSecureFramework.AES.Variant : Swift.RawRepresentable {}
+extension TDSecureFramework.SHA3.Variant : Swift.Equatable {}
+extension TDSecureFramework.SHA3.Variant : Swift.Hashable {}
+extension TDSecureFramework.HMACAlgorithm : Swift.Equatable {}
+extension TDSecureFramework.HMACAlgorithm : Swift.Hashable {}
+extension TDSecureFramework.HMACAlgorithm : Swift.RawRepresentable {}
+extension TDSecureFramework.ECCurveType : Swift.Equatable {}
+extension TDSecureFramework.ECCurveType : Swift.Hashable {}
+extension TDSecureFramework.ECCurveType : Swift.RawRepresentable {}
+extension TDSecureFramework.CCM : TDSecureFramework.BlockMode {}
+extension TDSecureFramework.CCM.Error : Swift.Equatable {}
+extension TDSecureFramework.CCM.Error : Swift.Hashable {}
+extension TDSecureFramework.Blowfish.Error : Swift.Equatable {}
+extension TDSecureFramework.Blowfish.Error : Swift.Hashable {}
+extension TDSecureFramework.SignatureAlgorithm : Swift.Equatable {}
+extension TDSecureFramework.SignatureAlgorithm : Swift.Hashable {}
+extension TDSecureFramework.SignatureAlgorithm : Swift.RawRepresentable {}
+extension TDSecureFramework.AsymmetricKeyAlgorithm : Swift.Equatable {}
+extension TDSecureFramework.AsymmetricKeyAlgorithm : Swift.Hashable {}
+extension TDSecureFramework.AsymmetricKeyAlgorithm : Swift.RawRepresentable {}
+extension TDSecureFramework.SymmetricKeyAlgorithm : Swift.Equatable {}
+extension TDSecureFramework.SymmetricKeyAlgorithm : Swift.Hashable {}
+extension TDSecureFramework.SymmetricKeyAlgorithm : Swift.RawRepresentable {}
+extension TDSecureFramework.CompressionAlgorithm : Swift.Equatable {}
+extension TDSecureFramework.CompressionAlgorithm : Swift.Hashable {}
+extension TDSecureFramework.CompressionAlgorithm : Swift.RawRepresentable {}
+extension TDSecureFramework.TDSEnvironment : Swift.Equatable {}
+extension TDSecureFramework.TDSEnvironment : Swift.Hashable {}
+extension TDSecureFramework.CBCMAC.Error : Swift.Equatable {}
+extension TDSecureFramework.CBCMAC.Error : Swift.Hashable {}
+extension TDSecureFramework.HMAC.Error : Swift.Equatable {}
+extension TDSecureFramework.HMAC.Error : Swift.Hashable {}
+extension TDSecureFramework.HMAC.Variant : Swift.Equatable {}
+extension TDSecureFramework.HMAC.Variant : Swift.Hashable {}
+extension TDSecureFramework.CipherError : Swift.Equatable {}
+extension TDSecureFramework.CipherError : Swift.Hashable {}
+extension TDSecureFramework.HKDF.Error : Swift.Equatable {}
+extension TDSecureFramework.HKDF.Error : Swift.Hashable {}
+extension TDSecureFramework.ECCompression : Swift.Equatable {}
+extension TDSecureFramework.ECCompression : Swift.Hashable {}
+extension TDSecureFramework.ECCompression : Swift.RawRepresentable {}
+extension TDSecureFramework.CTR : TDSecureFramework.BlockMode {}
+extension TDSecureFramework.CTR.Error : Swift.Equatable {}
+extension TDSecureFramework.CTR.Error : Swift.Hashable {}
+extension TDSecureFramework.Bit : Swift.Equatable {}
+extension TDSecureFramework.Bit : Swift.Hashable {}
+extension TDSecureFramework.Bit : Swift.RawRepresentable {}
+extension TDSecureFramework.JWSHeader : TDSecureFramework.DataConvertible {}
+extension TDSecureFramework.OFB.Error : Swift.Equatable {}
+extension TDSecureFramework.OFB.Error : Swift.Hashable {}
+extension TDSecureFramework.JWKKeyType : Swift.Equatable {}
+extension TDSecureFramework.JWKKeyType : Swift.Hashable {}
+extension TDSecureFramework.JWKKeyType : Swift.RawRepresentable {}
+extension TDSecureFramework.JWKParameter : Swift.Equatable {}
+extension TDSecureFramework.JWKParameter : Swift.Hashable {}
+extension TDSecureFramework.JWKParameter : Swift.RawRepresentable {}
+extension TDSecureFramework.RSAParameter : Swift.Equatable {}
+extension TDSecureFramework.RSAParameter : Swift.Hashable {}
+extension TDSecureFramework.RSAParameter : Swift.RawRepresentable {}
+extension TDSecureFramework.SymmetricKeyParameter : Swift.Equatable {}
+extension TDSecureFramework.SymmetricKeyParameter : Swift.Hashable {}
+extension TDSecureFramework.SymmetricKeyParameter : Swift.RawRepresentable {}
+extension TDSecureFramework.ECParameter : Swift.Equatable {}
+extension TDSecureFramework.ECParameter : Swift.Hashable {}
+extension TDSecureFramework.ECParameter : Swift.RawRepresentable {}
+extension TDSecureFramework.Rabbit.Error : Swift.Equatable {}
+extension TDSecureFramework.Rabbit.Error : Swift.Hashable {}
+extension TDSecureFramework.Padding : Swift.Equatable {}
+extension TDSecureFramework.Padding : Swift.Hashable {}
+extension TDSecureFramework.MessageCategory : Swift.Equatable {}
+extension TDSecureFramework.MessageCategory : Swift.Hashable {}
+extension TDSecureFramework.SHA2.Variant : Swift.Equatable {}
+extension TDSecureFramework.SHA2.Variant : Swift.Hashable {}
+extension TDSecureFramework.PKCS5.PBKDF2.Error : Swift.Equatable {}
+extension TDSecureFramework.PKCS5.PBKDF2.Error : Swift.Hashable {}
+extension TDSecureFramework.JWEHeader : TDSecureFramework.DataConvertible {}
+extension TDSecureFramework.ChaCha20.Error : Swift.Equatable {}
+extension TDSecureFramework.ChaCha20.Error : Swift.Hashable {}
+extension TDSecureFramework.PKCS5.PBKDF1.Error : Swift.Equatable {}
+extension TDSecureFramework.PKCS5.PBKDF1.Error : Swift.Hashable {}
+extension TDSecureFramework.PKCS5.PBKDF1.Variant : Swift.Equatable {}
+extension TDSecureFramework.PKCS5.PBKDF1.Variant : Swift.Hashable {}
+extension TDSecureFramework.Poly1305.Error : Swift.Equatable {}
+extension TDSecureFramework.Poly1305.Error : Swift.Hashable {}
+extension TDSecureFramework.GCM.Mode : Swift.Equatable {}
+extension TDSecureFramework.GCM.Mode : Swift.Hashable {}
+extension TDSecureFramework.GCM.Error : Swift.Equatable {}
+extension TDSecureFramework.GCM.Error : Swift.Hashable {}
+extension TDSecureFramework.CFB.Error : Swift.Equatable {}
+extension TDSecureFramework.CFB.Error : Swift.Hashable {}

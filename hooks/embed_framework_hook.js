@@ -19,7 +19,12 @@ module.exports = function (ctx) {
     try{
         // IMPORTANT!!
         // Replace the following var with the correct name of the .framework file to be embed
-        var frameworkName = "Payme.framework";
+        var frameworkName = "Payme.xcframework";
+        var frameworkNameAux = "TDSecureFramework.xcframework";
+        var frameworkMastercardSonic = "MastercardSonic.xcframework";
+        var frameworkVisaSensoryBranding = "VisaSensoryBranding.xcframework";
+
+        var frameworks = ["Payme.xcframework","TDSecureFramework.xcframework","MastercardSonic.xcframework","VisaSensoryBranding.xcframework"];
 
         /*var fs = ctx.requireCordovaModule("fs");
         var path = ctx.requireCordovaModule("path");
@@ -86,18 +91,31 @@ module.exports = function (ctx) {
         var proj = xcode.project(projectPath);
         proj.parseSync();
 
-
-
+        /*
         var frameworkPbxFileRef = findPbxFileReference(proj, frameworkName);
+        var frameworkPbxFileRefAux = findPbxFileReference(proj,frameworkNameAux);
+
         // Clean extra " on the start and end of the string
         var frameworkPbxFileRefPath = frameworkPbxFileRef.path;
-        console.log("frameworkPbxFileRefPath",frameworkPbxFileRefPath);
+        var frameworkPbxFileRefPathAux = frameworkPbxFileRefAux.path;
+
+        console.log("frameworkPayme",frameworkPbxFileRefPath);
+        console.log("frameworkTDSecure",frameworkPbxFileRefPathAux);
+
         if (frameworkPbxFileRefPath.endsWith("\"")) {
             frameworkPbxFileRefPath = frameworkPbxFileRefPath.substring(0, frameworkPbxFileRefPath.length - 1);
         }
         if (frameworkPbxFileRefPath.startsWith("\"")) {
             frameworkPbxFileRefPath = frameworkPbxFileRefPath.substring(1, frameworkPbxFileRefPath.length);
         }
+
+        if(frameworkPbxFileRefPathAux.endsWith("\"")){
+            frameworkPbxFileRefPathAux = frameworkPbxFileRefPathAux.substring(0, frameworkPbxFileRefPathAux.length-1);
+        }
+        if(frameworkPbxFileRefPathAux.startsWith("\"")){
+            frameworkPbxFileRefPathAux = frameworkPbxFileRefPathAux.substring(1, frameworkPbxFileRefPathAux.length);
+        }
+
 
         // If the build phase doesn't exist, add it
         if (proj.pbxEmbedFrameworksBuildPhaseObj(proj.getFirstTarget().uuid) == undefined) {
@@ -115,6 +133,50 @@ module.exports = function (ctx) {
             embed: true,
             sign: true
         });
+
+        var removedPbxFileAux = proj.removeFramework(frameworkPbxFileRefPathAux, {
+            customFramework: true
+        }); 
+
+        var addedPbxFileAux = proj.addFramework(frameworkPbxFileRefPathAux, {
+            customFramework: true,
+            embed:true,
+            sign: true
+        });
+        */
+
+
+        for (let i = 0; i < frameworks.length; i++) {
+            var frameworkPbxFileRef = findPbxFileReference(proj, frameworks[i]);
+
+            // Clean extra " on the start and end of the string
+            var frameworkPbxFileRefPath = frameworkPbxFileRef.path;
+            console.log("framework:",frameworkPbxFileRefPath);
+
+            if (frameworkPbxFileRefPath.endsWith("\"")) {
+            frameworkPbxFileRefPath = frameworkPbxFileRefPath.substring(0, frameworkPbxFileRefPath.length - 1);
+            }
+            if (frameworkPbxFileRefPath.startsWith("\"")) {
+                frameworkPbxFileRefPath = frameworkPbxFileRefPath.substring(1, frameworkPbxFileRefPath.length);
+            }
+
+            // If the build phase doesn't exist, add it
+            if (proj.pbxEmbedFrameworksBuildPhaseObj(proj.getFirstTarget().uuid) == undefined) {
+                console.log("BuildPhase not found in XCode project. Adding PBXCopyFilesBuildPhase - Embed Frameworks");
+                proj.addBuildPhase([], 'PBXCopyFilesBuildPhase', "Embed Frameworks", proj.getFirstTarget().uuid, 'frameworks');
+            }
+
+            // Now remove the framework
+            var removedPbxFile = proj.removeFramework(frameworkPbxFileRefPath, {
+                customFramework: true
+            });
+            // Re-add the framework but with embed
+            var addedPbxFile = proj.addFramework(frameworkPbxFileRefPath, {
+                customFramework: true,
+                embed: true,
+                sign: true
+            });
+        }
 
 
         fs.writeFile(proj.filepath, proj.writeSync(), 'utf8', function (err) {
