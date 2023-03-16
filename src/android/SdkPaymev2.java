@@ -211,5 +211,8 @@ public class SdkPaymev2 extends CordovaPlugin implements PaymeClientDelegate {
     public void onRespondsPayme(@NonNull PaymeResponse paymeResponse) {
         String gson = new Gson().toJson(paymeResponse);
         Log.i("OnRespondsPayme",gson);
+
+        PluginResult pluginResult = new PluginResult(PluginResult.Status.OK,gson);
+        callbackContext.sendPluginResult(pluginResult);
     }
 }
