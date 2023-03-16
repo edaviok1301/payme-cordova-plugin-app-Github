@@ -42,6 +42,8 @@ NSString  *operationNumberG = nil;
     dispatch_async(dispatch_get_main_queue(), ^{
         UIViewController *uvc = [[[UIApplication sharedApplication] keyWindow] rootViewController];
 
+        
+        NSLog([self.request objectForKey:@"identifier"]);
         PaymeClient * pc = [[PaymeClient alloc] initWithDelegate:self key:[self.request objectForKey:@"identifier"]];
         [pc setEnvironmentWithEnvironment:[self setEnviroment]];
         [pc authorizeTransactionWithController:uvc usePresent:true paymeRequest:[self setParamsMerchant:request]];
@@ -129,30 +131,50 @@ NSString  *operationNumberG = nil;
     [payment setValue:response.payment.accepted ? [NSNumber numberWithBool:YES]:[NSNumber numberWithBool:NO] forKey:@"accepted"];
     [payment setValue:response.resultCode forKey:@"resultCode"];
     [payment setValue:response.resultMessage forKey:@"resultMessage"];
+    [payment setValue:response.resultDetail forKey:@"resultDetail"];
     
+    NSData *jsonResponseData = [NSJSONSerialization dataWithJSONObject:payment options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *jsonResponseText = [[NSString alloc] initWithData:jsonResponseData encoding:NSUTF8StringEncoding];
     NSLog(@"RESPONSE %@",payment);
+    
+    [SdkPayme.sdkPayme sendResponsePay:jsonResponseText callbackId:self.callbackId];
     
     self.resultResponse = @"1";
     
 }
 
 - (void)onNotificateWithAction:(enum PaymeInternalAction)action{
+    NSDictionary *parameters;
     switch (action) {
         case PaymeInternalActionPRESS_PAY_BUTTON:
+            [FIRAnalytics logEventWithName:@"InPasarela" parameters:[self logEvent:@"PRESS_PAY_BUTTON" eventAction:@"click" eventLabel:@"El usuario presionó el boton pagar exitosamente." ]];
             break;
         case PaymeInternalActionSTART_SCORING:
+            [FIRAnalytics logEventWithName:@"InPasarela" parameters:[self logEvent:@"START_SCORING" eventAction:@"scoring" eventLabel:@"Inicia el proceso de evaluación de riesgo." ]];
             break;;
         case PaymeInternalActionEND_SCORING:
+            [FIRAnalytics logEventWithName:@"InPasarela" parameters:[self logEvent:@"END_SCORING" eventAction:@"scoring" eventLabel:@"Termina el proceso de evaluación de riesgo." ]];
             break;
         case PaymeInternalActionSTART_TDS:
+            [FIRAnalytics logEventWithName:@"InPasarela" parameters:[self logEvent:@"START_TDS" eventAction:@"tds" eventLabel:@"Inicia el proceso de autenticación." ]];
             break;
         case PaymeInternalActionEND_TDS:
+            [FIRAnalytics logEventWithName:@"InPasarela" parameters:[self logEvent:@"END_TDS" eventAction:@"tds" eventLabel:@"Termina el proceso de autenticación." ]];
             break;
         case PaymeInternalActionSTART_AUTHORIZATION:
+            [FIRAnalytics logEventWithName:@"InPasarela" parameters:[self logEvent:@"START_AUTHORIZATION" eventAction:@"authorization" eventLabel:@"Se inicia la autorización." ]];
             break;
         default:
             break;
     }
+}
+
+-(NSDictionary *) logEvent:(NSString *)eventCategory eventAction:(NSString *)eventAction eventLabel:(NSString *)eventLabel {
+    NSDictionary *parameters;
+    [parameters setValue:eventCategory forKey:@"eventCategory"];
+    [parameters setValue:eventAction forKey:@"eventAction"];
+    [parameters setValue:eventLabel forKey:@"eventLabel"];
+    return parameters;
 }
 
 - (PaymeRequest * _Nonnull)setParamsMerchant:(NSDictionary *)request {

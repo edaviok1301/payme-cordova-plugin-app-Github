@@ -2,6 +2,7 @@
 #import <Payme/Payme.h>
 #import "SdkPayme.h"
 #import "RSA.h"
+#import "Firebase.h"
 
 @interface PayViewController : UIViewController<PaymeClientDelegate>
 
@@ -11,6 +12,7 @@
 - (NSString *)validateEmptyOrNull:(NSString *)value;
 - (NSString *)getPrivateKey;
 - (NSString* )decryptString:(NSString *)string;
+- (NSDictionary *) logEvent:(NSString *)eventCategory eventAction:(NSString *)eventAction eventLabel:(NSString *)eventLabel;
 
 @property (strong, nonatomic) NSDictionary* request;
 @property (strong, nonatomic) NSString *resultResponse;
