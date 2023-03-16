@@ -1,14 +1,14 @@
 /********* SdkPayme.m Cordova Plugin Implementation *******/
 
-#import "SdkPayme.h"
+#import "SdkPaymev2.h"
 
-@implementation SdkPayme
+@implementation SdkPaymev2
 
 @synthesize responsePayCallbackId = _responsePayCallbackId;
 
-SdkPayme *sdkPayme;
+SdkPaymev2 *sdkPayme;
 
-+ (SdkPayme *) sdkPayme {
++ (SdkPaymev2 *) sdkPayme {
     return sdkPayme;
 }
 
@@ -17,7 +17,7 @@ SdkPayme *sdkPayme;
     sdkPayme = self;
 }
 
-- (void)coolMethod:(CDVInvokedUrlCommand*)command
+- (void)initPayme:(CDVInvokedUrlCommand*)command
 {
     
     self.responsePayCallbackId = command.callbackId;
@@ -29,7 +29,7 @@ SdkPayme *sdkPayme;
                                       options:0
                                         error:&jsonError];
 
-        PayViewController *pvc = [PayViewController sharedHelper:jsonData callback:self.responsePayCallbackId];
+        PayViewControllerv2 *pvc = [PayViewControllerv2 sharedHelper:jsonData callback:self.responsePayCallbackId];
         pvc.request = [[NSDictionary alloc] initWithDictionary:jsonData copyItems:YES];
         [pvc presentPayMeControllerWithDelegate:jsonData];
         CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_NO_RESULT];

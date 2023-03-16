@@ -30,7 +30,7 @@ import com.google.gson.Gson;
 /**
  * This class echoes a string called from JavaScript.
  */
-public class SdkPayme extends CordovaPlugin implements PaymeClientDelegate {
+public class SdkPaymev2 extends CordovaPlugin implements PaymeClientDelegate {
 
     private FirebaseAnalytics mFirebaseAnalytics;
     private static final String TAG = "SdkPayme";
@@ -45,7 +45,7 @@ public class SdkPayme extends CordovaPlugin implements PaymeClientDelegate {
         callbackContext=newcallbackContext;
         final Context context = this.cordova.getActivity().getApplicationContext();
         Log.d(TAG, "execute plugin");
-        if (action.equals("coolMethod")) {
+        if (action.equals("initPayme")) {
             mFirebaseAnalytics = FirebaseAnalytics.getInstance(context);
             mFirebaseAnalytics.setAnalyticsCollectionEnabled(true);
             Log.d(TAG,"Into Coolmethod of If");
@@ -53,7 +53,7 @@ public class SdkPayme extends CordovaPlugin implements PaymeClientDelegate {
                 try{
                     Log.d(TAG,"Into runOnUiThread");
                     JSONObject jsonObject = new JSONObject(args.getString(0));
-                    coolMethod(jsonObject);
+                    initPayme(jsonObject);
                 } catch (Exception e){
                     callbackContext.error(e.getMessage());
                     Log.d(TAG,"Error"+e.getMessage());
@@ -67,7 +67,7 @@ public class SdkPayme extends CordovaPlugin implements PaymeClientDelegate {
         return false;
     }
 
-    private void coolMethod(final JSONObject params) throws JSONException{
+    private void initPayme(final JSONObject params) throws JSONException{
 
         Log.d(TAG,"Into coolMethod method");
         launchPayme(params);
@@ -147,7 +147,7 @@ public class SdkPayme extends CordovaPlugin implements PaymeClientDelegate {
 
         PaymeRequest paymeRequest = setParamsMerchant(request);
 
-        PaymeClient paymeClient = new PaymeClient(SdkPayme.this,request.getString("identifier"));
+        PaymeClient paymeClient = new PaymeClient(SdkPaymev2.this,request.getString("identifier"));
         paymeClient.setEnvironment(paymeEnvironment);
         String gson = new Gson().toJson(paymeRequest);
         Log.i(TAG+"-request",gson);

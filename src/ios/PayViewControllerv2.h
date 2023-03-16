@@ -1,17 +1,14 @@
 #import <UIKit/UIKit.h>
 #import <Payme/Payme.h>
-#import "SdkPayme.h"
-#import "RSA.h"
+#import "SdkPaymev2.h"
 #import "Firebase.h"
 
-@interface PayViewController : UIViewController<PaymeClientDelegate>
+@interface PayViewControllerv2 : UIViewController<PaymeClientDelegate>
 
 + (instancetype)sharedHelper:(NSDictionary *)inputRequest callback:(NSString *)callbackid;
 - (id)initWithArgs:(NSDictionary *)request;
 - (void)presentPayMeControllerWithDelegate:(NSDictionary *)request;
 - (NSString *)validateEmptyOrNull:(NSString *)value;
-- (NSString *)getPrivateKey;
-- (NSString* )decryptString:(NSString *)string;
 - (NSDictionary *) logEvent:(NSString *)eventCategory eventAction:(NSString *)eventAction eventLabel:(NSString *)eventLabel;
 
 @property (strong, nonatomic) NSDictionary* request;

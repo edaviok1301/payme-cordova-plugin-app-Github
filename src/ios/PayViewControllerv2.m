@@ -1,6 +1,6 @@
-#import "PayViewController.h"
+#import "PayViewControllerv2.h"
 
-@implementation PayViewController
+@implementation PayViewControllerv2
 
 @synthesize setEnviroment;
 @synthesize request = _request;
@@ -11,7 +11,7 @@ NSString  *operationNumberG = nil;
 + (instancetype)sharedHelper:(NSDictionary *)inputRequest callback:(NSString *)callbackid;
 {
     
-    static PayViewController *sharedClass = nil;
+    static PayViewControllerv2 *sharedClass = nil;
     
     static dispatch_once_t onceToken;
     
@@ -122,7 +122,7 @@ NSString  *operationNumberG = nil;
         NSString *jsonStr = [[NSString alloc] initWithBytes:[jsonData bytes] length:[jsonData length] encoding:NSUTF8StringEncoding];
         
         NSLog(@"Callback PVC %@",self.callbackId);
-        [SdkPayme.sdkPayme sendResponsePay:jsonStr callbackId:self.callbackId];
+        [SdkPaymev2.sdkPayme sendResponsePay:jsonStr callbackId:self.callbackId];
     }    
 }
 
@@ -137,7 +137,7 @@ NSString  *operationNumberG = nil;
     NSString *jsonResponseText = [[NSString alloc] initWithData:jsonResponseData encoding:NSUTF8StringEncoding];
     NSLog(@"RESPONSE %@",payment);
     
-    [SdkPayme.sdkPayme sendResponsePay:jsonResponseText callbackId:self.callbackId];
+    [SdkPaymev2.sdkPayme sendResponsePay:jsonResponseText callbackId:self.callbackId];
     
     self.resultResponse = @"1";
     
