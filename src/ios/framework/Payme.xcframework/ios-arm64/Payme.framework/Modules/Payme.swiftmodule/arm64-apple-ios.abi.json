@@ -1685,16 +1685,6 @@
       },
       {
         "kind": "Import",
-        "name": "Foundation",
-        "printedName": "Foundation",
-        "declKind": "Import",
-        "moduleName": "Payme",
-        "declAttributes": [
-          "RawDocComment"
-        ]
-      },
-      {
-        "kind": "Import",
         "name": "UIKit",
         "printedName": "UIKit",
         "declKind": "Import",
@@ -7949,13 +7939,17 @@
       },
       {
         "kind": "Import",
+        "name": "MastercardSonic",
+        "printedName": "MastercardSonic",
+        "declKind": "Import",
+        "moduleName": "Payme"
+      },
+      {
+        "kind": "Import",
         "name": "AVKit",
         "printedName": "AVKit",
         "declKind": "Import",
-        "moduleName": "Payme",
-        "declAttributes": [
-          "RawDocComment"
-        ]
+        "moduleName": "Payme"
       },
       {
         "kind": "Import",
@@ -13921,8 +13915,8 @@
       },
       {
         "kind": "Import",
-        "name": "TDSecureFramework",
-        "printedName": "TDSecureFramework",
+        "name": "SecureKey3DS",
+        "printedName": "SecureKey3DS",
         "declKind": "Import",
         "moduleName": "Payme"
       },
@@ -19746,56 +19740,56 @@
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/View\/ViewForm\/PaymeFormCreditCardView.swift",
       "kind": "IntegerLiteral",
-      "offset": 1911,
+      "offset": 1937,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/View\/ViewForm\/PaymeFormCreditCardView.swift",
       "kind": "BooleanLiteral",
-      "offset": 1953,
+      "offset": 1979,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/View\/ViewForm\/PaymeFormCreditCardView.swift",
       "kind": "BooleanLiteral",
-      "offset": 2314,
+      "offset": 2340,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/View\/ViewForm\/PaymeFormCreditCardView.swift",
       "kind": "BooleanLiteral",
-      "offset": 2322,
+      "offset": 2348,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/View\/ViewForm\/PaymeFormCreditCardView.swift",
       "kind": "BooleanLiteral",
-      "offset": 2202,
+      "offset": 2228,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/View\/ViewForm\/PaymeFormCreditCardView.swift",
       "kind": "BooleanLiteral",
-      "offset": 2482,
+      "offset": 2508,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/View\/ViewForm\/PaymeFormCreditCardView.swift",
       "kind": "BooleanLiteral",
-      "offset": 2490,
+      "offset": 2516,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/View\/ViewForm\/PaymeFormCreditCardView.swift",
       "kind": "BooleanLiteral",
-      "offset": 2372,
+      "offset": 2398,
       "length": 5,
       "value": "false"
     },
@@ -19850,85 +19844,92 @@
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Controllers\/CaptureForm\/PaymeCaptureFormController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1488,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Controllers\/CaptureForm\/PaymeCaptureFormController.swift",
       "kind": "StringLiteral",
-      "offset": 1743,
+      "offset": 1786,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Controllers\/CaptureForm\/PaymeCaptureFormController.swift",
       "kind": "StringLiteral",
-      "offset": 1777,
+      "offset": 1820,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Controllers\/CaptureForm\/PaymeCaptureFormController.swift",
       "kind": "BooleanLiteral",
-      "offset": 1806,
+      "offset": 1849,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Controllers\/CaptureForm\/PaymeCaptureFormController.swift",
       "kind": "BooleanLiteral",
-      "offset": 1842,
+      "offset": 1885,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Controllers\/CaptureForm\/PaymeCaptureFormController.swift",
       "kind": "BooleanLiteral",
-      "offset": 1922,
+      "offset": 1965,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Controllers\/CaptureForm\/PaymeCaptureFormController.swift",
       "kind": "BooleanLiteral",
-      "offset": 1962,
+      "offset": 2005,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Controllers\/CaptureForm\/PaymeCaptureFormController.swift",
       "kind": "BooleanLiteral",
-      "offset": 1996,
+      "offset": 2039,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Controllers\/CaptureForm\/PaymeCaptureFormController.swift",
       "kind": "Array",
-      "offset": 2049,
+      "offset": 2092,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Controllers\/CaptureForm\/PaymeCaptureFormController.swift",
       "kind": "StringLiteral",
-      "offset": 2179,
+      "offset": 2233,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Controllers\/CaptureForm\/PaymeCaptureFormController.swift",
       "kind": "StringLiteral",
-      "offset": 2229,
+      "offset": 2283,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Controllers\/CaptureForm\/PaymeCaptureFormController.swift",
       "kind": "StringLiteral",
-      "offset": 2276,
+      "offset": 2330,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Controllers\/CaptureForm\/PaymeCaptureFormController.swift",
       "kind": "BooleanLiteral",
-      "offset": 5587,
+      "offset": 5962,
       "length": 5,
       "value": "false"
     },
@@ -21721,8 +21722,8 @@
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandCode.swift",
       "kind": "StringLiteral",
       "offset": 321,
-      "length": 8,
-      "value": "\"DINERS\""
+      "length": 6,
+      "value": "\"DINC\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandCode.swift",
@@ -21749,8 +21750,8 @@
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandCode.swift",
       "kind": "StringLiteral",
       "offset": 321,
-      "length": 8,
-      "value": "\"DINERS\""
+      "length": 6,
+      "value": "\"DINC\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/CustomComponents\/UICollectionFlowLayout\/PaymeWalletFlowLayout.swift",
@@ -22267,559 +22268,559 @@
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
       "offset": 4342,
-      "length": 11,
-      "value": "\"logo_visa\""
+      "length": 17,
+      "value": "\"payme_logo_visa\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 4367,
+      "offset": 4373,
       "length": 10,
       "value": "\"iconName\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 4379,
-      "length": 10,
-      "value": "\"icn_visa\""
+      "offset": 4385,
+      "length": 16,
+      "value": "\"payme_icn_visa\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 4403,
+      "offset": 4415,
       "length": 7,
       "value": "\"regex\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 4412,
+      "offset": 4424,
       "length": 14,
       "value": "\"^4[0-9]{1,}$\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 4440,
+      "offset": 4452,
       "length": 7,
       "value": "\"color\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 4449,
+      "offset": 4461,
       "length": 8,
       "value": "\"2b57d6\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 4471,
+      "offset": 4483,
       "length": 11,
       "value": "\"darkColor\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 4484,
+      "offset": 4496,
       "length": 8,
       "value": "\"001AB1\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 4506,
+      "offset": 4518,
       "length": 11,
       "value": "\"textColor\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 4519,
+      "offset": 4531,
       "length": 8,
       "value": "\"FFFFFF\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 4541,
+      "offset": 4553,
       "length": 12,
       "value": "\"cardFormat\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 4555,
+      "offset": 4567,
       "length": 21,
       "value": "\"XXXX XXXX XXXX XXXX\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 4590,
+      "offset": 4602,
       "length": 11,
       "value": "\"maxLength\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "IntegerLiteral",
-      "offset": 4603,
+      "offset": 4615,
       "length": 2,
       "value": "16"
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 4619,
+      "offset": 4631,
       "length": 11,
       "value": "\"lengthCVV\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "IntegerLiteral",
-      "offset": 4632,
+      "offset": 4644,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 4667,
+      "offset": 4679,
       "length": 6,
       "value": "\"code\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 4708,
+      "offset": 4720,
       "length": 6,
       "value": "\"name\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 4716,
+      "offset": 4728,
       "length": 12,
       "value": "\"MasterCard\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 4742,
+      "offset": 4754,
       "length": 11,
       "value": "\"imageName\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 4755,
-      "length": 11,
-      "value": "\"logo_mscd\""
+      "offset": 4767,
+      "length": 17,
+      "value": "\"payme_logo_mscd\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 4780,
+      "offset": 4798,
       "length": 10,
       "value": "\"iconName\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 4792,
-      "length": 10,
-      "value": "\"icn_mscd\""
+      "offset": 4810,
+      "length": 16,
+      "value": "\"payme_icn_mscd\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 4816,
+      "offset": 4840,
       "length": 7,
       "value": "\"regex\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 4825,
+      "offset": 4849,
       "length": 19,
       "value": "\"^5[1-5][0-9]{1,}$\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 4858,
+      "offset": 4882,
       "length": 7,
       "value": "\"color\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 4867,
+      "offset": 4891,
       "length": 8,
       "value": "\"ADADAD\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 4889,
+      "offset": 4913,
       "length": 11,
       "value": "\"darkColor\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 4902,
+      "offset": 4926,
       "length": 8,
       "value": "\"757575\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 4924,
+      "offset": 4948,
       "length": 11,
       "value": "\"textColor\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 4937,
+      "offset": 4961,
       "length": 8,
       "value": "\"FFFFFF\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 4959,
+      "offset": 4983,
       "length": 12,
       "value": "\"cardFormat\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 4973,
+      "offset": 4997,
       "length": 21,
       "value": "\"XXXX XXXX XXXX XXXX\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5008,
+      "offset": 5032,
       "length": 11,
       "value": "\"maxLength\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "IntegerLiteral",
-      "offset": 5021,
+      "offset": 5045,
       "length": 2,
       "value": "16"
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5037,
+      "offset": 5061,
       "length": 11,
       "value": "\"lengthCVV\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "IntegerLiteral",
-      "offset": 5050,
+      "offset": 5074,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5085,
+      "offset": 5109,
       "length": 6,
       "value": "\"code\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5126,
+      "offset": 5150,
       "length": 6,
       "value": "\"name\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5134,
+      "offset": 5158,
       "length": 6,
       "value": "\"Amex\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5154,
+      "offset": 5178,
       "length": 11,
       "value": "\"imageName\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5167,
-      "length": 11,
-      "value": "\"logo_amex\""
+      "offset": 5191,
+      "length": 17,
+      "value": "\"payme_logo_amex\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5192,
+      "offset": 5222,
       "length": 10,
       "value": "\"iconName\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5204,
-      "length": 10,
-      "value": "\"icn_amex\""
+      "offset": 5234,
+      "length": 16,
+      "value": "\"payme_icn_amex\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5228,
+      "offset": 5264,
       "length": 7,
       "value": "\"regex\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5237,
+      "offset": 5273,
       "length": 18,
       "value": "\"^3[47][0-9]{1,}$\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5269,
+      "offset": 5305,
       "length": 7,
       "value": "\"color\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5278,
+      "offset": 5314,
       "length": 8,
       "value": "\"00A8E9\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5300,
+      "offset": 5336,
       "length": 11,
       "value": "\"darkColor\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5313,
+      "offset": 5349,
       "length": 8,
       "value": "\"006FCF\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5335,
+      "offset": 5371,
       "length": 11,
       "value": "\"textColor\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5348,
+      "offset": 5384,
       "length": 8,
       "value": "\"FFFFFF\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5370,
+      "offset": 5406,
       "length": 12,
       "value": "\"cardFormat\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5384,
+      "offset": 5420,
       "length": 19,
       "value": "\"XXXX XXXXXX XXXXX\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5417,
+      "offset": 5453,
       "length": 11,
       "value": "\"maxLength\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "IntegerLiteral",
-      "offset": 5430,
+      "offset": 5466,
       "length": 2,
       "value": "15"
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5446,
+      "offset": 5482,
       "length": 11,
       "value": "\"lengthCVV\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "IntegerLiteral",
-      "offset": 5459,
+      "offset": 5495,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5494,
+      "offset": 5530,
       "length": 6,
       "value": "\"code\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5537,
+      "offset": 5571,
       "length": 6,
       "value": "\"name\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5545,
+      "offset": 5579,
       "length": 8,
       "value": "\"Diners\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5567,
+      "offset": 5601,
       "length": 11,
       "value": "\"imageName\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5580,
-      "length": 13,
-      "value": "\"logo_diners\""
+      "offset": 5614,
+      "length": 19,
+      "value": "\"payme_logo_diners\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5607,
+      "offset": 5647,
       "length": 10,
       "value": "\"iconName\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5619,
-      "length": 12,
-      "value": "\"icn_diners\""
+      "offset": 5659,
+      "length": 18,
+      "value": "\"payme_icn_diners\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5645,
+      "offset": 5691,
       "length": 7,
       "value": "\"regex\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5654,
+      "offset": 5700,
       "length": 34,
       "value": "\"^3(?:0[0-5]|[68][0-9])[0-9]{2,}$\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5702,
+      "offset": 5748,
       "length": 7,
       "value": "\"color\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5711,
+      "offset": 5757,
       "length": 8,
       "value": "\"EEEFFC\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5733,
+      "offset": 5779,
       "length": 11,
       "value": "\"darkColor\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5746,
+      "offset": 5792,
       "length": 8,
       "value": "\"D8DBF8\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5768,
+      "offset": 5814,
       "length": 11,
       "value": "\"textColor\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5781,
+      "offset": 5827,
       "length": 8,
       "value": "\"000000\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5803,
+      "offset": 5849,
       "length": 12,
       "value": "\"cardFormat\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5817,
+      "offset": 5863,
       "length": 18,
       "value": "\"XXXX XXXXXX XXXX\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5849,
+      "offset": 5895,
       "length": 11,
       "value": "\"maxLength\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "IntegerLiteral",
-      "offset": 5862,
+      "offset": 5908,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "StringLiteral",
-      "offset": 5878,
+      "offset": 5924,
       "length": 11,
       "value": "\"lengthCVV\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Utils\/PaymeBrandUtil.swift",
       "kind": "IntegerLiteral",
-      "offset": 5891,
+      "offset": 5937,
       "length": 1,
       "value": "3"
     },
@@ -23694,42 +23695,42 @@
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Controllers\/PaymeMainController.swift",
       "kind": "BooleanLiteral",
-      "offset": 1504,
+      "offset": 1508,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Controllers\/PaymeMainController.swift",
       "kind": "BooleanLiteral",
-      "offset": 1547,
+      "offset": 1551,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Controllers\/PaymeMainController.swift",
       "kind": "BooleanLiteral",
-      "offset": 1645,
+      "offset": 1649,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Controllers\/PaymeMainController.swift",
       "kind": "BooleanLiteral",
-      "offset": 1688,
+      "offset": 1692,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Controllers\/PaymeMainController.swift",
       "kind": "BooleanLiteral",
-      "offset": 1726,
+      "offset": 1730,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Controllers\/PaymeMainController.swift",
       "kind": "BooleanLiteral",
-      "offset": 59298,
+      "offset": 59352,
       "length": 5,
       "value": "false"
     },
@@ -24219,42 +24220,42 @@
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Controllers\/Wallet\/PaymeWalletController.swift",
       "kind": "StringLiteral",
-      "offset": 515,
+      "offset": 524,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Controllers\/Wallet\/PaymeWalletController.swift",
       "kind": "StringLiteral",
-      "offset": 547,
+      "offset": 556,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Controllers\/Wallet\/PaymeWalletController.swift",
       "kind": "StringLiteral",
-      "offset": 578,
+      "offset": 587,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Controllers\/Wallet\/PaymeWalletController.swift",
       "kind": "IntegerLiteral",
-      "offset": 738,
+      "offset": 747,
       "length": 3,
       "value": "145"
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Controllers\/Wallet\/PaymeWalletController.swift",
       "kind": "IntegerLiteral",
-      "offset": 810,
+      "offset": 819,
       "length": 3,
       "value": "195"
     },
     {
       "filePath": "\/Users\/levissilvestre\/iOSProjects\/payme-new-ios\/Payme\/Payme\/Controllers\/Wallet\/PaymeWalletController.swift",
       "kind": "IntegerLiteral",
-      "offset": 881,
+      "offset": 890,
       "length": 3,
       "value": "320"
     },

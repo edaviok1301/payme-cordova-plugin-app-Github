@@ -5,10 +5,11 @@
 import AVKit
 import CommonCrypto
 import Foundation
+import MastercardSonic
 @_exported import Payme
+import SecureKey3DS
 import Security
 import Swift
-import TDSecureFramework
 import UIKit
 import VisaSensoryBranding
 import _Concurrency

@@ -20,11 +20,11 @@ module.exports = function (ctx) {
         // IMPORTANT!!
         // Replace the following var with the correct name of the .framework file to be embed
         var frameworkName = "Payme.xcframework";
-        var frameworkNameAux = "TDSecureFramework.xcframework";
+        var frameworkNameAux = "SecureKey3DS.xcframework";
         var frameworkMastercardSonic = "MastercardSonic.xcframework";
         var frameworkVisaSensoryBranding = "VisaSensoryBranding.xcframework";
 
-        var frameworks = ["Payme.xcframework","TDSecureFramework.xcframework","MastercardSonic.xcframework","VisaSensoryBranding.xcframework"];
+        var frameworks = ["Payme.xcframework","SecureKey3DS.xcframework","MastercardSonic.xcframework","VisaSensoryBranding.xcframework"];
 
         /*var fs = ctx.requireCordovaModule("fs");
         var path = ctx.requireCordovaModule("path");
