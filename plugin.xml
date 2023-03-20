@@ -12,8 +12,10 @@
 		</config-file>
 
 		<source-file src="src/android/SdkPaymev2.java" target-dir="src/sdkpayme" />
-		<resource-file src="aar/payme.aar"  target="libs/payme.aar"/>
-		<resource-file src="aar/TDSecureFramework.aar"  target="libs/TDSecureFramework.aar"/>
+		<resource-file src="aar/Payme.aar"  target="libs/Payme.aar"/>
+		<resource-file src="aar/MastercardSonic.aar"  target="libs/MastercardSonic.aar"/>
+		<resource-file src="aar/SecureKey3DS.aar"  target="libs/SecureKey3DS.aar"/>
+		<resource-file src="aar/VisaSensoryBranding.aar"  target="libs/VisaSensoryBranding.aar"/>
 
 		<framework  src="src/android/file.gradle" custom="true" type="gradleReference"/>
 	</platform>
@@ -37,7 +39,7 @@
 		<!--<hook type="before_build" src="hooks/embed_framework_hook.js" />-->
 		<!-- <framework src="Payme" type="podspec" spec="~> 0.0.9" /> -->
 		<framework src="src/ios/framework/Payme.xcframework" custom="true" embed="true" />
-		<framework src="src/ios/framework/TDSecureFramework.xcframework" custom="true" embed="true" /> 
+		<framework src="src/ios/framework/SecureKey3DS.xcframework" custom="true" embed="true" /> 
 		<framework src="src/ios/framework/MastercardSonic.xcframework" custom="true" embed="true" /> 
 		<framework src="src/ios/framework/VisaSensoryBranding.xcframework" custom="true" embed="true" /> 
 

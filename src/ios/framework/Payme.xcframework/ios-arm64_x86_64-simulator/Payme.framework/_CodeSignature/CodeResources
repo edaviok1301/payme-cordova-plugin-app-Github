@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		sWWAqXMYRNo+AZ+UPu1u7DsKn1o=
+		u6ltO32KUcw5QplcYBC9pFcjr/w=
 		</data>
 		<key>DropDownCell.nib</key>
 		<data>
@@ -30,7 +30,7 @@
 		</data>
 		<key>HelpCvvAlertView.nib</key>
 		<data>
-		4vAlNzPfJIw7vJYP7Ja7UNEX6cw=
+		/E6PRUo5d3qq0LKfW9go0qvge70=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -38,11 +38,11 @@
 		</data>
 		<key>Modules/Payme.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		rS7h0zCk0lVOJ7rHyzz5jro3jvg=
+		oel0uXaoN+RTpC+lScFN41swyIw=
 		</data>
 		<key>Modules/Payme.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		LBrDghkXhcLIiO1iy3YsUdO4EnI=
+		Uavtk0iYQALuGMXIUVgydYlKhEM=
 		</data>
 		<key>Modules/Payme.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -50,19 +50,19 @@
 		</data>
 		<key>Modules/Payme.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		LBrDghkXhcLIiO1iy3YsUdO4EnI=
+		Uavtk0iYQALuGMXIUVgydYlKhEM=
 		</data>
 		<key>Modules/Payme.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		8bMhnfr5z+/5cxbm6/vTNERe6Kk=
+		COR75Pl8ixSf4dC6fHF78ackLyY=
 		</data>
 		<key>Modules/Payme.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		rS7h0zCk0lVOJ7rHyzz5jro3jvg=
+		oel0uXaoN+RTpC+lScFN41swyIw=
 		</data>
 		<key>Modules/Payme.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		ZoILHJ9EkBZS3D1k8YYY9aSDI4k=
+		SPL3hHvGjbNpgd2yXL9olgIey30=
 		</data>
 		<key>Modules/Payme.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -70,11 +70,11 @@
 		</data>
 		<key>Modules/Payme.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		ZoILHJ9EkBZS3D1k8YYY9aSDI4k=
+		SPL3hHvGjbNpgd2yXL9olgIey30=
 		</data>
 		<key>Modules/Payme.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		T1MdPFk8fBLSVA4UztkCKSGsgYc=
+		BGNiaj49EaCcrjP+s7KNyO8555U=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -98,11 +98,11 @@
 		</data>
 		<key>Payme.storyboardc/Xsb-fP-N5k-view-zv7-9h-XDS.nib</key>
 		<data>
-		rE4F+R8rHWC1X9kPR6xy6LoQbtc=
+		uJ9uuRn2zaps0RMV88DyfxIXuX4=
 		</data>
 		<key>Payme.storyboardc/Y6W-OH-hqX-view-5EZ-qb-Rvc.nib</key>
 		<data>
-		+wOGY5WGZV2k5mCorxcGbovuiDI=
+		TJZM9vOwiLzYBclsumsPSyrHVlI=
 		</data>
 		<key>Payme.storyboardc/unZ-S3-UiD-view-8RG-yb-XUw.nib</key>
 		<data>
@@ -114,45 +114,41 @@
 		</data>
 		<key>PaymeCreditCardView.nib</key>
 		<data>
-		Z2YUHx6otQR5JS+0C9/IFRCajv8=
+		DIQAXxYAw/fWtCIJDMLR3BUXquk=
 		</data>
 		<key>PaymeFormCreditCardView.nib</key>
 		<data>
-		78h6WS01fYHKgQMQyprFSLP1Ng8=
+		f+LezfuWfyNWabo5mHWqdvBzKms=
 		</data>
 		<key>PaymeFormExtraFieldsView.nib</key>
 		<data>
-		PQv9dv2dY3mtiYAnSHPZuHJA+X0=
+		u+05qDiyQSLpWO29Dz9NPEsFoY4=
 		</data>
 		<key>PaymeFormInstallmentsView.nib</key>
 		<data>
-		RWlmXOE9ky2zAQSAvG+fLSBrBm0=
+		fcfNP+efzV3EEhoYZtKNShsm3Qs=
 		</data>
 		<key>PaymeWalletCardCell.nib/objects-12.3+.nib</key>
 		<data>
-		lk4uQffPOA48wZ9UrrCN4Zh2FgU=
+		HCS6RoTikfN8sBHt7sdrxzoKYq4=
 		</data>
 		<key>PaymeWalletCardCell.nib/runtime.nib</key>
 		<data>
-		B1nxHw2sizlLOLFdGxYp8o7I0j8=
+		BffrfQZJ6shciKqHS96lTvGB/NI=
 		</data>
 		<key>PaymeWalletNewCardCell.nib/objects-12.3+.nib</key>
 		<data>
-		UXLeizeHg83+7SlKTyFWesIBQNw=
+		fK6EV57KJcDzrPfrL+T0QSZVvn8=
 		</data>
 		<key>PaymeWalletNewCardCell.nib/runtime.nib</key>
 		<data>
-		rWRJ542WvzZd8CYDD4r1rtx78QE=
+		D6bsYgLmuYH7y+V/azINsTRA2LM=
 		</data>
 		<key>ResultScreenView.nib</key>
 		<data>
-		ZNgSebLVOodPfBlXKx8ZPez41Vs=
+		HG9yd5ajr2QDKgZL5slK8VfIfVA=
 		</data>
-		<key>mscd_pay_sucess.mp4</key>
-		<data>
-		bII7lD4U/OAnU7tqRyZlANTRjEc=
-		</data>
-		<key>payme_pay_sucess.mp4</key>
+		<key>payme_pay_success.mp4</key>
 		<data>
 		FFGiVEiAYLtZZW6sXI8DtW/qd0I=
 		</data>
@@ -163,7 +159,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			cZTPhDv1z42/qOvqoEATvZMPQYteBjGChhf/3ZQeDz0=
+			bCH9qM2VvcZeRbU/n5ur6wula7I4EG9DUmbhfg+Rc4A=
 			</data>
 		</dict>
 		<key>DropDownCell.nib</key>
@@ -205,21 +201,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			asj4AW6IjXKp554LPldHJFpZF+6xFfA2+agwhLtao90=
+			3azi1ZzbOXeol0vu1ZhObM1895b27qnpBy8OyrxqooI=
 			</data>
 		</dict>
 		<key>Modules/Payme.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			s7tSKZ44svGMauiDXnxL8akAIE29cSTGaqL8Mx/sJ1I=
+			R3JY4qfsktpeA8OZ617fYXwy5erQgxhasjUb1YsXP/4=
 			</data>
 		</dict>
 		<key>Modules/Payme.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			eV6Fz82Fz9z8vdG3M318cxz+yysRWvBiuYHHuo/n8Nw=
+			kH9wVp52OvwWwIQk2z6RKN/v7L8F3UG1iqw826q06O0=
 			</data>
 		</dict>
 		<key>Modules/Payme.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
@@ -233,28 +229,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			eV6Fz82Fz9z8vdG3M318cxz+yysRWvBiuYHHuo/n8Nw=
+			kH9wVp52OvwWwIQk2z6RKN/v7L8F3UG1iqw826q06O0=
 			</data>
 		</dict>
 		<key>Modules/Payme.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Hcaiy3yBYw4Uf2WB6jKcGTgCOl41Ju6yq4freg4NPxU=
+			Ra7Qc+qmO0MDa8zkO0IrPK7LS/ouO51Bl6mXsanPB68=
 			</data>
 		</dict>
 		<key>Modules/Payme.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			s7tSKZ44svGMauiDXnxL8akAIE29cSTGaqL8Mx/sJ1I=
+			R3JY4qfsktpeA8OZ617fYXwy5erQgxhasjUb1YsXP/4=
 			</data>
 		</dict>
 		<key>Modules/Payme.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			qgZg6gnj4sYH3mn/K/2uYl1T3J7ZKaXhzUelNTFtWaI=
+			5XgvP8GRkJxab+iFxIMZb+657Ml0GfUMvpJ5X7MP34c=
 			</data>
 		</dict>
 		<key>Modules/Payme.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -268,14 +264,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			qgZg6gnj4sYH3mn/K/2uYl1T3J7ZKaXhzUelNTFtWaI=
+			5XgvP8GRkJxab+iFxIMZb+657Ml0GfUMvpJ5X7MP34c=
 			</data>
 		</dict>
 		<key>Modules/Payme.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			pN2ldUNXndOwV6n53X5jyHZ3OAEUS+KtYW+G+AgbKyc=
+			Q/X+pWzes9tI545yN+2D8lSX0IjNlkzGcu1tdenz5Ww=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -317,14 +313,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			+Mrl2yH/hvP7UxrkrKAIIyvsTSLCOQ6Ptvviieipfkg=
+			r9omcFsvjYugaFT8TvXSsSELh5UjzIhKYuS9tzY7xY4=
 			</data>
 		</dict>
 		<key>Payme.storyboardc/Y6W-OH-hqX-view-5EZ-qb-Rvc.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			j5A+QrYyB+nLI7MvI9wkDJcalkeuv+wMdJTCJ6KTGtY=
+			8PsZOKNcswYzywiBvp7Z4V7cZLPcb6ZtHd+Tmz5LIzs=
 			</data>
 		</dict>
 		<key>Payme.storyboardc/unZ-S3-UiD-view-8RG-yb-XUw.nib</key>
@@ -345,73 +341,66 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			CiD/khP3xm9zg82+u11Xx6YjjeYmgDjaPvVzTQgi6l0=
+			7qA7Zoy1YhSK4zn1kjzb5j8JkG6Wmgu/WwbG8PtFu5I=
 			</data>
 		</dict>
 		<key>PaymeFormCreditCardView.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			bc+1dRO2ppn2L674FPPZq+fCzWlSqoiTX55F6LSSM5U=
+			syRhf7GsRyVyZ2yat2nFl8l8eKmU4gEMpNTrFTTqNfI=
 			</data>
 		</dict>
 		<key>PaymeFormExtraFieldsView.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			6dFRuHdv+zR00Tl22/hWToGfZDmRBkEGHwpue7OAVNw=
+			lflLQtqJ7PnqfzdN8ZfxiRRwGYqMBTk6h1xD4ak3KGc=
 			</data>
 		</dict>
 		<key>PaymeFormInstallmentsView.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			FHhWLM7vz44nZfzzxyVuXQakhY2XY0jNGkfReLqo1R8=
+			FQ/rRvBHsYR+gk7PR5B6mFw8vHse6wPsZC4N7pWVhZ4=
 			</data>
 		</dict>
 		<key>PaymeWalletCardCell.nib/objects-12.3+.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			sdUAyx3CXGVJSb8BotnfQsAyqOzd0G07ycai7I7WcWw=
+			P9KKoeD0kNUhsX5e5OEHtK6ltQQwg898gtuwyAoI7ZA=
 			</data>
 		</dict>
 		<key>PaymeWalletCardCell.nib/runtime.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Q9a2zmL7kaHzYFhK1DZqVjvPSJwnDcdP/P3KHjV9lPE=
+			MxPFinBo8aSbSdFqw1xNSc1e3tydjMl3MEVQwUzlcpA=
 			</data>
 		</dict>
 		<key>PaymeWalletNewCardCell.nib/objects-12.3+.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			zHmUn2aZRjd0lBGmweuUtt3kN8ZNPioOvdi+dSz12SA=
+			nNxyop0eiUVlz8lg+sSShhD831NPSWdTvB0on+Zt7cM=
 			</data>
 		</dict>
 		<key>PaymeWalletNewCardCell.nib/runtime.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			JsFeNbCshcDafCusfTPf9GrPVJK6Rkdoy8E4fiFBVL4=
+			kalPS5wlq53Y7txrKUCwJ+14LzDuDOSsTa4zzAaH4Os=
 			</data>
 		</dict>
 		<key>ResultScreenView.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			nLUyFUOeOkjUhq1xCj/ZmNfC64+WZCDe1E9TzLByJbs=
+			TLWC5SfQUd+QQp/MfS/3YPzZ8SUCEQ7+VS3L6usKwSc=
 			</data>
 		</dict>
-		<key>mscd_pay_sucess.mp4</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			3i3krYORGUVxcKMUasWPNxbhW3Cgjr2LWQeMCB4QsHs=
-			</data>
-		</dict>
-		<key>payme_pay_sucess.mp4</key>
+		<key>payme_pay_success.mp4</key>
 		<dict>
 			<key>hash2</key>
 			<data>
