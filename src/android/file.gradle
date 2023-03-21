@@ -41,8 +41,10 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.google.code.gson:gson:2.8.5'
 
-    implementation (name:'payme',ext:'aar')
-    implementation (name:'TDSecureFramework',ext:'aar')
+    implementation (name:'Payme',ext:'aar')
+    implementation (name:'SecureKey3DS',ext:'aar')
+    implementation (name:'MastercardSonic',ext:'aar')
+    implementation (name:'VisaSensoryBranding',ext:'aar')
 }
 
 android {
