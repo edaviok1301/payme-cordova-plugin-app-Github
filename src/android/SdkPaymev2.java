@@ -23,8 +23,19 @@ import org.json.JSONObject;
 
 import com.alignet.payme.PaymeClient;
 import com.alignet.payme.PaymeClientDelegate;
+import com.alignet.payme.model.merchant.PaymeAuthenticationData;
+import com.alignet.payme.model.merchant.PaymeCurrencyData;
+import com.alignet.payme.model.merchant.PaymeFeatureData;
+import com.alignet.payme.model.merchant.PaymeInstallmentsData;
+import com.alignet.payme.model.merchant.PaymeInternalAction;
+import com.alignet.payme.model.merchant.PaymeMerchantData;
+import com.alignet.payme.model.merchant.PaymeOperationData;
+import com.alignet.payme.model.merchant.PaymePersonData;
+import com.alignet.payme.model.merchant.PaymeRequest;
+import com.alignet.payme.model.merchant.PaymeResponse;
+import com.alignet.payme.model.merchant.PaymeSettingData;
+import com.alignet.payme.model.merchant.PaymeWalletData;
 import com.alignet.payme.util.PaymeEnvironment;
-import com.alignet.payme.model.*;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.gson.Gson;
 /**
