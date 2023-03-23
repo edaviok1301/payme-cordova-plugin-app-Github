@@ -127,15 +127,27 @@ NSString  *operationNumberG = nil;
 }
 
 - (void)onRespondsPaymeWithResponse:(PaymeResponse *)response{
-    NSMutableDictionary *payment = [NSMutableDictionary dictionary];
-    [payment setValue:response.payment.accepted ? [NSNumber numberWithBool:YES]:[NSNumber numberWithBool:NO] forKey:@"accepted"];
-    [payment setValue:response.resultCode forKey:@"resultCode"];
-    [payment setValue:response.resultMessage forKey:@"resultMessage"];
-    [payment setValue:response.resultDetail forKey:@"resultDetail"];
+    NSMutableDictionary *main = [NSMutableDictionary dictionary];
     
-    NSData *jsonResponseData = [NSJSONSerialization dataWithJSONObject:payment options:NSJSONWritingPrettyPrinted error:nil];
+    [main setValue:response.resultCode forKey:@"resultCode"];
+    [main setValue:response.resultMessage forKey:@"resultMessage"];
+    [main setValue:response.resultDetail forKey:@"resultDetail"];
+    [main setValue:response.success?[NSNumber numberWithBool:YES]:[NSNumber numberWithBool:NO] forKey:@"success"];
+    
+    NSMutableDictionary *payment = [NSMutableDictionary dictionary];
+    [payment setValue:response.payment.accepted?[NSNumber numberWithBool:YES]:[NSNumber numberWithBool:NO] forKey:@"accepted"];
+    [payment setValue:response.payment.authorizationCode forKey:@"authorizationCode"];
+    [payment setValue:response.payment.brand forKey:@"brand"];
+    [payment setValue:response.payment.maskedPan forKey:@"maskedPan"];
+    [payment setValue:response.payment.operationDate forKey:@"operationDate"];
+    [payment setValue:response.payment.operationNumber forKey:@"operationNumber"];
+    
+    [main setValue:payment forKey:@"payment"];
+
+
+    NSData *jsonResponseData = [NSJSONSerialization dataWithJSONObject:main options:NSJSONWritingPrettyPrinted error:nil];
     NSString *jsonResponseText = [[NSString alloc] initWithData:jsonResponseData encoding:NSUTF8StringEncoding];
-    NSLog(@"RESPONSE %@",payment);
+    NSLog(@"RESPONSE %@",main);
     
     [SdkPaymev2.sdkPayme sendResponsePay:jsonResponseText callbackId:self.callbackId];
     
@@ -144,7 +156,6 @@ NSString  *operationNumberG = nil;
 }
 
 - (void)onNotificateWithAction:(enum PaymeInternalAction)action{
-    NSDictionary *parameters;
     switch (action) {
         case PaymeInternalActionPRESS_PAY_BUTTON:
             [FIRAnalytics logEventWithName:@"InPasarela" parameters:[self logEvent:@"PRESS_PAY_BUTTON" eventAction:@"click" eventLabel:@"El usuario presionó el boton pagar exitosamente." ]];
